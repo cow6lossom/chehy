@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 351871572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -535,7 +535,7 @@ MonoBehaviour:
       startTime: 0
       tweenType: 49
       targets:
-      - {fileID: 0}
+      - {fileID: 351871573}
       stringParam: 
       _customData: []
       boolParam: 0
