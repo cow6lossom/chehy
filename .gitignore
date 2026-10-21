@@ -107,5 +107,9 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+/Assets/Plugins
 Packages/com.kyrylokuzyk.primetween.tgz
+/Assets/Plugins
+/Assets/Plugins/PrimeTween
+/Assets/Plugins
 /Assets/Plugins
