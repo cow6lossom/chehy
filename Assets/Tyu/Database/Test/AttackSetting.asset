@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d3d30b7ea84f1480f8068924495cef, type: 3}
   m_Name: AttackSetting
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
-  <Distance>k__BackingField: 0
-  <Size>k__BackingField: {x: 0, y: 0}
-  <DefaultDamage>k__BackingField: 0
+  <Distance>k__BackingField: 1.71
+  <Size>k__BackingField: {x: 2.62, y: 3.53}
+  <DefaultDamage>k__BackingField: 5
