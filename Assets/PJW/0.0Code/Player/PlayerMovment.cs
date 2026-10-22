@@ -1,23 +1,36 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class PlayerMovment : Movement
+public class PlayerMovment : MovementModule
 {
-    private Rigidbody2D rbCompo;
+    private void Start()
+    {
+        base.Init();
+    }
 
-    private float speed;
+    private void FixedUpdate()
+    {
+        TryMove();
+    }
 
-    public Vector2 Dir { get; private set; }
+    public override void Init()
+    {
+        base.Init();
+        Speed = 10;
+    }
 
-    public override void Awake() => Init();
+    public override void SetMoveDir(Vector2 dir)
+    {
+        base.SetMoveDir(dir);
+    }
 
-    private void Update() => TryMove();
+    public override void TryMove()
+    {
+        base.TryMove();
+    }
 
-    public override void Init() => rbCompo = GetComponent<Rigidbody2D>();
-
-    public override void SetMoveDir(Vector2 dir) => this.Dir = dir;
-
-    public override void TryMove() => rbCompo.linearVelocity = Dir.normalized*speed;
-
-    public override void StopMove() => rbCompo.linearVelocity = Vector2.zero;
+    public override void StopMove()
+    {
+        base.StopMove();
+    }
 }
