@@ -7,9 +7,9 @@ namespace Tyu.Scripts.Boss.FSM
     {
         protected Dictionary<StateEnum, AbstractState> stateDict;
         protected AbstractState currentState;
-        protected IStateMahcine owner;
+        protected IStateMachine owner;
 
-        public AbstractStateMachine(IStateMahcine _owner)
+        public AbstractStateMachine(IStateMachine _owner)
         {
             owner = _owner;
         }
