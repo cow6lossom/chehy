@@ -1,6 +1,6 @@
 ﻿namespace Tyu.Scripts
 {
-    public interface IStateMahcine
+    public interface IStateMachine
     {
         
     }
