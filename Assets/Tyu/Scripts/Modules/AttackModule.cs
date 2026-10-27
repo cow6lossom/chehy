@@ -1,4 +1,5 @@
-﻿using Tyu.Scripts;
+﻿using System;
+using Tyu.Scripts;
 using Tyu.Scripts.Results;
 using Tyu.Scripts.SO;
 using UnityEngine;
@@ -10,8 +11,12 @@ namespace Tyu.Modules
         [SerializeField] private int maxBuffer;
         [SerializeField] private ContactFilter2D target;
         private Collider2D[] _resultArray;
-        
-        
+
+        private void Awake()
+        {
+            _resultArray = new Collider2D[maxBuffer];
+        }
+
         public void TryAttack(AttackResult resultData)
         {
                 Vector2 pos = transform.position + transform.right * resultData.myData.Distance;
