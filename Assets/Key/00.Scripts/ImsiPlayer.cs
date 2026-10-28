@@ -9,11 +9,13 @@ namespace Key._00.Scripts {
 
         [SerializeField] private int damage ;
         [SerializeField] private int health = 5;
-        private float _attackRange = 2;
-        private Rigidbody2D rigid;
-        private float speed = 5f;
         [SerializeField] private Transform _attackPoint;
+        
         private SpriteRenderer sr;
+        private Rigidbody2D rigid;
+        
+        private float _attackRange = 2;
+        private float speed = 5f;
         
         private Collider2D[] _targetArr = new Collider2D[1];
         private Collider2D _target;
@@ -63,12 +65,6 @@ namespace Key._00.Scripts {
             sr.color = Color.black;
             yield return new WaitForSeconds(0.13f);
             sr.color = _color;
-        }
-
-
-        private void OnDrawGizmos() {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_attackPoint.position, _attackRange );
         }
     }
 }

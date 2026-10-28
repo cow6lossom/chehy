@@ -30,8 +30,9 @@ namespace Key._00.Scripts {
 
         private void Update() {
             if (_isAttacking) return;
-            
+
             DetectTarget();
+
 
             if (_target != null) {
                 _isAttacking = true;
@@ -40,11 +41,18 @@ namespace Key._00.Scripts {
         }
 
         private void DetectTarget() {
-            var legend =Physics2D.OverlapCircle(transform.position, _detectRange, _whatIsPlayer,  _targetCol);
+            Physics2D.OverlapCircle(transform.position, _detectRange, _whatIsPlayer,  _targetCol);
             try {
                 _target = _targetCol[0].transform;
             }
             catch (NullReferenceException) {
+                _target = null;
+            }
+
+            if (_target == null) return;
+            
+            Vector2 v = _target.position - transform.position;
+            if (v.magnitude > attackRange) {
                 _target = null;
             }
         }
