@@ -36,9 +36,9 @@ namespace WSH._01.Scripts
 
         IEnumerator SlowLogic(float amount, float time)
         {
-            _currentSpeed -= amount/_maxSpeed;
+            _currentSpeed -= (amount / _maxSpeed) /_maxSpeed;
             yield return new WaitForSeconds(time);
-            _currentSpeed += amount/_maxSpeed;
+            _currentSpeed += (amount / _maxSpeed) /_maxSpeed;
         }
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
+using PrimeTween;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace WSH._01.Scripts
 {
@@ -24,8 +23,8 @@ namespace WSH._01.Scripts
         [SerializeField] private PTPlayer player;
         [SerializeField] private Transform _playerTrm;
 
-        [SerializeField] private GameObject bullet;
-        [SerializeField] private GameObject longHand;
+        [SerializeField] private GameObject _bullet;
+        [SerializeField] private GameObject _longHand;
 
         [SerializeField] private int _randomSkill;
         
@@ -80,15 +79,15 @@ namespace WSH._01.Scripts
             {
                 AttackState();
             }
-            else if (_state == PTbossState.OneSkill)
+            else if (_state == PTbossState.OneSkill && !_skilling)
             {
                 OneSkillState();
             }
-            else if (_state == PTbossState.TwoSkill)
+            else if (_state == PTbossState.TwoSkill && !_skilling)
             {
                 TwoSkillState();
             }
-            else if (_state == PTbossState.ThreeSkill)
+            else if (_state == PTbossState.ThreeSkill && !_skilling)
             {
                 ThreeSkillState();
             }
@@ -106,31 +105,6 @@ namespace WSH._01.Scripts
             {
                 _state = PTbossState.Move;
             }
-            
-            // 스킬 쿨타임이 다 되었을 경우
-            // if (!_skilling && !_attacking && _skillCoolTime > _skillCurrentCoolTime)
-            // {
-            //     _skillCurrentCoolTime += Time.deltaTime;
-            // }
-            // else if(!_skilling && !_attacking)
-            // {
-            //     _attacking = true;
-            //         
-            //     _randomSkill = Random.Range(0, 3);
-            //
-            //     if (_randomSkill == 0)
-            //     {
-            //         _state = PTbossState.OneSkill;
-            //     }
-            //     else if (_randomSkill == 1)
-            //     {
-            //         _state = PTbossState.TwoSkill;
-            //     }
-            //     else if (_randomSkill == 2)
-            //     {
-            //         _state = PTbossState.ThreeSkill;
-            //     }
-            // }
         }
 
         void MoveState()
@@ -138,7 +112,7 @@ namespace WSH._01.Scripts
             Debug.Log("move");
             _canMove = true;
             SetMove(_speed);
-                
+
             Collider2D chaseTarget = Physics2D.OverlapCircle(transform.position, _detectRange, _whatIsPlayer);
             Collider2D target = Physics2D.OverlapCircle(transform.position, _attackRange, _whatIsPlayer);
 
@@ -153,31 +127,29 @@ namespace WSH._01.Scripts
             {
                 _state = PTbossState.Attack;
             }
-           
+
             // 스킬 쿨타임이 다 되었을 경우
-            // if (!_skilling && !_attacking && _skillCoolTime > _skillCurrentCoolTime)
-            // {
-            //     _skillCurrentCoolTime += Time.deltaTime;
-            // }
-            // else if(!_skilling && !_attacking)
-            // {
-            //     _skilling = true;
-            //         
-            //     _randomSkill = Random.Range(0, 3);
-            //
-            //     if (_randomSkill == 0)
-            //     {
-            //         _state = PTbossState.OneSkill;
-            //     }
-            //     else if (_randomSkill == 1)
-            //     {
-            //         _state = PTbossState.TwoSkill;
-            //     }
-            //     else if (_randomSkill == 2)
-            //     {
-            //         _state = PTbossState.ThreeSkill;
-            //     }
-            // }
+            if (!_skilling && !_attacking && _skillCoolTime > _skillCurrentCoolTime)
+            {
+                _skillCurrentCoolTime += Time.deltaTime;
+            }
+            else if (!_skilling && !_attacking)
+            {
+                _randomSkill = Random.Range(0, 2);
+
+                if (_randomSkill == 0)
+                {
+                    _state = PTbossState.OneSkill;
+                }
+                else if (_randomSkill == 1)
+                {
+                    _state = PTbossState.TwoSkill;
+                }
+                //     else if (_randomSkill == 2)
+                //     {
+                //         _state = PTbossState.ThreeSkill;
+                //     }
+            }
         }
 
         void AttackState()
@@ -188,22 +160,25 @@ namespace WSH._01.Scripts
 
         void OneSkillState()
         {
-            StartCoroutine(OneSkillLogic(30, 5));
+            Debug.Log("Oneattack");
+            StartCoroutine(OneSkillLogic(65, 5, 3));
         }
         
         void TwoSkillState()
         {
-            StartCoroutine(TwoSkillLogic(6, 3));
+            Debug.Log("Twoattack");
+            StartCoroutine(TwoSkillLogic(6, 3, 3));
         }
 
         void ThreeSkillState()
         {
+            Debug.Log("Threeattack");
             StartCoroutine(ThreeSkillLogic(3));
         }
 
         void SetMove(float speed)
         {
-            _moveDir = (_playerTrm.position - transform.position).normalized;
+            _moveDir = TargetDirection();
             _rigid.linearVelocity = speed * _moveDir;
         }
 
@@ -235,35 +210,66 @@ namespace WSH._01.Scripts
             _state = PTbossState.Idle;
         }
 
-        IEnumerator OneSkillLogic(float amount, float time) // 슬로우 - 플레이어에게 속도를 감소 시킨다
+        IEnumerator OneSkillLogic(float amount, float slowTime, float time) // 슬로우 - 플레이어에게 속도를 감소 시킨다
         {
+            _skilling = true;
             _canMove = false;
             yield return new WaitForSeconds(time);
-            player.SlowEffect(amount, time);
+            player.SlowEffect(amount, slowTime);
+            _skillCurrentCoolTime = 0;
             _state = PTbossState.Idle;
-            yield return new WaitForSeconds(time);
             _skilling = false;
         }
 
-        IEnumerator TwoSkillLogic(int amount, float time) // 파편 던지기 - 투사체를 던진다
+        IEnumerator TwoSkillLogic(int amount, float time, float endTime) // 파편 던지기 - 투사체를 던진다
         {
+            _skilling = true;
             _canMove = false;
             yield return new WaitForSeconds(time);
             
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(bullet,transform.position,Quaternion.identity);
+                float x = Random.Range(-1f, 1f);
+                float y = Random.Range(-1f, 1f);
+
+                GameObject bullet = Instantiate(_bullet, new Vector3(transform.position.x + x, transform.position.y + y, 0), Quaternion.identity);
+                bullet.transform.parent = transform;
+                bullet.GetComponent<Rigidbody2D>().linearVelocity = TargetDirection() * 20f;
             }
             
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(endTime);
+            _skillCurrentCoolTime = 0;
+            _state = PTbossState.Idle;
             _skilling = false;
         }
 
         IEnumerator ThreeSkillLogic(float time) // 손 아귀 - 플레이어 쪽으로 손을 날려 잡히면 끌고온다.
         {
+            _skilling = true;
             _canMove = false;
             yield return new WaitForSeconds(time);
+            StartCoroutine(LongHand(1));
+        }
+
+        IEnumerator LongHand(float time)
+        {
+            float angle = Mathf.Rad2Deg * Mathf.Atan2(TargetDirection().y, TargetDirection().x);
+            float distance = Vector2.Distance(_longHand.transform.position, _playerTrm.position);
+            _longHand.SetActive(true);
+            _longHand.transform.localScale = new Vector3(0, 1, angle);
             
+            Tween.ScaleX(_longHand.transform, distance , time);
+            yield return new WaitForSeconds(time);
+            Tween.ScaleX(_longHand.transform, 0, time);
+            yield return new WaitForSeconds(time);
+            _skillCurrentCoolTime = 0;
+            _state = PTbossState.Idle;
+            _skilling = false;
+        }
+        
+        Vector2 TargetDirection()
+        {
+            return (_playerTrm.position - transform.position).normalized;
         }
 
         private void OnDrawGizmos()
