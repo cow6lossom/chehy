@@ -10,7 +10,7 @@ namespace Tyu.Scripts.SO
         [field:SerializeField] public Vector2 Size { get; private set; }
         [field:Space(10)]
         [Header("Damage")]
-        [field: SerializeField] public float DefaultDamage { get; private set; }
+        [field: SerializeField] public float Damage { get; private set; }
         
 
     }

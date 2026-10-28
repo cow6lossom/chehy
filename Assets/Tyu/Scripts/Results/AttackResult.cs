@@ -17,12 +17,12 @@ namespace Tyu.Scripts.Results
         
         public AttackResult(AttackSettingSO settingData /*PassiveEnums enabledPassive*/)
         {
-            _defaultDamage = settingData.DefaultDamage;
+            _defaultDamage = settingData.Damage;
             //_enabledPassives && enabledPassive;
             //
             //
             myData = settingData;
-            resultDamage = myData.DefaultDamage;
+            resultDamage = myData.Damage;
         }
         
     }
