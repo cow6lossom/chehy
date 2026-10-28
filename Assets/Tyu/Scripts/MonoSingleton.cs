@@ -19,6 +19,7 @@ namespace Tyu.Scripts
             }
         }
         protected bool MakeSingleton() //Call it Awake's first line, copy it "if(!MakeSingleton()) return;"
+                                       //이거 그거임 싱글톤 못 만들었으면 다음 초기화 코드 실행하지 말라고 하는거
         {
             if (_instance != null && _instance != this)
             {
