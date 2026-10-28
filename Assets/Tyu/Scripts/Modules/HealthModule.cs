@@ -1,7 +1,6 @@
 ﻿using System;
 using Tyu.Scripts.Results;
 using Tyu.Scripts.SO;
-using Tyu.Scripts.Utils;
 using UnityEngine;
 
 namespace Tyu.Scripts.Modules
@@ -9,7 +8,6 @@ namespace Tyu.Scripts.Modules
     public class HealthModule : MonoBehaviour
     {
         private float MaxHp;
-
         private float _currentHp
         {
             set => _currentHp = Mathf.Clamp(value, 0, MaxHp);
