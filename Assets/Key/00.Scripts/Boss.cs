@@ -1,26 +1,23 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 namespace Key._00.Scripts {
-    public class Boss : MonoBehaviour { 
+    public class Boss : MonoBehaviour {
         [SerializeField] private SpriteRenderer _sr;
-        [SerializeField] private ContactFilter2D  _whatIsPlayer;
+        [SerializeField] private ContactFilter2D _whatIsPlayer;
         [SerializeField] private GameObject _healthBar;
-        
 
-        [SerializeField]private Transform _target;
+
+        [SerializeField] private Transform _target;
         private Collider2D _bossCol;
         private float _health = 100;
-        [SerializeField]private float attackRange;
+        [SerializeField] private float attackRange;
 
-        [SerializeField]
-        private SpriteRenderer AttackSprite;
-        
+        [SerializeField] private SpriteRenderer AttackSprite;
+
         private bool _isAttacking = false;
-        private bool _canAttack = false;
-        
+
 
         private void Awake() {
             _sr = GetComponentInChildren<SpriteRenderer>();
@@ -28,16 +25,15 @@ namespace Key._00.Scripts {
             AttackSprite.enabled = false;
         }
 
+
         private void Update() {
+            if (_isAttacking || _target == null) return;
+
             Vector2 range = _target.position - transform.position;
             if (range.magnitude > attackRange) return;
-            
-            if (_isAttacking ) return;
-            
-            if (_target != null) {
-                StartCoroutine(WaitAttack());
-                _isAttacking = true;
-            }
+
+            _isAttacking = true;
+            StartCoroutine(WaitAttack());
         }
 
         public void GetDamage(float damage) {
@@ -48,67 +44,73 @@ namespace Key._00.Scripts {
             }
         }
 
+
         private IEnumerator WaitAttack() {
-            Debug.Log("Wait Attack");
-            
             int pattern = Random.Range(0, 2);
-            
-            yield return new WaitForSeconds(3f);
-            Debug.Log("3f");            
-            
-            Transform tr = AttackSprite.gameObject.transform;
-                        
-            
+            Transform tr = AttackSprite.transform;
+
             if (pattern == 0) {
                 _sr.color = Color.red;
 
-                yield return StartCoroutine(Pattern1(tr));
+                tr.position = _target.position;
+                tr.localScale = Vector3.one;
             }
             else {
                 _sr.color = Color.darkMagenta;
-                yield return StartCoroutine(Pattern2(tr));
 
+                tr.position = transform.position;
+                tr.localScale = new Vector3(7, 7, 1);
+            } //선딜레이
+
+            AttackSprite.enabled = true;
+
+            yield return new WaitForSeconds(0.5f);
+
+            _sr.color = Color.magenta;
+
+            if (pattern == 0) {
+                //패턴
+                Pattern1(tr);
+            }
+            else {
+                Pattern2(tr);
             }
 
-            yield return StartCoroutine(EndAttackCoroutine());
+            yield return StartCoroutine(EndAttackCoroutine()); //후딜레이
         }
 
-        private IEnumerator Pattern1(Transform target) {
+
+
+        private void Pattern1(Transform target) {
             Debug.Log("attack 1");
 
-            target.position = _target.position;
-            target.localScale =  Vector3.one ;
-
-            AttackSprite.enabled = true;
-            
-            yield return new WaitForSeconds(0.4f);
-
             for (int i = 0; i < 5; i++) {
-                Vector3 ranV = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f));  
+                Vector3 ranV = new Vector2(
+                    Random.Range(-3.0f, 3.0f),
+                    Random.Range(-3.0f, 3.0f)
+                );
+
                 Attack(target.position + ranV, new Vector2(1, 1));
-                Debug.Log("ATK" + i);
             }
         }
-        
-        private IEnumerator Pattern2(Transform target) {
-            Debug.Log("attack 2");
-            
-            target.position = transform.position;
-            target.localScale =  new Vector3(7, 7, 1) ;
 
-            AttackSprite.enabled = true;
-            
-            yield return new WaitForSeconds(0.5f);
+        private void Pattern2(Transform target) {
+            Debug.Log("attack 2");
 
             Attack(target.position, new Vector2(7, 7));
         }
 
+
+
         private IEnumerator EndAttackCoroutine() {
-            yield return new WaitForSeconds(0.5f);
             AttackSprite.enabled = false;
+            
+            yield return new WaitForSeconds(1.5f); 
             _sr.color = Color.magenta;
+
             _isAttacking = false;
         }
+
 
         private void Attack(Vector2 point, Vector2 range) {
             ColliderArray2D atcCol = Physics2D.OverlapBox(point, range, 0, _whatIsPlayer);
