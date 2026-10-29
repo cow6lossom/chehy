@@ -22,6 +22,7 @@ namespace Tyu.Scripts.Results
             //
             //
             myData = settingData;
+            resultDamage = myData.DefaultDamage;
         }
         
     }
