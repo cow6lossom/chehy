@@ -4,6 +4,6 @@ namespace Tyu.Scripts
 {
     public interface IHealthHavable
     {
-        void GetDamage(AttackResult data);
+        void GetDamage(float damage);
     }
 }

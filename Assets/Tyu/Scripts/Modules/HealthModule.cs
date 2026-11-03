@@ -24,7 +24,7 @@ namespace Tyu.Scripts.Modules
             _owner = owner;
         }
 
-        public void GetDamage(AttackResult data)
+        public void GetDamage(float damage)
         {
             // float resultDamage = DamageCalculator
         }
