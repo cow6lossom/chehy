@@ -7,8 +7,8 @@ namespace Key._00.Scripts {
     public class ImsiPlayer : MonoBehaviour {
         [SerializeField] private ContactFilter2D _whatIsEnemy;
 
-        [SerializeField] private int damage ;
-        [SerializeField] private int health = 5;
+        [SerializeField] private float damage ;
+        [SerializeField] private float health = 5;
         [SerializeField] private Transform _attackPoint;
         
         private SpriteRenderer sr;
@@ -52,10 +52,10 @@ namespace Key._00.Scripts {
             _attackPoint.gameObject.SetActive(false);
         }
 
-        public void GetDamage(int dddam) {
+        public void GetDamage(float dddam) {
             health -= dddam;
             if (health <= 0) {
-                Debug.Log("Dead!");
+                Destroy(gameObject);
             }
 
             StartCoroutine(DamageRoutine());
@@ -63,7 +63,7 @@ namespace Key._00.Scripts {
 
         private IEnumerator DamageRoutine() {
             sr.color = Color.black;
-            yield return new WaitForSeconds(0.13f);
+            yield return new WaitForSeconds(0.05f);
             sr.color = _color;
         }
     }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 namespace Key._00.Scripts {
@@ -8,19 +8,19 @@ namespace Key._00.Scripts {
         [SerializeField] private SpriteRenderer _sr;
         [SerializeField] private ContactFilter2D  _whatIsPlayer;
         [SerializeField] private GameObject _healthBar;
-        [SerializeField] private float _detectRange;
         
 
         [SerializeField]private Transform _target;
         private Collider2D _bossCol;
-        private Collider2D[] _targetCol =  new Collider2D[1];
-        private int _health = 100;
-        private float attackRange;
+        private float _health = 100;
+        [SerializeField]private float attackRange;
 
         [SerializeField]
         private SpriteRenderer AttackSprite;
         
         private bool _isAttacking = false;
+        private bool _canAttack = false;
+        
 
         private void Awake() {
             _sr = GetComponentInChildren<SpriteRenderer>();
@@ -29,37 +29,18 @@ namespace Key._00.Scripts {
         }
 
         private void Update() {
-            if (_isAttacking) return;
-
-            DetectTarget();
-
-
-            if (_target != null) {
-                _isAttacking = true;
-                StartCoroutine(WaitAttack());
-            }
-        }
-
-        private void DetectTarget() {
-            Physics2D.OverlapCircle(transform.position, _detectRange, _whatIsPlayer,  _targetCol);
-            try {
-                _target = _targetCol[0].transform;
-            }
-            catch (NullReferenceException) {
-                _target = null;
-            }
-
-            if (_target == null) return;
+            Vector2 range = _target.position - transform.position;
+            if (range.magnitude > attackRange) return;
             
-            Vector2 v = _target.position - transform.position;
-            if (v.magnitude > attackRange) {
-                _target = null;
+            if (_isAttacking ) return;
+            
+            if (_target != null) {
+                StartCoroutine(WaitAttack());
+                _isAttacking = true;
             }
         }
-        
-        
 
-        public void GetDamage(int damage) {
+        public void GetDamage(float damage) {
             _health -= damage;
             Debug.Log(_health);
             if (_health <= 0) {
@@ -68,9 +49,12 @@ namespace Key._00.Scripts {
         }
 
         private IEnumerator WaitAttack() {
+            Debug.Log("Wait Attack");
+            
             int pattern = Random.Range(0, 2);
-
-            yield return new WaitForSeconds(1.5f);
+            
+            yield return new WaitForSeconds(3f);
+            Debug.Log("3f");            
             
             Transform tr = AttackSprite.gameObject.transform;
                         
@@ -78,18 +62,18 @@ namespace Key._00.Scripts {
             if (pattern == 0) {
                 _sr.color = Color.red;
 
-                yield return StartCoroutine(Attack1(tr));
+                yield return StartCoroutine(Pattern1(tr));
             }
             else {
                 _sr.color = Color.darkMagenta;
-                yield return StartCoroutine(Attack2(tr));
+                yield return StartCoroutine(Pattern2(tr));
 
             }
 
             yield return StartCoroutine(EndAttackCoroutine());
         }
 
-        private IEnumerator Attack1(Transform target) {
+        private IEnumerator Pattern1(Transform target) {
             Debug.Log("attack 1");
 
             target.position = _target.position;
@@ -98,11 +82,15 @@ namespace Key._00.Scripts {
             AttackSprite.enabled = true;
             
             yield return new WaitForSeconds(0.4f);
-            
-            Attack(target.position, new Vector2(1, 1));
+
+            for (int i = 0; i < 5; i++) {
+                Vector3 ranV = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f));  
+                Attack(target.position + ranV, new Vector2(1, 1));
+                Debug.Log("ATK" + i);
+            }
         }
         
-        private IEnumerator Attack2(Transform target) {
+        private IEnumerator Pattern2(Transform target) {
             Debug.Log("attack 2");
             
             target.position = transform.position;
@@ -111,8 +99,8 @@ namespace Key._00.Scripts {
             AttackSprite.enabled = true;
             
             yield return new WaitForSeconds(0.5f);
+
             Attack(target.position, new Vector2(7, 7));
-            
         }
 
         private IEnumerator EndAttackCoroutine() {
@@ -121,25 +109,20 @@ namespace Key._00.Scripts {
             _sr.color = Color.magenta;
             _isAttacking = false;
         }
-        
+
         private void Attack(Vector2 point, Vector2 range) {
-            Physics2D.OverlapBox(point, range , 0, _whatIsPlayer, _targetCol);
-            
-            try {
-                _target = _targetCol[0].transform;
+            ColliderArray2D atcCol = Physics2D.OverlapBox(point, range, 0, _whatIsPlayer);
+
+            if (atcCol.Length == 0) return;
+
+            if (atcCol[0].TryGetComponent(out ImsiPlayer player)) {
+                player.GetDamage(2);
             }
-            catch (NullReferenceException) {
-                _target = null;
-            }
-            
-            _target.gameObject.GetComponent<ImsiPlayer>().GetDamage(2);
         }
         
-        
-        //target이 null이 안 돼요 이거 하기
 
         private void OnDrawGizmos() {
-            Gizmos.DrawWireSphere(transform.position, _detectRange);
+            Gizmos.DrawWireSphere(transform.position, attackRange);
         }
     }
 }
