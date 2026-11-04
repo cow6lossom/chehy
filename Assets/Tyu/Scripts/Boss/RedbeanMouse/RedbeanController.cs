@@ -20,11 +20,23 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _coolTimeChecker = new PatternCoolTimeChecker();
             base.Initialize(_playerTrm);
             _behaviourStateMachine = new CanLockStateMachine(this);
+            _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle", moveMd,
+                renderMd, this, this));
+            _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase", moveMd, 
+                renderMd, this, _coolTimeChecker, new List<AttackSettingSO>()
+                {
+                    soMeaAttack,
+                    
+                }));
+        }
+        
+        private void MakeStates()
+        {
             _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SoMeaAttack", attackMd
                 , renderMd, this, _coolTimeChecker,soMeaAttack, soMeaAttackLast));
-            
         }
 
+        
         public void EndTrigger()
         {
             _behaviourStateMachine.EndTrigger();
@@ -39,12 +51,12 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             lastAtkTime = Time.time;
             dealTime = dealTimeSet;
-            _behaviourStateMachine.LockState();
         }
         public bool IsDealTime() => lastAtkTime + dealTime <= Time.time;
 
         private void Update()
         {
         }
+
     }
 }
