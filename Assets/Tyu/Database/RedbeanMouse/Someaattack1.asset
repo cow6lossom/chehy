@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28d3d30b7ea84f1480f8068924495cef, type: 3}
-  m_Name: AttackSetting
+  m_Name: Someaattack1
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
-  <Distance>k__BackingField: 1.91
-  <Size>k__BackingField: {x: 3.56, y: 5.21}
-  <Damage>k__BackingField: 0
+  <Distance>k__BackingField: 1.99
+  <Size>k__BackingField: {x: 4, y: 6.4}
+  <Damage>k__BackingField: 4
   <Cooltime>k__BackingField: 5
   <DealTime>k__BackingField: 1.3

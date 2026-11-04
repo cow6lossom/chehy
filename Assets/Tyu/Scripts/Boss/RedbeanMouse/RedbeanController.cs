@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.SO;
 using UnityEngine;
@@ -41,11 +42,9 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _behaviourStateMachine.LockState();
         }
         public bool IsDealTime() => lastAtkTime + dealTime <= Time.time;
-    }
 
-    public interface IHaveDealTime
-    {
-        void ResetLastAttack(float dealTime);
-        bool IsDealTime();
+        private void Update()
+        {
+        }
     }
 }

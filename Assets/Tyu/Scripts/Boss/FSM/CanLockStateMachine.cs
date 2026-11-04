@@ -13,7 +13,7 @@
             _locked = true;
         }
 
-        public void ReleaseLock()
+        public void UnlockState()
         {
             _locked = false;
         }
