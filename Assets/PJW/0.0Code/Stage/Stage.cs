@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Stage : MonoBehaviour
 {
-    [Min(1)]
-    [SerializeField] private float detectRange;
-    [SerializeField] private LayerMask isPlayer;
-
-    [SerializeField] private GameObject UI;
-
     [SerializeField] private int stageNum;
 
     public bool IsGameOver { get; set; }

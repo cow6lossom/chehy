@@ -288,7 +288,7 @@ MonoBehaviour:
   detectRange: 1
   isPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!4 &1688737461
 Transform:
   m_ObjectHideFlags: 0
