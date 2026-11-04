@@ -46,6 +46,10 @@ namespace Key._00.Scripts {
             if (_target.TryGetComponent(out IDamageableDummy dummy)) {
                 dummy.GetDamage(damage);
             }
+            if (_target.TryGetComponent(out IKnockbackableDummy knockback)) {
+                knockback.GetKnockback(transform.position);
+            }
+            
 
             StartCoroutine(ShowAttack());
         }

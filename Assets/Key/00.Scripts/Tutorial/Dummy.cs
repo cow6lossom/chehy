@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Key._00.Scripts.DummyEnemy {
     public class Dummy : MonoBehaviour, IDamageableDummy, IKnockbackableDummy {
@@ -7,6 +6,7 @@ namespace Key._00.Scripts.DummyEnemy {
 
         [SerializeField] private float knockbackForce = 5f;
         private Rigidbody2D rigid;
+        private float _KnockbackDuration;
 
         public float CurrentHealth { get; private set; }
 
@@ -28,7 +28,6 @@ namespace Key._00.Scripts.DummyEnemy {
         private void Die() {
             Destroy(gameObject);
         }
-        
 
         public void GetKnockback(Vector2 dir) {
             Debug.Log("GET KNOCKBACK");
@@ -37,6 +36,7 @@ namespace Key._00.Scripts.DummyEnemy {
 
             rigid.linearVelocity = Vector2.zero;
             rigid.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+
         }
     }
 }
