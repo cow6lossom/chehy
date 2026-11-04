@@ -7,16 +7,16 @@ namespace Key._00.Scripts {
     public class ImsiPlayer : MonoBehaviour {
         [SerializeField] private ContactFilter2D _whatIsEnemy;
 
-        [SerializeField] private float damage ;
+        [SerializeField] private float damage;
         [SerializeField] private float health = 5;
         [SerializeField] private Transform _attackPoint;
-        
+
         private SpriteRenderer sr;
         private Rigidbody2D rigid;
-        
+
         private float _attackRange = 2;
         private float speed = 5f;
-        
+
         private Collider2D[] _targetArr = new Collider2D[1];
         private Collider2D _target;
         private Color _color;
@@ -36,18 +36,18 @@ namespace Key._00.Scripts {
             Physics2D.OverlapCircle(transform.position, _attackRange, _whatIsEnemy, _targetArr);
 
             if (_target == null) return;
-            
+
             _target = _targetArr[0];
             StartCoroutine(ShowAttack());
         }
 
         private IEnumerator ShowAttack() {
             _attackPoint.gameObject.SetActive(true);
-            
+
             yield return new WaitForSeconds(0.3f);
-            
-            if(_target == null) yield break;
-            
+
+            if (_target == null) yield break;
+
             _target.GetComponent<Boss>().GetDamage(damage);
             _attackPoint.gameObject.SetActive(false);
         }
