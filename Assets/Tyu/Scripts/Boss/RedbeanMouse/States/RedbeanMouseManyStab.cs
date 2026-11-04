@@ -1,4 +1,5 @@
-﻿using PrimeTween;
+﻿using System.Collections.Generic;
+using PrimeTween;
 using Tyu.Modules;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.Modules;
@@ -7,20 +8,30 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public class RedbeanMouseManyStab : AttackState
+    public class RedbeanMouseManyStab : HavingAnimeState
     {
         private RedbeanController _owner;
         private AttackSettingSO _firStab;
         private AttackSettingSO _dashStab;
         private Vector2 _dir;
         
-        public RedbeanMouseManyStab(AbstractStateMachine _stateMachine, string anim, AttackModule attackMd, RenderModule renderMd, 
-            PatternCoolTimeChecker coolChecker, RedbeanController owner,AttackSettingSO firStab, AttackSettingSO dashStab)
-            : base(_stateMachine, anim, attackMd, renderMd, coolChecker)
+        public RedbeanMouseManyStab(AbstractStateMachine stateMachine, string anim,RenderModule renderMd, 
+            RedbeanController owner,List<AttackSettingSO> attacks)
+            : base(stateMachine, anim, renderMd)
         {
             _owner = owner;
-            _firStab = firStab;
-            _dashStab = dashStab;
+            foreach (var attack in attacks)
+            {
+                switch (attack.AttackType)
+                {
+                    case AttackEnum.Stab:
+                        _firStab = attack;
+                        break;
+                    case AttackEnum.DashStab:
+                        _dashStab = attack;
+                        break;
+                }
+            }
         }
 
 

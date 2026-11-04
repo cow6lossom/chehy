@@ -10,14 +10,16 @@ namespace Tyu.Scripts.SO
         [Header("Range")]
         [field:SerializeField] public float Distance { get; private set; }
         [field:SerializeField] public Vector2 Size { get; private set; }
-        [field:SerializeField] public float maxDetect { get; private set; }
-        [field:SerializeField] public float minDetect { get; private set; }
         [field: Space(10)]
         [Header("Attack")]
         [field:SerializeField] public StateEnum Type { get; private set; }
+        [field:SerializeField] public AttackEnum AttackType { get; private set; }
+        [field:SerializeField] public bool IsSymbol { get; private set; }
         [field: SerializeField] public float Damage { get; private set; }
-        [field:SerializeField] public float Cooltime { get; private set; }
+        [field:SerializeField] public float CoolTime { get; private set; }
         [field:SerializeField] public float DealTime { get; private set; }
+        [field:SerializeField] public float maxDetect { get; private set; }
+        [field:SerializeField] public float minDetect { get; private set; }
 
         private void OnValidate()
         {

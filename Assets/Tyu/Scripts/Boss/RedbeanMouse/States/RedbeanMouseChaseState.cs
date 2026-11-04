@@ -32,6 +32,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.UpdateState();
             foreach (var attack in _attacks)
             {
+                if(!attack.IsSymbol) continue;
                 if (!_coolChecker.CheckCoolTime(attack.Type)) continue;
                 if (distance < attack.minDetect) continue;
                 if (distance > attack.maxDetect) continue;
