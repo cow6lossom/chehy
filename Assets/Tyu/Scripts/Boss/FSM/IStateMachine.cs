@@ -2,6 +2,7 @@
 {
     public interface IStateMachine
     {
-        
+        void EndTrigger();
+        void CallBackTrigger();
     }
 }

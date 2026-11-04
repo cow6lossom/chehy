@@ -5,5 +5,11 @@ namespace Tyu.Scripts.Boss.FSM
         
         Idle,
         Move,
+
+        #region RedBeanMouse
+
+        SoMeaAttack
+
+        #endregion
     }
 }
