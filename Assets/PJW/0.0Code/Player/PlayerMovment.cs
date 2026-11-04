@@ -5,7 +5,7 @@ public class PlayerMovment : MovementModule
 {
     private void Start()
     {
-        base.Init();
+       Init();
     }
 
     private void FixedUpdate()
