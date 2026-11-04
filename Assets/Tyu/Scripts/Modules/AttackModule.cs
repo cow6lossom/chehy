@@ -17,10 +17,10 @@ namespace Tyu.Modules
             _resultArray = new Collider2D[maxBuffer];
         }
 
-        public void TryAttack(AttackSettingSO resultData)
+        public void TryAttack(AttackSettingSO data)
         {
-                Vector2 pos = transform.position + transform.right * resultData.Distance;
-                int cnt = Physics2D.OverlapBox(pos, resultData.Size, transform.eulerAngles.z, target, _resultArray);
+                Vector2 pos = transform.position + transform.right * data.Distance;
+                int cnt = Physics2D.OverlapBox(pos, data.Size, transform.eulerAngles.z, target, _resultArray);
                 if (cnt < 1) return;
             
                 for (int i = 0; i < cnt; i++)
@@ -28,7 +28,7 @@ namespace Tyu.Modules
                     var target = _resultArray[i];
 
                     if (target.TryGetComponent<IHealthHavable>(out var compo))
-                        compo.GetDamage(resultData.Damage);
+                        compo.GetDamage(data.Damage);
                 }
         }
     }
