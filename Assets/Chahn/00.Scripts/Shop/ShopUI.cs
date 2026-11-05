@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Chahn._00.Scripts.Shop
 {
@@ -42,6 +43,18 @@ namespace Chahn._00.Scripts.Shop
             for (int i = 0; i < offerSlots.Length; i++)
             {
                 offerSlots[i].Bind(offers[i]);
+            }
+        }
+
+
+        private void Update()
+        {
+            if (Keyboard.current == null)
+                return;
+
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                Toggle();
             }
         }
     }
