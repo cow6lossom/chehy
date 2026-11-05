@@ -8,7 +8,7 @@ namespace Tyu.Scripts.SO
 
         [SerializeField] private string ownerName;
         [field: SerializeField] public float defaultHealth { get; private set; }
-        [field:SerializeField ] public float turnNextPhaseHealth { get; private set; } //2 페이즈 조건
+        [field:SerializeField ] public float secondPhaseHealth { get; private set; } //2 페이즈 조건
         
     }
 }

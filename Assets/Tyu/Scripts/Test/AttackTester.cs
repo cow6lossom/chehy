@@ -16,7 +16,7 @@ namespace Tyu.Scripts.Test
             if (Keyboard.current.hKey.wasPressedThisFrame)
             {
                 var test = new AttackResult(testSO);
-                attackMd.TryAttack(test);
+                // attackMd.TryAttack(test);
             }
         }
     }

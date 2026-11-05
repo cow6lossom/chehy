@@ -23,6 +23,7 @@ namespace Tyu.Scripts.Boss.FSM
         {
             if (!stateDict.TryAdd(keyValue, state))
                 Debug.LogError("중복된 키값 존재 이유로 상태 추가 취소");
+
         }
         
         public virtual void ChangeState(StateEnum keyValue)
@@ -41,6 +42,9 @@ namespace Tyu.Scripts.Boss.FSM
         {
             currentState.UpdateState();
         }
-        
+
+        public virtual void EndTrigger() => currentState.AnimationEndCallback();
+        public virtual void CallbackTrigger() => currentState.AnimationCallback();
+
     }
 }

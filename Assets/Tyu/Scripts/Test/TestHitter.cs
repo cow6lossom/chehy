@@ -6,9 +6,9 @@ namespace Tyu.Scripts.Test
     public class TestHitter : MonoBehaviour, IHealthHavable
     {
         public float CurrentHp;
-        public void GetDamage(AttackResult data)
+        public void GetDamage(float damage)
         {
-            CurrentHp -= data.resultDamage;
+            CurrentHp -= damage;
         }
     }
 }
