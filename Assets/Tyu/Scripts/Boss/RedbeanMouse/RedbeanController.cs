@@ -8,23 +8,31 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 {
     public class RedbeanController : AbstractBoss, IStateMachine, IHaveDealTime
     {
-        [SerializeField] private AttackSettingSO soMeaAttack;
-        [SerializeField] private AttackSettingSO soMeaAttackLast;
+        [SerializeField] private List<AttackSettingSO> attacks;
         private CanLockStateMachine _behaviourStateMachine;
-        private PatternCoolTimeChecker _coolTimeChecker;
+        public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
         public float lastAtkTime { get; private set; }
         public float dealTime { get; private set; }
 
         public override void Initialize(Transform _playerTrm)
         {
-            _coolTimeChecker = new PatternCoolTimeChecker();
+            CoolTimeChecker = new PatternCoolTimeChecker();
             base.Initialize(_playerTrm);
             _behaviourStateMachine = new CanLockStateMachine(this);
-            _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SoMeaAttack", attackMd
-                , renderMd, this, _coolTimeChecker,soMeaAttack, soMeaAttackLast));
-            
+            _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle", moveMd,
+                renderMd, this, this));
+            _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase", moveMd, 
+                renderMd, this, CoolTimeChecker, new List<AttackSettingSO>()
+                {
+                    
+                }));
+        }
+        
+        private void MakeStates()
+        {
         }
 
+        
         public void EndTrigger()
         {
             _behaviourStateMachine.EndTrigger();
@@ -39,12 +47,12 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             lastAtkTime = Time.time;
             dealTime = dealTimeSet;
-            _behaviourStateMachine.LockState();
         }
         public bool IsDealTime() => lastAtkTime + dealTime <= Time.time;
 
         private void Update()
         {
         }
+
     }
 }

@@ -32,11 +32,9 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
             Dir = context.ReadValue<Vector2>();
             OnMoveSet?.Invoke(Dir);
-        }
+            Debug.Log(Dir);
     }
 
     public void OnAttack(InputAction.CallbackContext context)

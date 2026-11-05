@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Someaattack1
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
   <Distance>k__BackingField: 1.99
-  <Size>k__BackingField: {x: 4, y: 6.4}
+  <Size>k__BackingField: {x: 4, y: 7.85}
+  <maxDetect>k__BackingField: 4.98
+  <minDetect>k__BackingField: 4.58
+  <Type>k__BackingField: 0
   <Damage>k__BackingField: 4
   <Cooltime>k__BackingField: 5
   <DealTime>k__BackingField: 1.3

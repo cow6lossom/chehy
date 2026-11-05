@@ -4,7 +4,7 @@ namespace Tyu.Scripts.Boss.FSM
     {
         
         Idle,
-        Move,
+        Chase,
 
         #region RedBeanMouse
 

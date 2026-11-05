@@ -11,6 +11,7 @@ namespace Tyu.Scripts.Modules
         private float _currentHp
         {
             set => _currentHp = Mathf.Clamp(value, 0, MaxHp);
+            get => _currentHp;
         }
 
         public event Action OnDamaged;
@@ -26,7 +27,16 @@ namespace Tyu.Scripts.Modules
 
         public void GetDamage(float damage)
         {
-            // float resultDamage = DamageCalculator
+            if (_currentHp > damage)
+            {
+                _currentHp -= damage;
+                OnDamaged?.Invoke();
+            }
+            else
+            {
+                _currentHp -= damage;
+                OnDeath?.Invoke();
+            }
         }
     }
 }

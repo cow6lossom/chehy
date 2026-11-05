@@ -6,17 +6,14 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public class AttackState : AbstractState
+    public class HavingAnimeState : AbstractState
     {
-        protected AttackModule _attackMd;
         protected int _animHash;
         protected RenderModule _renderMd;
-        protected PatternCoolTimeChecker _coolChecker;
-        public AttackState(AbstractStateMachine _stateMachine, string anim ,AttackModule attackMd, RenderModule renderMd, PatternCoolTimeChecker coolChecker) : base(_stateMachine)
+        public HavingAnimeState(AbstractStateMachine _stateMachine, string anim, RenderModule renderMd) : base(_stateMachine)
         {
             
             _animHash = Animator.StringToHash(anim);
-            _attackMd = attackMd;
             _renderMd = renderMd;
         }
 

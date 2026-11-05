@@ -22,6 +22,11 @@ namespace Tyu.Scripts.Test
             Gizmos.DrawWireCube(Vector2.zero, settingSo.Size);
 
             Gizmos.matrix = basicMatrix;
+            
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, settingSo.minDetect);
+            Gizmos.color = Color.gold;
+            Gizmos.DrawWireSphere(transform.position, settingSo.maxDetect);
         }
     }
 }
