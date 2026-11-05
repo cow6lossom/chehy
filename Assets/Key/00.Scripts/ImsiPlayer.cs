@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using Key._00.Scripts.DummyEnemy;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,11 +15,13 @@ namespace Key._00.Scripts {
         private Rigidbody2D rigid;
 
         private float _attackRange = 2;
-        private float speed = 5f;
+        [SerializeField]private float speed = 5f;
 
         private Collider2D[] _targetArr = new Collider2D[1];
         private Collider2D _target;
         private Color _color;
+        
+        private bool _isAttacking = false;
 
         private void Awake() {
             rigid = GetComponent<Rigidbody2D>();
@@ -33,23 +35,43 @@ namespace Key._00.Scripts {
         }
 
         public void OnAttack() {
-            Physics2D.OverlapCircle(transform.position, _attackRange, _whatIsEnemy, _targetArr);
+            if (_isAttacking) return;
 
-            if (_target == null) return;
+            int count = Physics2D.OverlapCircle(
+                _attackPoint.position, _attackRange, _whatIsEnemy, _targetArr);
+
+            if (count == 0) return;
 
             _target = _targetArr[0];
+            if (_target.TryGetComponent(out IDamageableDummy dummy)) {
+                dummy.GetDamage(damage);
+            }
+            if (_target.TryGetComponent(out IKnockbackableDummy knockback)) {
+                knockback.GetKnockback(transform.position);
+            }
+            
+
             StartCoroutine(ShowAttack());
         }
 
         private IEnumerator ShowAttack() {
+            _isAttacking = true;
             _attackPoint.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(0.3f);
 
-            if (_target == null) yield break;
+            if (_target != null) {
+                Boss boss = _target.GetComponentInParent<Boss>();
 
-            _target.GetComponent<Boss>().GetDamage(damage);
+                if (boss != null) {
+                    boss.GetDamage(damage);
+                }
+            }
+
             _attackPoint.gameObject.SetActive(false);
+
+            _target = null;
+            _isAttacking = false;
         }
 
         public void GetDamage(float dddam) {
