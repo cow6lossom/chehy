@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,15 +10,19 @@ public class lectern : MonoBehaviour
     [SerializeField] private float detectRange;
     [SerializeField] private LayerMask isPlayer;
 
-    [SerializeField] private GameObject[] stageSelectUI;
+    [SerializeField] private TextMeshPro text;
 
     public bool IsGameOver { get; set; }
 
-    public bool Isinteraction { get; set; }
+    public bool isinteraction { get; set; }
+
+    [SerializeField] private GameObject uiparent;
 
     private void Awake()
     {
-        ActiveSelectStageUI(false);
+        text.fontSize = 0;
+        IsInteraction(false);
+        uiparent.SetActive(false);
     }
 
     private void Update()
@@ -24,6 +30,10 @@ public class lectern : MonoBehaviour
         if(RangePlayer())
         {
             ShowTheSelectStage();
+        }
+        else
+        {
+            text.fontSize = 0;
         }
     }
 
@@ -35,30 +45,30 @@ public class lectern : MonoBehaviour
 
     public void ShowTheSelectStage()
     {
-        Debug.Log("상호작용 UI만들기");
-        if(Keyboard.current.fKey.wasPressedThisFrame)
+        text.fontSize = 4;
+        isinteraction = Keyboard.current.fKey.wasPressedThisFrame;
+        if (isinteraction)
         {
-            Debug.Log("F키누름");
-            ActiveSelectStageUI(true);
-        }
-    }
-
-    public void SelectStage(int NumberScene)
-    {
-        SceneManager.LoadScene(NumberScene);
-    }
-
-    public void ActiveSelectStageUI(bool value)
-    {
-        for (int i = 1; i < stageSelectUI.Length; i++)
-        {
-            stageSelectUI[i].SetActive(value);
+            IsInteraction(true);
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectRange);
+        Gizmos.DrawWireSphere(transform.position, detectRange); 
+    }
+
+    public void StageSelect(int stageNumber)
+    {
+        if(isinteraction)
+        {
+            Debug.Log(stageNumber);
+        }
+    }
+
+    public void IsInteraction(bool value)
+    {
+        uiparent.SetActive(value);
     }
 }
