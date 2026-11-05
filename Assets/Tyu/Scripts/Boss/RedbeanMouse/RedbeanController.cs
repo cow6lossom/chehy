@@ -9,6 +9,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
     public class RedbeanController : AbstractBoss, IStateMachine, IHaveDealTime
     {
         [SerializeField] private List<AttackSettingSO> attacks;
+        [SerializeField] private List<AttackMoveSO> attackMoves;
         private CanLockStateMachine _behaviourStateMachine;
         public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
         public float lastAtkTime { get; private set; }

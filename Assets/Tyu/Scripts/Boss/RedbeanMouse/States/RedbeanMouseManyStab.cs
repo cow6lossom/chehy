@@ -13,10 +13,13 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private RedbeanController _owner;
         private AttackSettingSO _firStab;
         private AttackSettingSO _dashStab;
+        private AttackMoveSO _firMove;
+        private AttackMoveSO _dashMove;
         private Vector2 _dir;
+        private int _attackCount;
         
         public RedbeanMouseManyStab(AbstractStateMachine stateMachine, string anim,RenderModule renderMd, 
-            RedbeanController owner,List<AttackSettingSO> attacks)
+            RedbeanController owner,List<AttackSettingSO> attacks, List<AttackMoveSO> moves)
             : base(stateMachine, anim, renderMd)
         {
             _owner = owner;
@@ -32,6 +35,18 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                         break;
                 }
             }
+            foreach (var move in moves)
+            {
+                switch (move.Type)
+                {
+                    case AttackEnum.Stab:
+                        _firMove = move;
+                        break;
+                    case AttackEnum.DashStab:
+                        _dashMove = move;
+                        break;
+                }
+            }
         }
 
 
@@ -40,10 +55,18 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.Enter();
             Vector2 dir = (_owner.transform.position - _owner.TargetPlayer.transform.position).normalized;
             _renderMd.FlipX(dir);
-            
         }
-        
-        
-        
+
+        public override void AnimationCallback()
+        {
+            base.AnimationCallback();
+            switch (_attackCount)
+            {
+                case 0: 
+                case 1: 
+                    _owner.attackMd.TryAttack(_firStab);
+                    break;
+            }
+        }
     }
 }
