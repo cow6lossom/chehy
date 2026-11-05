@@ -81,5 +81,12 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                     break;
             }
         }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _owner.CoolTimeChecker.ResetLastAtk(StateEnum.Stab);
+            _owner.ResetLastAttack(_firStab.DealTime);
+        }
     }
 }

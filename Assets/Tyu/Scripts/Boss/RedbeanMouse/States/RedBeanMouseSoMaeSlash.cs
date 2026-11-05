@@ -48,6 +48,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _attackCount = 0;
             base.Exit();
             _owner.CoolTimeChecker.ResetLastAtk(StateEnum.SoMeaAttack);
+            _owner.ResetLastAttack(_firAttack.DealTime);
         }
 
         public override void AnimationCallback()
