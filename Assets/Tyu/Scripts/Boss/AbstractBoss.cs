@@ -14,7 +14,7 @@ public abstract class AbstractBoss : MonoBehaviour, IHealthHavable
     [field : SerializeField] public HealthModule healthMd{get;private set;}
     [field : SerializeField] public StatementSettingSO bossStat{get;private set;}
     [field : SerializeField] public RenderModule renderMd{get;private set;}
-    [field : SerializeField] public MovementModule moveMd{get;private set;}
+    [field : SerializeField] public BossMoveModule moveMd{get;private set;}
     
     public Transform TargetPlayer { get; private set; }
     // rigidbody 필요한건 무브먼트 모듈에서 쓰면 되서 이닛 할 때 GetComponent로 넣어주면 될듯

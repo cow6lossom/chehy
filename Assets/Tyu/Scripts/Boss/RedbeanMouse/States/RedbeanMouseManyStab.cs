@@ -17,6 +17,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private AttackMoveSO _dashMove;
         private Vector2 _dir;
         private int _attackCount;
+        private bool _isDashAttacking;
         
         public RedbeanMouseManyStab(AbstractStateMachine stateMachine, string anim,RenderModule renderMd, 
             RedbeanController owner,List<AttackSettingSO> attacks, List<AttackMoveSO> moves)
@@ -57,6 +58,13 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _renderMd.FlipX(dir);
         }
 
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if(_isDashAttacking)
+                _owner.attackMd.TryAttack(_dashStab);
+        }
+
         public override void AnimationCallback()
         {
             base.AnimationCallback();
@@ -65,6 +73,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                 case 0: 
                 case 1: 
                     _owner.attackMd.TryAttack(_firStab);
+                    _owner.moveMd.UseTween(_firMove, _dir);
+                    break;
+                case 2:
+                    _isDashAttacking = true;
+                    _owner.moveMd.UseTween(_dashMove, _dir);
                     break;
             }
         }
