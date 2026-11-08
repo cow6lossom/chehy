@@ -46,5 +46,11 @@ namespace Tyu.Scripts.Boss.FSM
         public virtual void EndTrigger() => currentState.AnimationEndCallback();
         public virtual void CallbackTrigger() => currentState.AnimationCallback();
 
+        
+        /*
+         * 死んだ瞳で爆弾片手に口を開く
+         * さよならだ人類、
+         * みんな吹き飛んじまえ
+         */
     }
 }

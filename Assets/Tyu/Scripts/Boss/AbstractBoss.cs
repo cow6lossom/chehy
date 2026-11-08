@@ -1,6 +1,7 @@
 using System;
 using Tyu.Modules;
 using Tyu.Scripts;
+using Tyu.Scripts.Boss.RedbeanMouse;
 using Tyu.Scripts.Modules;
 using Tyu.Scripts.Results;
 using Tyu.Scripts.SO;
@@ -11,7 +12,7 @@ public abstract class AbstractBoss : MonoBehaviour, IHealthHavable
     //아마도 필요한거
     //private MovementModule moveMd
     [field : SerializeField] public AttackModule attackMd{get;private set;}
-    [field : SerializeField] public HealthModule healthMd{get;private set;}
+    [field : SerializeField] public BossHealthModule healthMd{get;private set;}
     [field : SerializeField] public StatementSettingSO bossStat{get;private set;}
     [field : SerializeField] public RenderModule renderMd{get;private set;}
     [field : SerializeField] public BossMoveModule moveMd{get;private set;}

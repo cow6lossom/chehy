@@ -15,23 +15,32 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private RedbeanController _owner;
         private Vector2 dir => _owner.TargetPlayer.position - _owner.transform.position;
         private float distance => Mathf.Abs((dir).magnitude);
-        private List<AttackSettingSO> _attacks;
+        private List<AttackSettingSO> _firAttacks;
+        private List<AttackSettingSO> _secAttacks;
 
         public RedbeanMouseChaseState(AbstractStateMachine _stateMachine, string anim,RenderModule _renderMd
-        ,RedbeanController owner,List<AttackSettingSO> attacks
+        ,RedbeanController owner,List<AttackSettingSO> firstAttacks, List<AttackSettingSO> secAttacks
         ) : base(_stateMachine, anim,_renderMd)
         {
             _owner = owner;
-            _attacks = attacks;
-          }
+            _firAttacks = firstAttacks;
+            _secAttacks = secAttacks;
+        }
 
         public override void UpdateState()
         {
             base.UpdateState();
-            if (!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _attacks, out var data))
+            if (_owner._isSecPhase)
             {
-                stateMachine.ChangeState(data.Type);
+                if (!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _firAttacks, out var data))
+                    stateMachine.ChangeState(data.Type);
             }
+            else
+            {
+                if(!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _secAttacks, out var data))
+                    stateMachine.ChangeState(data.Type);
+            }
+                
             
             _owner.moveMd.SetMoveDir(dir.normalized);
         }

@@ -7,8 +7,9 @@ namespace Tyu.Scripts.Modules
 {
     public class HealthModule : MonoBehaviour
     {
-        private float MaxHp;
-        private float _currentHp
+
+        protected float MaxHp;
+        protected float _currentHp
         {
             set => _currentHp = Mathf.Clamp(value, 0, MaxHp);
             get => _currentHp;
@@ -16,16 +17,16 @@ namespace Tyu.Scripts.Modules
 
         public event Action OnDamaged;
         public event Action OnDeath;
-        private IHealthHavable _owner;
+        protected IHealthHavable _owner;
 
-        public void Initialize(StatementSettingSO data, IHealthHavable owner)
+        public virtual void Initialize(StatementSettingSO data, IHealthHavable owner)
         {
             MaxHp = data.defaultHealth;
             _currentHp = MaxHp;
             _owner = owner;
         }
 
-        public void GetDamage(float damage)
+        public virtual void GetDamage(float damage)
         {
             if (_currentHp > damage)
             {

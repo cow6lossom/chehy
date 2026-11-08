@@ -22,7 +22,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             base.UpdateState();
             if (!_dealTime.IsDealTime())
-                stateMachine.ChangeState(StateEnum.Chase);
+                if(!_owner._isSecPhase)
+                    stateMachine.ChangeState(StateEnum.Chase);
         }
     }
 }
