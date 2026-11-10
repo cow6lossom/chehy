@@ -14,25 +14,14 @@ public class CurrencyWallet : MonoBehaviour //보유하고 있는 엽전과 엽�
     {
         CurrentCoins = startingCoins;
     }
-
-
+    
     public void Add(int amount)
     {
         if (amount <= 0) return;
         CurrentCoins += amount;
         OnCoinChanged?.Invoke(CurrentCoins);
     }
-
-    public bool CanAfford(int price)
-    {
-        if (price <= 0)
-        {
-            Debug.LogWarning("Can't afford negative price");
-            return false;
-        }
-        
-        return CurrentCoins >= price;
-    }
+    
 
     public bool TrySpend(int price)
     {
@@ -42,7 +31,7 @@ public class CurrencyWallet : MonoBehaviour //보유하고 있는 엽전과 엽�
             return false;
         }
 
-        if (!CanAfford(price)) return false;
+        if (CurrentCoins < price) return false;
         
         CurrentCoins -= price;
         OnCoinChanged?.Invoke(CurrentCoins);
