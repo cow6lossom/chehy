@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShopConfig", menuName = "Scriptable Objects/ShopConfig")]
+[CreateAssetMenu(fileName = "ShopConfig", menuName = "Shop/ShopConfig")]
 public class ShopConfig : ScriptableObject //패시브 상품에 대한 정보
 {
     [Header("판매 가능한 12개의 패시브")]
