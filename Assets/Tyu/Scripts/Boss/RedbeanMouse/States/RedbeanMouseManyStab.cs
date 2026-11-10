@@ -24,18 +24,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             : base(stateMachine, anim, renderMd)
         {
             _owner = owner;
-            foreach (var attack in attacks)
-            {
-                switch (attack.AttackType)
-                {
-                    case AttackEnum.Stab:
-                        _firStab = attack;
-                        break;
-                    case AttackEnum.DashStab:
-                        _dashStab = attack;
-                        break;
-                }
-            }
+            GetAttackSO.GetAttackData(attacks, AttackEnum.Stab, ref _firStab);
+            GetAttackSO.GetAttackData(attacks, AttackEnum.DashStab, ref _dashStab);
             foreach (var move in moves)
             {
                 switch (move.Type)

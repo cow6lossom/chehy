@@ -19,18 +19,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
         {
             _owner = owner;
-            foreach (var attack in attacks)
-            {
-                switch (attack.AttackType)
-                {
-                    case AttackEnum.Slash:
-                        _firAttack = attack;
-                        break;
-                    case AttackEnum.CircleSlash:
-                        _lastAttack = attack;
-                        break;
-                }
-            }
+            GetAttackSO.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
+            GetAttackSO.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
             _owner.CoolTimeChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
         }
 
@@ -66,5 +56,9 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
             _attackCount++;
         }
+        /*
+         * 死ぬなら電車は止めないように！
+         * はぁ殺してやるよ。。。
+         */
     }
 }
