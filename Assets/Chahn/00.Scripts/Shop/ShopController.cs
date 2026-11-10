@@ -8,14 +8,17 @@ using Random = UnityEngine.Random;
 public class ShopController : MonoBehaviour
 {
     [SerializeField] ShopConfig shopConfig;
-
-    private readonly List<ShopOffer> currentOffers = new();
-    public IReadOnlyList<ShopOffer> CurrentOffers => currentOffers; //접근할때
+    
+    [SerializeField] CurrencyWallet currencyWallet;
+    public bool HasOffers => CurrentOffers.Count > 0; //이미 상점이 한번 뽑혔는지 확인한다 (상점이 처음 뽑혔을때는 리스트가 비어있어야 한다)
+    
+    private readonly List<ShopOffer> _currentOffers = new();
+    public IReadOnlyList<ShopOffer> CurrentOffers => _currentOffers; //접근할때
     public event Action<IReadOnlyList<ShopOffer>> OnOffersGenerated;
 
     public void GenerateOffers()
     {
-        currentOffers.Clear();
+        _currentOffers.Clear();
 
         if (shopConfig == null)
         {
@@ -39,12 +42,12 @@ public class ShopController : MonoBehaviour
             if (selectedLevel == null)
             {
                 Debug.LogError("상품 레벨 추첨 실패함");
-                currentOffers.Clear();
+                _currentOffers.Clear();
                 return;
             }
             
             ShopOffer offer = new ShopOffer(selectedPassive, selectedLevel.Level, selectedLevel.PurchasePrice);
-            currentOffers.Add(offer);
+            _currentOffers.Add(offer);
         }
         
         OnOffersGenerated?.Invoke(CurrentOffers); //지금 뽑은 5개의 상점 상품들을 넘겨준다
@@ -101,5 +104,37 @@ public class ShopController : MonoBehaviour
         }
             
         return passives;
-    }   
+    }
+
+    public bool TryRefreshOffers()
+    {
+        if (currencyWallet == null) 
+        {
+            Debug.LogError("currencyWallet is null");
+            return false;
+        }
+        
+        if (shopConfig == null)
+        {
+            Debug.LogError("shopConfig is null");
+            return false;
+        }
+        
+        if (!currencyWallet.TrySpend(shopConfig.RefreshCost))
+            return false;
+
+        GenerateOffers();
+        Debug.Log("Refreshed offers");
+        return true;
+    }
+
+    public void EnsureOffersGenerated()
+    {
+        if (HasOffers) return;
+        
+        Debug.Log("Genrated offers");
+        GenerateOffers();
+    }
+
+   
 }

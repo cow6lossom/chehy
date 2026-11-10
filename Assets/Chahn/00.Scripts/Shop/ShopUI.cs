@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Chahn._00.Scripts.Shop
 {
@@ -10,19 +12,32 @@ namespace Chahn._00.Scripts.Shop
         [SerializeField] private ShopInteractable shopInteractable;
         [SerializeField] private ShopOfferSlotUI[] offerSlots;
         [SerializeField] private GameObject shopPanel;
+        [SerializeField] private Button resetOfferButton;
+        [SerializeField] private CurrencyWallet currencyWallet;
+        [SerializeField] private TextMeshProUGUI coinText;
         private bool IsOpen => shopPanel.activeSelf;
 
         private void Awake()
         {
             shopInteractable.OnInteracted += Toggle;
             shopController.OnOffersGenerated += DisplayOfferSlots;
+            resetOfferButton.onClick.AddListener(HandleRefreshButton);
+            currencyWallet.OnCoinChanged += UpdateCoinText;
+        }
+
+        private void Start()
+        {
+            UpdateCoinText(currencyWallet.CurrentCoins);
         }
 
         private void OnDestroy()
         {
             shopInteractable.OnInteracted -= Toggle;
             shopController.OnOffersGenerated -= DisplayOfferSlots;
+            resetOfferButton.onClick.RemoveListener(HandleRefreshButton);
+            currencyWallet.OnCoinChanged -= UpdateCoinText;
         }
+        
 
         private void Toggle()
         {
@@ -32,9 +47,7 @@ namespace Chahn._00.Scripts.Shop
                 return;
             }
 
-            if (shopController.CurrentOffers.Count == 0)
-                shopController.GenerateOffers();
-            
+            shopController.EnsureOffersGenerated();
             shopPanel.SetActive(true);
         }
 
@@ -47,6 +60,11 @@ namespace Chahn._00.Scripts.Shop
         }
 
 
+        private void HandleRefreshButton()
+        {
+            shopController.TryRefreshOffers();
+        }
+
         private void Update()
         {
             if (Keyboard.current == null)
@@ -56,6 +74,11 @@ namespace Chahn._00.Scripts.Shop
             {
                 Toggle();
             }
+        }
+
+        private void UpdateCoinText(int coins)
+        {
+            coinText.SetText(coins.ToString());
         }
     }
 }
