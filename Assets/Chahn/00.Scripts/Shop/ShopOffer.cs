@@ -21,6 +21,12 @@ namespace Chahn._00.Scripts.Shop
             Price = price;
         }
         
+        public bool IsPurchased {get; private set;}
+        
+        public void MarkPurchased()
+        {
+            IsPurchased = true;
+        }
 
     }
 }
