@@ -6,7 +6,6 @@ namespace Key._00.Scripts.Skill {
         [SerializeField] private float damage;
         [SerializeField] private Player _player;
 
-        private FlowerHairpin _fH;
         private ParticleSystem _ps;
         private List<ParticleSystem.Particle> particles = new();
 
@@ -37,10 +36,6 @@ namespace Key._00.Scripts.Skill {
             if (count > 0) {
                 _player.GetDamage(damage);
                 Debug.Log(damage);
-
-                if (_fH != null) {
-                    _fH.IsEnd(true);
-                }
             }
         }
     }
