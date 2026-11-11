@@ -9,12 +9,7 @@ namespace Tyu.Scripts.Modules
     {
 
         protected float MaxHp;
-        protected float _currentHp
-        {
-            set => _currentHp = Mathf.Clamp(value, 0, MaxHp);
-            get => _currentHp;
-        }
-
+        protected float _currentHp;
         public event Action OnDamaged;
         public event Action OnDeath;
         protected IHealthHavable _owner;

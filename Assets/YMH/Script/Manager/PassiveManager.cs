@@ -5,11 +5,7 @@ public class PassiveManager : MonoBehaviour
 {
     private List<PassiveBase> _ownedPassives = new List<PassiveBase>();
     private List<PassiveBase> _equippedPassives = new List<PassiveBase>();
-    private List<PassiveBase> _ownedBossPassives = new List<PassiveBase>();
-    private PassiveBase _equippedBossPassive;
 
-    public IReadOnlyList<PassiveBase> OwnedBossPassives => _ownedBossPassives;
-    public PassiveBase EquippedBossPassive => _equippedBossPassive;
     private const int MaxOwnedCount = 8;
     private const int MaxEquippedCount = 3;
 
@@ -23,7 +19,7 @@ public class PassiveManager : MonoBehaviour
 
         foreach (PassiveBase passive in candidates)
         {
-            if (passive == null || passive.Data == null || passive.Data.Grade != PassiveGrade.Normal)
+            if (passive == null || passive.Data == null)
                 continue;
 
             PassiveBase owned = _ownedPassives.Find(p => p.Data.PassiveName == passive.Data.PassiveName);
@@ -36,7 +32,7 @@ public class PassiveManager : MonoBehaviour
     }
     public bool AddPassive(PassiveBase passive)
     {
-        if (passive == null || passive.Data == null || passive.Data.Grade != PassiveGrade.Normal)
+        if (passive == null || passive.Data == null)
             return false;
 
         PassiveBase existing = _ownedPassives.Find(p => p.Data.PassiveName == passive.Data.PassiveName);
@@ -98,39 +94,20 @@ public class PassiveManager : MonoBehaviour
         passive.Remove();
         _equippedPassives.Remove(passive);
     }
-    public bool AddBossPassive(PassiveBase passive)
+    public bool ReplaceEquippedPassive(PassiveBase current, PassiveBase next)
     {
-        if (passive == null || passive.Data == null || passive.Data.Grade != PassiveGrade.Boss)
+        int index = _equippedPassives.IndexOf(current);
+
+        if (index < 0 || next == null || !_ownedPassives.Contains(next))
             return false;
 
-        if (_ownedBossPassives.Exists(p => p.Data.PassiveName == passive.Data.PassiveName))
+        if (_equippedPassives.Contains(next))
             return false;
 
-        _ownedBossPassives.Add(passive);
+        current.Remove();
+        _equippedPassives[index] = next;
+        next.Apply();
+
         return true;
-    }
-
-    public void EquipBossPassive(PassiveBase passive)
-    {
-        if (!_ownedBossPassives.Contains(passive))
-            return;
-
-        if (_equippedBossPassive == passive)
-            return;
-
-        if (_equippedBossPassive != null)
-            _equippedBossPassive.Remove();
-
-        _equippedBossPassive = passive;
-        _equippedBossPassive.Apply();
-    }
-
-    public void UnequipBossPassive()
-    {
-        if (_equippedBossPassive == null)
-            return;
-
-        _equippedBossPassive.Remove();
-        _equippedBossPassive = null;
     }
 }

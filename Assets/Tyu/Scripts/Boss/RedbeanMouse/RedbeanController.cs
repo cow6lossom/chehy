@@ -11,6 +11,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         [SerializeField] private List<AttackSettingSO> firAttacks;
         [SerializeField] private List<AttackSettingSO> secAttacks;
         [SerializeField] private List<AttackMoveSO> attackMoves;
+        [SerializeField] private StatementSettingSO stat;
         private CanLockStateMachine _behaviourStateMachine;
         public GetNoneCoolAttackModule GetNoneCoolAttack { get; private set; }
         public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
@@ -20,9 +21,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         public override void Initialize(Transform _playerTrm)
         {
+            base.Initialize(_playerTrm);
+            moveMd.Init();
+            moveMd.Speed = stat.FirSpeed;
             healthMd.OnSecondPhase += SecondPhase;
             CoolTimeChecker = new PatternCoolTimeChecker();
-            base.Initialize(_playerTrm);
             _behaviourStateMachine = new CanLockStateMachine(this);
             _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle",
                 renderMd, this, this));
@@ -44,7 +47,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         private void SecondPhase()
         {
-            
+            _behaviourStateMachine.ChangeState(StateEnum.Phase2);
         }
         public void EndTrigger()
         {
@@ -65,6 +68,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         private void Update()
         {
+        }
+
+        public Vector2 GetDirToPlayer()
+        {
+            return (TargetPlayer.position - transform.position).normalized;
         }
 
     }

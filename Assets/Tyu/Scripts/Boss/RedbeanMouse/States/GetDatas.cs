@@ -5,7 +5,7 @@ using Tyu.Scripts.SO;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public static class GetAttackSO
+    public static class GetDatas
     {
         public static void GetAttackData(List<AttackSettingSO> list, AttackEnum target, ref AttackSettingSO owner)
         {

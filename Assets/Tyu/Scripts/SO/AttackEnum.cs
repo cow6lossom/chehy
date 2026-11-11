@@ -7,5 +7,9 @@
         CircleSlash,
         Stab,
         DashStab,
+        HairPin,
+        Lotus,
+        Lotus1,
+        Lotus2,
     }
 }

@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: AttackRange
+    uniqueID: 3338079885
+    locked: 0
   - name: Agent
     uniqueID: 2353397211
     locked: 0
