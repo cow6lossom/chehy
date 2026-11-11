@@ -7,7 +7,7 @@ using Tyu.Scripts.Results;
 using Tyu.Scripts.SO;
 using UnityEngine;
 
-public abstract class AbstractBoss : MonoBehaviour, IDamageable
+public abstract class AbstractBoss : MonoBehaviour, IHealthHavable
 {
     //아마도 필요한거
     //private MovementModule moveMd

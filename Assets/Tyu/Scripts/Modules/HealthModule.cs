@@ -12,9 +12,9 @@ namespace Tyu.Scripts.Modules
         protected float _currentHp;
         public event Action OnDamaged;
         public event Action OnDeath;
-        protected IDamageable _owner;
+        protected IHealthHavable _owner;
 
-        public virtual void Initialize(StatementSettingSO data, IDamageable owner)
+        public virtual void Initialize(StatementSettingSO data, IHealthHavable owner)
         {
             MaxHp = data.defaultHealth;
             _currentHp = MaxHp;

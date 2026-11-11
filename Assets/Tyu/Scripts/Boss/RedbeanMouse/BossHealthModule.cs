@@ -13,7 +13,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private bool _isInPhaseTwo;
         private bool _isDead;
 
-        public override void Initialize(StatementSettingSO data, IDamageable owner)
+        public override void Initialize(StatementSettingSO data, IHealthHavable owner)
         {
             base.Initialize(data, owner);
             _secPhaseTrigger = (MaxHp / 100) * data.secondPhaseHealth;
