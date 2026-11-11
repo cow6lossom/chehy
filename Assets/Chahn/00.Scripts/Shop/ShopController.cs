@@ -10,11 +10,14 @@ public class ShopController : MonoBehaviour
     [SerializeField] ShopConfig shopConfig;
     
     [SerializeField] CurrencyWallet currencyWallet;
+    [SerializeField] private PassiveManager passiveManager;
     public bool HasOffers => CurrentOffers.Count > 0; //이미 상점이 한번 뽑혔는지 확인한다 (상점이 처음 뽑혔을때는 리스트가 비어있어야 한다)
     
     private readonly List<ShopOffer> _currentOffers = new();
     public IReadOnlyList<ShopOffer> CurrentOffers => _currentOffers; //접근할때
     public event Action<IReadOnlyList<ShopOffer>> OnOffersGenerated;
+    
+    public bool HasPurchasedCurrentOffers => _currentOffers.Exists(x => x.IsPurchased);
 
     public void GenerateOffers()
     {
@@ -136,5 +139,36 @@ public class ShopController : MonoBehaviour
         GenerateOffers();
     }
 
-   
+    public bool TryPurchaseOffer(ShopOffer offer)
+    {
+        if (offer == null) return false;
+        
+        if (!_currentOffers.Contains(offer)) return false;
+
+        if (HasPurchasedCurrentOffers) return false;
+        
+        if (currencyWallet == null || passiveManager == null) return false;
+
+        PassiveBase passive = PassiveFactory.Create(offer.PassiveData);
+        
+        if (passive == null) return false;
+        
+        while (passive.Level < offer.Level) //상품의 레벨로 맞춘다
+        {
+            passive.LevelUp();
+        }
+        
+        if (!currencyWallet.TrySpend(offer.Price)) return false;
+
+        if (!passiveManager.AddPassive(passive))
+        {
+            currencyWallet.Add(offer.Price);
+            return false;
+        }
+
+        offer.MarkPurchased();
+        return true;
+    }
 }
+
+

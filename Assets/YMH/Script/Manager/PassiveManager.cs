@@ -47,7 +47,15 @@ public class PassiveManager : MonoBehaviour
                 return false;
 
             if (passive.Level == existing.Level)
+            {
                 existing.LevelUp();
+                return true;
+            }
+                
+            while (existing.Level < passive.Level)
+            {
+                existing.LevelUp();
+            }
 
             return true;
         }

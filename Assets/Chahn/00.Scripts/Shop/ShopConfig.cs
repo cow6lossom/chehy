@@ -25,13 +25,16 @@ public class ShopConfig : ScriptableObject //패시브 상품에 대한 정보
 [Serializable]
 public sealed class ShopLevelConfig //레벨에 대한 정보
 {
-    [SerializeField, Range(1, 4)] private int level;
+    [SerializeField, Range(1, 3)] private int level;
 
     [SerializeField, Min(0)] private int purchasePrice;
+
+    [SerializeField, Min(0)] private int sellPrice;
 
     [SerializeField, Min(0)] private float weight; //가중치
     
     public int Level => level;
     public int PurchasePrice => purchasePrice;
+    public int SellPrice => sellPrice;
     public float Weight => weight;
 }
