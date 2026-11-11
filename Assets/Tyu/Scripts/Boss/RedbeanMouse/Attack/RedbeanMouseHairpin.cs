@@ -40,9 +40,12 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             attackLine.enabled = false;
             attackLine.positionCount = 0;
         }
-        public void Shoot(Vector2 dir) //쏘기
+
+        public void Shoot(Vector2 dir, Vector3 startPos) //쏘기
         {
             RemoveLine();
+            transform.position = startPos;
+            transform.LookAt(dir+(Vector2)transform.position);
             gameObject.SetActive(true);
             _isAttacked = false;
             dir.Normalize();
@@ -55,6 +58,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public void Returning(Vector2 destination) //회수
         {
             _isAttacked = false;
+            transform.LookAt(destination);
             var twData = ShootingSetting;
             twData.startFromCurrent = true;
             twData.endValue = destination;

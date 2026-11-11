@@ -70,5 +70,10 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
         }
 
+        public Vector2 GetDirToPlayer()
+        {
+            return (TargetPlayer.position - transform.position).normalized;
+        }
+
     }
 }
