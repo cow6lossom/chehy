@@ -23,6 +23,11 @@ namespace Chahn._00.Scripts.Shop
             shopController.OnOffersGenerated += DisplayOfferSlots;
             resetOfferButton.onClick.AddListener(HandleRefreshButton);
             currencyWallet.OnCoinChanged += UpdateCoinText;
+
+            foreach (var slot in offerSlots)
+            {
+                slot.OnPurchaseRequested += HandlePurchaseRequested; //HandlePurchaseRequested 실행
+            }
         }
 
         private void Start()
@@ -36,6 +41,11 @@ namespace Chahn._00.Scripts.Shop
             shopController.OnOffersGenerated -= DisplayOfferSlots;
             resetOfferButton.onClick.RemoveListener(HandleRefreshButton);
             currencyWallet.OnCoinChanged -= UpdateCoinText;
+            
+            foreach (var slot in offerSlots)
+            {
+                slot.OnPurchaseRequested -= HandlePurchaseRequested; //HandlePurchaseRequested 실행
+            }
         }
         
 
@@ -49,6 +59,18 @@ namespace Chahn._00.Scripts.Shop
 
             shopController.EnsureOffersGenerated();
             shopPanel.SetActive(true);
+        }
+
+        private void HandlePurchaseRequested(ShopOffer offer) //Invoke 되면 어떤 슬롯에서 정보를 받았는지 받고 어떤 패시브인지도
+        {
+            bool succeeded = shopController.TryPurchaseOffer(offer);
+
+            if (!succeeded) return;
+
+            foreach (ShopOfferSlotUI slot in offerSlots) //그 슬롯한테 이제 샀으니까 버튼 끄라고 함
+            {
+                slot.SetPurchaseAvailable(false);
+            }
         }
 
         private void DisplayOfferSlots(IReadOnlyList<ShopOffer> offers)

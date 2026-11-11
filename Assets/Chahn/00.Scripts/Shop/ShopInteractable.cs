@@ -1,8 +1,6 @@
 using System;
 using Tyu.Scripts.Modules;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ShopInteractable : MonoBehaviour, IInteratable
 {

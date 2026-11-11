@@ -37,6 +37,3 @@ MonoBehaviour:
   - level: 3
     purchasePrice: 3
     weight: 1
-  - level: 4
-    purchasePrice: 5
-    weight: 0.5
