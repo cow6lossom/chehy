@@ -130,13 +130,14 @@ GameObject:
   - component: {fileID: 240293121}
   - component: {fileID: 240293120}
   - component: {fileID: 240293119}
+  - component: {fileID: 240293122}
   m_Layer: 0
   m_Name: 6-Flowers Blooming Particle Boom!!!!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &240293119
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -299,7 +300,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -539,7 +540,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 3.34
       mode: 0
       spread: 0
       speed:
@@ -1918,15 +1919,16 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives: []
+    primitives:
+    - {fileID: 0}
   SubModule:
     serializedVersion: 2
     enabled: 1
@@ -2458,6 +2460,20 @@ Transform:
   - {fileID: 2061186208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &240293122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240293118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56211a6ec1645ca998903580ac5a212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.ParticleDamage
+  damage: 3
+  _player: {fileID: 314175328}
 --- !u!1 &251584277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &379623904
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -2952,7 +2968,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -5796,6 +5812,7 @@ GameObject:
   - component: {fileID: 1324279728}
   - component: {fileID: 1324279726}
   - component: {fileID: 1324279727}
+  - component: {fileID: 1324279729}
   m_Layer: 0
   m_Name: Bloom
   m_TagString: Untagged
@@ -5903,7 +5920,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.4764151, b: 0.4764151, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7603,11 +7620,11 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
@@ -8222,6 +8239,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2061186208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324279729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324279725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56211a6ec1645ca998903580ac5a212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.ParticleDamage
+  damage: 1
+  _player: {fileID: 314175328}
 --- !u!1 &1353232475
 GameObject:
   m_ObjectHideFlags: 0
@@ -8335,7 +8366,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -10989,7 +11020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1835495170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11127,6 +11158,7 @@ GameObject:
   - component: {fileID: 2061186208}
   - component: {fileID: 2061186210}
   - component: {fileID: 2061186209}
+  - component: {fileID: 2061186211}
   m_Layer: 0
   m_Name: MoveOutside
   m_TagString: Untagged
@@ -11331,7 +11363,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -12959,11 +12991,11 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
@@ -13483,6 +13515,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2061186211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061186207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56211a6ec1645ca998903580ac5a212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.ParticleDamage
+  damage: 3
+  _player: {fileID: 314175328}
 --- !u!1 &2076876323
 GameObject:
   m_ObjectHideFlags: 0
@@ -13670,7 +13716,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+  m_Color: {r: 0.052236162, g: 0, b: 0.4716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
