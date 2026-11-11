@@ -13,6 +13,8 @@ public class PassiveManager : MonoBehaviour
     private const int MaxOwnedCount = 8;
     private const int MaxEquippedCount = 3;
 
+
+
     public IReadOnlyList<PassiveBase> OwnedPassives => _ownedPassives;
     public IReadOnlyList<PassiveBase> EquippedPassives => _equippedPassives;
     public List<PassiveBase> GetAvailablePassives(List<PassiveBase> candidates)
@@ -41,7 +43,7 @@ public class PassiveManager : MonoBehaviour
 
         if (existing != null)
         {
-            if (existing.Level >= 3)
+            if (existing.Level >= 3 || passive.Level != existing.Level)
                 return false;
 
             existing.LevelUp();
@@ -52,6 +54,17 @@ public class PassiveManager : MonoBehaviour
             return false;
 
         _ownedPassives.Add(passive);
+        return true;
+    }
+    public bool RemovePassive(PassiveBase passive)
+    {
+        if (passive == null || !_ownedPassives.Contains(passive))
+            return false;
+
+        if (_equippedPassives.Contains(passive))
+            UnequipPassive(passive);
+
+        _ownedPassives.Remove(passive);
         return true;
     }
 

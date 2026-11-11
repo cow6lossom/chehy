@@ -2,7 +2,7 @@ using System;
 using Tyu.Scripts.Modules;
 using UnityEngine;
 
-public class ShopInteractable : MonoBehaviour, IInteratable
+public class ShopInteractable : MonoBehaviour, IInteractable
 {
     
     public event Action OnInteracted;

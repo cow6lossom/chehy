@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using Tyu.Scripts.Boss.FSM;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 namespace Tyu.Scripts.SO
@@ -12,10 +12,16 @@ namespace Tyu.Scripts.SO
         [field:SerializeField, Min(0)] public float Distance { get; private set; }
         [field:SerializeField] public Vector2 Size { get; private set; }
         [field: Space(10)]
-        [Header("Attack")]
+        [Header("Settings")]
         [field:SerializeField] public StateEnum Type { get; private set; }
         [field:SerializeField] public AttackEnum AttackType { get; private set; }
         [field:SerializeField] public bool IsSymbol { get; private set; }
+        [field:SerializeField] public bool HaveRandomPatterns { get; private set; }
+        [field: SerializeField] public List<AttackSettingSO> RandomPatterns { get; private set; }
+        
+        
+        [field:Space(10)]
+        [Header("Attack")]
         [field: SerializeField, Min(0) ] public float Damage { get; private set; }
         [field:SerializeField,Min(0) ] public float CoolTime { get; private set; }
         [field:SerializeField, Min(0)] public float DealTime { get; private set; }

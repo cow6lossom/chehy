@@ -10,8 +10,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private CanLockStateMachine stateMachine;
         private IHaveDealTime _dealTime;
         public RedbeanMouseIdle(AbstractStateMachine _stateMachine, string anim, 
-            MovementModule _moveMD, RenderModule _renderMd, RedbeanController owner, IHaveDealTime dealTimeCheck) 
-            : base(_stateMachine, anim, _moveMD, _renderMd)
+            RenderModule _renderMd, RedbeanController owner, IHaveDealTime dealTimeCheck) 
+            : base(_stateMachine, anim,_renderMd)
         {
             _owner = owner;
             stateMachine = base.stateMachine as CanLockStateMachine;
@@ -22,7 +22,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             base.UpdateState();
             if (!_dealTime.IsDealTime())
-                stateMachine.ChangeState(StateEnum.Chase);
+                if(!_owner._isSecPhase)
+                    stateMachine.ChangeState(StateEnum.Chase);
         }
     }
 }
