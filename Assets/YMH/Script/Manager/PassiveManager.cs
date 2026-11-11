@@ -41,22 +41,32 @@ public class PassiveManager : MonoBehaviour
 
         PassiveBase existing = _ownedPassives.Find(p => p.Data.PassiveName == passive.Data.PassiveName);
 
-        if (existing != null)
+        if (existing != null) //ㅣ기존 패시브가 있는 경우
         {
-            if (existing.Level >= 3)
+            if (existing.Level >= 3) //그 기존 패시브가 레벨 3보다 크다면 리턴
                 return false;
 
-            if (passive.Level == existing.Level)
-            {
-                existing.LevelUp();
+            if (passive.Level < existing.Level) //구매한 페시브의 레벨이 더 낮다면 그냥 구매
                 return true;
-            }
-                
-            while (existing.Level < passive.Level)
+            
+            //레벨업 될수있는 상황에서
+            bool isEquipped = _equippedPassives.Contains(existing); //착용하고 있다면
+            
+            if (isEquipped) //다시 뺀다
+                UnequipPassive(existing);
+            
+            if (passive.Level == existing.Level) 
             {
-                existing.LevelUp();
+                existing.LevelUp(); //레벨업 한번
             }
-
+            
+            while (existing.Level < passive.Level) //보유한 패시브가 새로운 패시브 보다 레벨이 작다면 
+            {
+                existing.LevelUp(); //레벨업해서 그 레벨로
+            }
+            
+            if (isEquipped)
+                EquipPassive(existing);// 다시 페시브 착용
             return true;
         }
 
