@@ -43,10 +43,12 @@ public class PassiveManager : MonoBehaviour
 
         if (existing != null)
         {
-            if (existing.Level >= 3 || passive.Level != existing.Level)
+            if (existing.Level >= 3)
                 return false;
 
-            existing.LevelUp();
+            if (passive.Level == existing.Level)
+                existing.LevelUp();
+
             return true;
         }
 
