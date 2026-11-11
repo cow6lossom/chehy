@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShopInteractable : MonoBehaviour, IInteratable
+public class ShopInteractable : MonoBehaviour, IInteractable
 {
     
     public event Action OnInteracted;
