@@ -8,8 +8,10 @@ namespace Tyu.Scripts.Boss.FSM
 
         #region RedBeanMouse
 
-        SoMeaAttack
-
+        SoMeaAttack,
+        Stab,
+        Lotus1,
+        Lotus2,
         #endregion
     }
 }

@@ -21,11 +21,11 @@ namespace Tyu.Scripts.Modules
             int cnt = Physics2D.OverlapCircle(transform.position, radius, target, _resultArr);
             if (cnt < 1) return;
             float _minDistance = float.MaxValue;
-            IInteratable _target = null;
+            IInteractable _target = null;
             for (int i = 0; i < cnt; ++i)
             {
                 var cur = _resultArr[i];
-                if (!cur.TryGetComponent<IInteratable>(out var interact)) continue;
+                if (!cur.TryGetComponent<IInteractable>(out var interact)) continue;
                 var dis = (transform.position - cur.transform.position).magnitude;
                 if (_minDistance < dis) continue;
                 _minDistance = dis;

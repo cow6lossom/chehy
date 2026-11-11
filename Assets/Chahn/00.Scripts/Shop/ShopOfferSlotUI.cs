@@ -12,8 +12,14 @@ public class ShopOfferSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI offerLevelText;
     [SerializeField] private TextMeshProUGUI offerPriceText;
     [SerializeField] private Image offerIcon;
+    [SerializeField] private Button buyButton;
 
-
+    private void Awake()
+    {
+        
+    }
+    
+    
     public void Bind(ShopOffer offer) 
     {
         CurrentOffer = offer;

@@ -4,22 +4,27 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ShopInteractable : MonoBehaviour, IInteratable
+public class ShopInteractable : MonoBehaviour, IInteractable
 {
     
     public event Action OnInteracted;
-    public bool CanShopInteract { get; private set; }
+    public bool IsAvailable { get; private set; }
+
+    void Start()
+    {
+        Debug.Log(IsAvailable);
+    }
     
     public void InteractEffect()
     {
-        if (!CanShopInteract) return;
+        if (!IsAvailable) return;
         
         OnInteracted?.Invoke();
     }
     
     public void SetAvailable(bool value)
     {
-        CanShopInteract = value;
+        IsAvailable = value;
     }
     
     

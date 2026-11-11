@@ -1,29 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 using Tyu.Scripts.Boss.FSM;
 using UnityEngine;
 
 namespace Tyu.Scripts.SO
 {
-    [CreateAssetMenu(fileName = "AttackSetting", menuName = "DataSetting/AttackData", order = 0)]
+    [CreateAssetMenu(fileName = "AttackSetting", menuName = "DataSetting/Attack/Data", order = 0)]
     public class AttackSettingSO : ScriptableObject
     {
         [Header("Range")]
-        [field:SerializeField] public float Distance { get; private set; }
+        [field:SerializeField, Min(0)] public float Distance { get; private set; }
         [field:SerializeField] public Vector2 Size { get; private set; }
         [field: Space(10)]
-        [Header("Attack")]
+        [Header("Settings")]
         [field:SerializeField] public StateEnum Type { get; private set; }
         [field:SerializeField] public AttackEnum AttackType { get; private set; }
         [field:SerializeField] public bool IsSymbol { get; private set; }
-        [field: SerializeField] public float Damage { get; private set; }
-        [field:SerializeField] public float CoolTime { get; private set; }
-        [field:SerializeField] public float DealTime { get; private set; }
-        [field:SerializeField] public float maxDetect { get; private set; }
-        [field:SerializeField] public float minDetect { get; private set; }
+        [field:SerializeField] public bool HaveRandomPatterns { get; private set; }
+        [field: SerializeField] public List<AttackSettingSO> RandomPatterns { get; private set; }
+        
+        
+        [field:Space(10)]
+        [Header("Attack")]
+        [field: SerializeField, Min(0) ] public float Damage { get; private set; }
+        [field:SerializeField,Min(0) ] public float CoolTime { get; private set; }
+        [field:SerializeField, Min(0)] public float DealTime { get; private set; }
+        [field:SerializeField, Min(0)] public float maxDetect { get; private set; }
+        [field:SerializeField, Min(0)] public float minDetect { get; private set; }
 
         private void OnValidate()
         {
-            minDetect = Mathf.Clamp(minDetect, 0, maxDetect);
             maxDetect = Mathf.Clamp(maxDetect, 0, float.MaxValue);
         }
     }
