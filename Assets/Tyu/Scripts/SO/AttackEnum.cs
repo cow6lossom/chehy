@@ -7,5 +7,6 @@
         CircleSlash,
         Stab,
         DashStab,
+        HairPin,
     }
 }

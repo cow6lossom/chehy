@@ -5,6 +5,7 @@ namespace Tyu.Scripts.Boss.FSM
         
         Idle,
         Chase,
+        Phase2,
 
         #region RedBeanMouse
 
