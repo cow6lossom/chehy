@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e836a5cd0786b4fb18ea2eb3e0179a, type: 3}
   m_Name: test 1
   m_EditorClassIdentifier: Assembly-CSharp::PassiveData
-  PassiveName: test
+  PassiveName: test1
   Description: test
-  Icon: {fileID: 0}
-  Grade: 0
+  Icon: {fileID: 1208040086343421634, guid: cb998d931b0799d41b6d67e9eb9cf977, type: 3}
   Type: 0
   Duration: 0
   Range: 0

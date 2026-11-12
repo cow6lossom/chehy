@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PassiveData
   PassiveName: test
   Description: test
-  Icon: {fileID: 0}
-  Grade: 0
+  Icon: {fileID: -8116745628450284637, guid: bbb884dd9676ff944bd8456b820be654, type: 3}
   Type: 0
   Duration: 0
   Range: 0
