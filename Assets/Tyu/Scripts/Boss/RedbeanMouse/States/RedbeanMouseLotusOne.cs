@@ -31,7 +31,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.Enter();
             _usingFlower = _maker.MakeLotus(_owner.transform.position);
             _usingFlower.gameObject.SetActive(true);
-            _usingFlower.Initialize(_owner.TargetPlayer, _data);
+            _usingFlower.Initialize(_owner.TargetPlayer, _data, _owner.transform.position);
         }
     }
 }
