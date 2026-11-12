@@ -21,6 +21,11 @@ namespace Tyu.Scripts
             _isStopped = true;
         }
 
+        public void StartMove()
+        {
+            _isStopped = false;
+        }
+
         public void UseTween(AttackMoveSO data, Vector2 dir)
         {
             dir.Normalize();

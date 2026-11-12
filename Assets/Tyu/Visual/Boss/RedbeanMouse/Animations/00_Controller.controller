@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Vulnerable
+    m_ConditionEvent: SleeveVulnerable
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4373638810466486618}
@@ -147,10 +147,10 @@ AnimatorStateMachine:
     m_Position: {x: 440, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4373638810466486618}
-    m_Position: {x: 340, y: 270, z: 0}
+    m_Position: {x: 330, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1328695272388063375}
-    m_Position: {x: 590, y: 270, z: 0}
+    m_Position: {x: 580, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4430952165624446604}
     m_Position: {x: 440, y: 360, z: 0}
@@ -168,9 +168,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 170, y: 240, z: 0}
+  m_AnyStatePosition: {x: 40, y: 290, z: 0}
   m_EntryPosition: {x: 460, y: -10, z: 0}
-  m_ExitPosition: {x: 900, y: 270, z: 0}
+  m_ExitPosition: {x: 910, y: 280, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2159034920153366274}
 --- !u!1101 &-3894233379406519391
@@ -182,7 +182,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Vulnerable
+    m_ConditionEvent: SleeveVulnerable
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1328695272388063375}
@@ -230,17 +230,14 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: GetUp
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.625
   m_HasExitTime: 0
@@ -282,7 +279,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 05_GetUp
+  m_Name: 05_Sleeve_Getup
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -381,13 +378,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Vulnerable
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: GetUp
+  - m_Name: SleeveVulnerable
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -528,7 +519,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 04_Vulnerable
+  m_Name: 04_Sleeve_Vulnerable
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

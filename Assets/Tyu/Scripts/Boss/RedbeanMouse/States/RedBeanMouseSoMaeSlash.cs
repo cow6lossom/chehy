@@ -15,6 +15,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private AttackSettingSO _firAttack;
         private AttackSettingSO _lastAttack;
         private BossStateMachine stateMachine;
+        private bool _isAttacked;
         
         public RedBeanMouseSoMaeSlash(AbstractStateMachine _stateMachine, string anim,
             RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
@@ -38,6 +39,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public override void Exit()
         {
             _attackCount = 0;
+            _isAttacked = false;
             base.Exit();
             _owner.CoolTimeChecker.ResetLastAtk(StateEnum.SoMeaAttack);
         }
@@ -50,11 +52,13 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                 case 1:
                     _owner.attackMd.TryAttack(_firAttack);
                     break;
-                case 2:
+                case 2: 
+                case 3:
+                    if (_isAttacked) break;
+                    _isAttacked = true;
                     _owner.attackMd.TryAttack(_lastAttack);
                     break;
             }
-
             _attackCount++;
         }
 

@@ -14,6 +14,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private int _currentHash;
         private float _startTime;
         private float _dealTime;
+        private bool _isDealTime;
         private BossStateMachine stateMachine;
         
         public DealTimeState(AbstractStateMachine _stateMachine, RenderModule renderMd, BossMoveModule moveMd, DealTimeAnimListSO data) : base(_stateMachine)
@@ -29,6 +30,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private void AddDealtTimeAnim(AttackEnum key, string dealtTimeAnim) => _dealTimeAnimDict.TryAdd(key, Animator.StringToHash(dealtTimeAnim));
         public void StartDealTime(AttackEnum key, float dealTime)
         {
+            _isDealTime = true;
             _startTime = Time.time;
             _dealTime = dealTime;
             _moveMd.StopMove();
@@ -39,13 +41,17 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public override void UpdateState()
         {
             if (_startTime + _dealTime < Time.time)
+            {
                 _renderMd.ChangeAnimBool(_currentHash, false);
+                _isDealTime = false;
+            }
         }
 
         public override void AnimationEndCallback()
         {
             base.AnimationEndCallback();
-            stateMachine.ChangeState(StateEnum.Idle);
+            if(!_isDealTime)
+                stateMachine.ChangeState(StateEnum.Idle);
         }
     }
 }
