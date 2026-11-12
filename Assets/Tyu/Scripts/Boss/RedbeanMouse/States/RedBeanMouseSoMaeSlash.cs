@@ -23,12 +23,14 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _owner = owner;
             GetDatas.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
             GetDatas.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
+            Debug.Log(_lastAttack);
             _owner.CoolTimeChecker.AddCoolTimer(AttackEnum.Slash, _firAttack);
             stateMachine = _stateMachine as BossStateMachine;
         }
 
         public override void Enter()
         {
+            
             var dir = _owner.GetDirToPlayer();
             _renderMd.FlipX(dir);
             base.Enter();
