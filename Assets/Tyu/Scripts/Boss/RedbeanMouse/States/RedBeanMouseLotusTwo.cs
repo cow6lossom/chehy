@@ -27,7 +27,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.AnimationCallback();
             _usingFlower = _maker.MakeLotus2(_owner.transform.position);
             _usingFlower.gameObject.SetActive(true);
-            _usingFlower.Initialize(_owner.GetDirToPlayer(), _data);
+            _usingFlower.Initialize(_owner.GetDirToPlayer(), _data, _owner.transform.position);
         }
     }
 }
