@@ -45,7 +45,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
 
         void SkillWork()
         {
-            
+            _currentSkill.Attack();
         }
     }
 }

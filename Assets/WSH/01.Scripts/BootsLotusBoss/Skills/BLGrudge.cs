@@ -41,7 +41,7 @@ public class BLGrudge : ISkill // 장화의 원한
         
     }
 
-    protected void Attack()
+    public void Attack()
     {
         Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, _radiusRange, _whatIsPlayer);
 

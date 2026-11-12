@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ISkill : MonoBehaviour
 {
-    protected virtual void Attack()
+    public virtual void Attack()
     {
         
     }
