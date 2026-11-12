@@ -37,10 +37,9 @@ namespace Key._00.Scripts.Skill {
             }
             
             _animator =  GetComponentInChildren<LotusFlowerAnimation>();
-
             _currentFlower = this;
             transform.position = pos;
-            rigid.position = pos;
+            
             currentHP = MaxHP;
             _playerTrm = pTrm;
             attackSetting = setting;
@@ -63,6 +62,8 @@ namespace Key._00.Scripts.Skill {
 
         private void OnTriggerEnter2D(Collider2D other) {
             if (!other.TryGetComponent(out Player player)) return;
+            
+            _animator.SetCatch();
 
             StopAllCoroutines();
             StartCoroutine(AttackCoroutine());
@@ -104,6 +105,7 @@ namespace Key._00.Scripts.Skill {
         }
 
         private void Die() {
+            _animator.SetDead();
             currentHP = 0;
             rigid.linearVelocity = Vector2.zero;
             StopAllCoroutines();
