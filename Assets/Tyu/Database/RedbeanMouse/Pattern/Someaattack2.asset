@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
   <Distance>k__BackingField: 0
   <Size>k__BackingField: {x: 6, y: 6}
+  <Type>k__BackingField: 0
+  <AttackType>k__BackingField: 0
+  <IsSymbol>k__BackingField: 0
+  <HaveRandomPatterns>k__BackingField: 0
+  <RandomPatterns>k__BackingField: []
   <Damage>k__BackingField: 5
-  <Cooltime>k__BackingField: 5
+  <CoolTime>k__BackingField: 7
   <DealTime>k__BackingField: 1.3
+  <maxDetect>k__BackingField: 7
+  <minDetect>k__BackingField: 7

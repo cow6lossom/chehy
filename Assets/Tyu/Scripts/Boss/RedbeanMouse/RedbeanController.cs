@@ -18,7 +18,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public float lastAtkTime { get; private set; }
         public float dealTime { get; private set; }
         public bool _isSecPhase { get; private set; }
+        [SerializeField] private Transform player;
 
+        [ContextMenu("Test")]
+        private void Init() => Initialize(player);
+        
         public override void Initialize(Transform _playerTrm)
         {
             base.Initialize(_playerTrm);
@@ -29,9 +33,9 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _behaviourStateMachine = new BossStateMachine(this);
             _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle",
                 renderMd, this));
-            _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase",
+            _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Walk",
                 renderMd, this, firAttacks, secAttacks));
-            _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "Somea",
+            _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SleeveAttack",
                 this, renderMd, firAttacks));
             // _behaviourStateMachine.AddState(StateEnum.Stab, new RedbeanMouseManyStab(_behaviourStateMachine, "Stab",
             //     renderMd, this, firAttacks, attackMoves));
@@ -39,6 +43,9 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             var dealTime = new DealTimeState(_behaviourStateMachine, renderMd, moveMd, dealTimeList);
 
             GetNoneCoolAttack = new GetNoneCoolAttackModule(CoolTimeChecker);
+            _behaviourStateMachine.Initialize(StateEnum.Idle);
+            Debug.Log(3);
+            renderMd.Initialize(this, transform);
         }
 
         private void OnDestroy()
@@ -61,6 +68,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         }
         private void Update()
         {
+            _behaviourStateMachine.UpdateState();
         }
 
         public Vector2 GetDirToPlayer()

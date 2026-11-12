@@ -29,6 +29,7 @@ public abstract class AbstractBoss : MonoBehaviour, IHealthHavable
     public virtual void Initialize(Transform _playerTrm)
     {
         TargetPlayer = _playerTrm;
+        moveMd.Init();
         
     }
 
