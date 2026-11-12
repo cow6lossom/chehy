@@ -24,27 +24,17 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             : base(stateMachine, anim, renderMd)
         {
             _owner = owner;
-            GetAttackSO.GetAttackData(attacks, AttackEnum.Stab, ref _firStab);
-            GetAttackSO.GetAttackData(attacks, AttackEnum.DashStab, ref _dashStab);
-            foreach (var move in moves)
-            {
-                switch (move.Type)
-                {
-                    case AttackEnum.Stab:
-                        _firMove = move;
-                        break;
-                    case AttackEnum.DashStab:
-                        _dashMove = move;
-                        break;
-                }
-            }
+            GetDatas.GetAttackData(attacks, AttackEnum.Stab, ref _firStab);
+            GetDatas.GetAttackData(attacks, AttackEnum.DashStab, ref _dashStab);
+            GetDatas.GetMoveData(moves, AttackEnum.Stab, ref _firMove);
+            GetDatas.GetMoveData(moves, AttackEnum.DashStab, ref _dashMove);
         }
 
 
         public override void Enter()
         {
             base.Enter();
-            Vector2 dir = (_owner.transform.position - _owner.TargetPlayer.transform.position).normalized;
+            Vector2 dir = _owner.GetDirToPlayer();
             _renderMd.FlipX(dir);
         }
 

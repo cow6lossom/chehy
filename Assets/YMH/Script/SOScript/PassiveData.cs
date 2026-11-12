@@ -1,11 +1,5 @@
 using UnityEngine;
 
-public enum PassiveGrade
-{
-    Normal,
-    Boss
-}
-
 public enum PassiveType
 {
     Attack,
@@ -34,7 +28,6 @@ public class PassiveData : ScriptableObject //패시브 자체의 정보
     public string Description;
     public Sprite Icon;
 
-    public PassiveGrade Grade;
     public PassiveType Type;
 
     public float Duration;

@@ -30,7 +30,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public override void UpdateState()
         {
             base.UpdateState();
-            if (_owner._isSecPhase)
+            if (!_owner._isSecPhase)
             {
                 if (!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _firAttacks, out var data))
                     stateMachine.ChangeState(data.Type);

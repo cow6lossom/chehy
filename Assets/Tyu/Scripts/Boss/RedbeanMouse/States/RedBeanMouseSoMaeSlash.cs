@@ -19,8 +19,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
         {
             _owner = owner;
-            GetAttackSO.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
-            GetAttackSO.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
+            GetDatas.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
+            GetDatas.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
             _owner.CoolTimeChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
         }
 
