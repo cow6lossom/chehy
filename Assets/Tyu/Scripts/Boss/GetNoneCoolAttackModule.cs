@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Tyu.Scripts.SO;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Tyu.Scripts.Boss
@@ -32,6 +33,7 @@ namespace Tyu.Scripts.Boss
                 return true;
             }
             return false;
+
         }
         
         
