@@ -1,0 +1,1322 @@
+fileFormatVersion: 2
+guid: 87253286f7c94d52bee1885eba6e217f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: 01_Idle_01
+  - first:
+      213: 21300002
+    second: 01_Idle_02
+  - first:
+      213: 21300004
+    second: 01_Idle_03
+  - first:
+      213: 21300006
+    second: 01_Idle_04
+  - first:
+      213: 21300008
+    second: 01_Idle_05
+  - first:
+      213: 21300010
+    second: 01_Idle_06
+  - first:
+      213: 21300012
+    second: 01_Idle_07
+  - first:
+      213: 21300014
+    second: 01_Idle_08
+  - first:
+      213: 21300016
+    second: 02_Walk_01
+  - first:
+      213: 21300018
+    second: 02_Walk_02
+  - first:
+      213: 21300020
+    second: 02_Walk_03
+  - first:
+      213: 21300022
+    second: 02_Walk_04
+  - first:
+      213: 21300024
+    second: 02_Walk_05
+  - first:
+      213: 21300026
+    second: 02_Walk_06
+  - first:
+      213: 21300028
+    second: 02_Walk_07
+  - first:
+      213: 21300032
+    second: 03_Sleeve_Windup_01
+  - first:
+      213: 21300034
+    second: 03_Sleeve_Windup_02
+  - first:
+      213: 21300036
+    second: 03_Sleeve_Windup_03
+  - first:
+      213: 21300038
+    second: 03_Sleeve_Windup_04
+  - first:
+      213: 21300040
+    second: 04_Sleeve_Hit1_01
+  - first:
+      213: 21300042
+    second: 04_Sleeve_Hit1_02
+  - first:
+      213: 21300044
+    second: 04_Sleeve_Hit1_03
+  - first:
+      213: 21300046
+    second: 04_Sleeve_Hit1_04
+  - first:
+      213: 21300048
+    second: 05_Sleeve_Hit1To2_01
+  - first:
+      213: 21300050
+    second: 05_Sleeve_Hit1To2_02
+  - first:
+      213: 21300052
+    second: 05_Sleeve_Hit1To2_03
+  - first:
+      213: 21300054
+    second: 06_Sleeve_Hit2_01
+  - first:
+      213: 21300056
+    second: 06_Sleeve_Hit2_02
+  - first:
+      213: 21300058
+    second: 06_Sleeve_Hit2_03
+  - first:
+      213: 21300060
+    second: 06_Sleeve_Hit2_04
+  - first:
+      213: 21300064
+    second: 07_Sleeve_Hit2To3_01
+  - first:
+      213: 21300066
+    second: 08_Sleeve_Hit3_01
+  - first:
+      213: 21300068
+    second: 08_Sleeve_Hit3_02
+  - first:
+      213: 21300070
+    second: 08_Sleeve_Hit3_03
+  - first:
+      213: 21300072
+    second: 08_Sleeve_Hit3_04
+  - first:
+      213: 21300080
+    second: 09_Sleeve_Hit3_End_01
+  - first:
+      213: 21300082
+    second: 09_Sleeve_Hit3_End_02
+  - first:
+      213: 21300084
+    second: 09_Sleeve_Hit3_End_03
+  - first:
+      213: 21300086
+    second: 09_Sleeve_Hit3_End_04
+  - first:
+      213: 21300088
+    second: 09_Sleeve_Hit3_End_05
+  - first:
+      213: 21300090
+    second: 09_Sleeve_Hit3_End_06
+  - first:
+      213: 21300092
+    second: 09_Sleeve_Hit3_End_07
+  - first:
+      213: 21300096
+    second: 10_Vulnerable_01
+  - first:
+      213: 21300098
+    second: 10_Vulnerable_02
+  - first:
+      213: 21300100
+    second: 10_Vulnerable_03
+  - first:
+      213: 21300102
+    second: 11_GetUp_01
+  - first:
+      213: 21300104
+    second: 11_GetUp_02
+  - first:
+      213: 21300106
+    second: 11_GetUp_03
+  - first:
+      213: 21300108
+    second: 11_GetUp_04
+  - first:
+      213: 21300112
+    second: 12_Lotus_2_01
+  - first:
+      213: 21300114
+    second: 12_Lotus_2_02
+  - first:
+      213: 21300116
+    second: 12_Lotus_2_03
+  - first:
+      213: 21300118
+    second: 12_Lotus_2_04
+  - first:
+      213: 21300120
+    second: 12_Lotus_2_05
+  - first:
+      213: 21300122
+    second: 12_Lotus_2_06
+  - first:
+      213: 21300124
+    second: 12_Lotus_2_07
+  - first:
+      213: 21300128
+    second: 13_Lotus_1_01
+  - first:
+      213: 21300130
+    second: 13_Lotus_1_02
+  - first:
+      213: 21300132
+    second: 13_Lotus_1_03
+  - first:
+      213: 21300134
+    second: 13_Lotus_1_04
+  - first:
+      213: 21300136
+    second: 13_Lotus_1_05
+  - first:
+      213: 21300138
+    second: 13_Lotus_1_06
+  - first:
+      213: 21300140
+    second: 13_Lotus_1_07
+  - first:
+      213: 21300142
+    second: 13_Lotus_1_08
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  spriteMode: 2
+  spriteMeshType: 0
+  spriteAlignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 128
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  textureType: 8
+  textureShape: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 01_Idle_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 23e72026c0a94188bb80e9c18fda8bb9
+      internalID: 21300000
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: faa70b9aca5c406db71417cec92c62cd
+      internalID: 21300002
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 31c0bfdf1ef0481f832a30ec26fbb031
+      internalID: 21300004
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 26df12132dcc4466a61b58aaf40304b2
+      internalID: 21300006
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_05
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: a19b0e62a4304dd093cb2aa08872d164
+      internalID: 21300008
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_06
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 9d03615837b34708819773829cf95e18
+      internalID: 21300010
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 6483b17710534eb9b4802531334ea46c
+      internalID: 21300012
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 01_Idle_08
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: f5c1682ac4164e2c8569f55382ed7cdc
+      internalID: 21300014
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 69ddfc9410a94dc39a02d6291092a9c6
+      internalID: 21300016
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 8f5696eef71e4ccb89a6d3c79ba05bc5
+      internalID: 21300018
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: c695a2c220574a5db2fa1476fcbab550
+      internalID: 21300020
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: e9d532a79e6746adbb62a8fffce84196
+      internalID: 21300022
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_05
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 6a03ecd727784db3b46909eeed126c5b
+      internalID: 21300024
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_06
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 1e0244ba8a964198a108ddc5a09eee57
+      internalID: 21300026
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 02_Walk_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 896
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: a9507d3f350d4100881234e8508ce39f
+      internalID: 21300028
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 03_Sleeve_Windup_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: e7e211e73000405fb4b1a561e2cea35b
+      internalID: 21300032
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 03_Sleeve_Windup_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 4751373566cc49a59dc14d4fb43f25e5
+      internalID: 21300034
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 03_Sleeve_Windup_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 6c6383e8d19d47a3b503d23e6790c894
+      internalID: 21300036
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 03_Sleeve_Windup_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 3e26ea6c47d14f709b2187d792322bca
+      internalID: 21300038
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 04_Sleeve_Hit1_01
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 8a8b0ee40f314de184b4304a0e2c8a22
+      internalID: 21300040
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 04_Sleeve_Hit1_02
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: dc14edd7e1ac43239e4984fa180bdd93
+      internalID: 21300042
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 04_Sleeve_Hit1_03
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 7ff1abc2be494dddbdac32778ce448b5
+      internalID: 21300044
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 04_Sleeve_Hit1_04
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 768
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: eec9efb9703949fabff8d0353bd47d1a
+      internalID: 21300046
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 05_Sleeve_Hit1To2_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 8915524f6bbd45e7a372ab38900ffc39
+      internalID: 21300048
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 05_Sleeve_Hit1To2_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: f4d73a4c9c48448283becedaae9c8287
+      internalID: 21300050
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 05_Sleeve_Hit1To2_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 1b85917d1d1549d6b2f5bf16b3b046a5
+      internalID: 21300052
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 06_Sleeve_Hit2_01
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 3949debb65ff41fdb6468bc1f61e70da
+      internalID: 21300054
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 06_Sleeve_Hit2_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: a04bab7595014a8c8bdb2e11ae5bbe54
+      internalID: 21300056
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 06_Sleeve_Hit2_03
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: f8792c14df364e5fa73b63fe36abae6a
+      internalID: 21300058
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 06_Sleeve_Hit2_04
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 0bf641423ba8465aa99f39f23ebc6622
+      internalID: 21300060
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 07_Sleeve_Hit2To3_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 3a1a73fd1b6747adaf2b420e530e045e
+      internalID: 21300064
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 08_Sleeve_Hit3_01
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 114b1b2d20e54467839e91c0a5c61a90
+      internalID: 21300066
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 08_Sleeve_Hit3_02
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 22bd6bdc4edd43ea9fe40618fe843140
+      internalID: 21300068
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 08_Sleeve_Hit3_03
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: ffec7d6e0122402c9cac2af1ed2e7d54
+      internalID: 21300070
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 08_Sleeve_Hit3_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 6fb3971f617f446495c215950e7cba9e
+      internalID: 21300072
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: b2641ce32b3348e7a25a268d1e514b89
+      internalID: 21300080
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 4dd43089588a4fe09b1316dd40e50dc6
+      internalID: 21300082
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: eed5f8228dab4bf592573c34c538e65e
+      internalID: 21300084
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 904717fbd4d642a38d5c1e991dc145f9
+      internalID: 21300086
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_05
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 943703d00fa94267b099b22a89ba48d3
+      internalID: 21300088
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_06
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 476f3eb84f53476cac046880c9b619de
+      internalID: 21300090
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 09_Sleeve_Hit3_End_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 66f4309c29ad4d0e9d48955a98f6b30f
+      internalID: 21300092
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 10_Vulnerable_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 7618864efca04140986dbb86974fc385
+      internalID: 21300096
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 10_Vulnerable_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 37046e4a61e7446da676fd841211b327
+      internalID: 21300098
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 10_Vulnerable_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: f443c1dcbfcf41449e7bb32e297a9359
+      internalID: 21300100
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 11_GetUp_01
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 29aa16dbee36487aa7c7697843c17e29
+      internalID: 21300102
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 11_GetUp_02
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 9c741822a3094e01b1e0acc0231e4688
+      internalID: 21300104
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 11_GetUp_03
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 0ac11286a5f74323b0a7db8fbbe9ead7
+      internalID: 21300106
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 11_GetUp_04
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: d8a75a1490094842b34c8c270f33339c
+      internalID: 21300108
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: f82441dc0b9a4b75a509d1851618f795
+      internalID: 21300112
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 51901c467ff04ecb8acdb289fcbd3799
+      internalID: 21300114
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 8ae7b0fee8f54a9282d8c479366042b7
+      internalID: 21300116
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: d0288a8195364cedb88c412a89591251
+      internalID: 21300118
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_05
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 0484add8822342f3bdcaf03a69907f53
+      internalID: 21300120
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_06
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 024938a066014aad9c24f215d5145e8e
+      internalID: 21300122
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 12_Lotus_2_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: b4ec15d5b85949b1b93628936b956ed0
+      internalID: 21300124
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: b6ddb43139bb431db09bb9720c236621
+      internalID: 21300128
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_02
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 7bde100ed4634033a80bf34931dd3619
+      internalID: 21300130
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_03
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 048b024a6d2a4d26a898b388b6c89844
+      internalID: 21300132
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 707045bea24b4014a74ba5fea4e82d43
+      internalID: 21300134
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_05
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 07d8a6efa0b64a52a552187782b7f87d
+      internalID: 21300136
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_06
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 08499a3fec5249769fe1e936c9457343
+      internalID: 21300138
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_07
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 86a5de28d09d47c4ab68fa7cb5c2a039
+      internalID: 21300140
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: 13_Lotus_1_08
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      spriteID: 367f27e990754b83a43ed8760fde37f5
+      internalID: 21300142
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    outline: []
+    physicsShape: []
+    nameFileIdTable:
+      01_Idle_01: 21300000
+      01_Idle_02: 21300002
+      01_Idle_03: 21300004
+      01_Idle_04: 21300006
+      01_Idle_05: 21300008
+      01_Idle_06: 21300010
+      01_Idle_07: 21300012
+      01_Idle_08: 21300014
+      02_Walk_01: 21300016
+      02_Walk_02: 21300018
+      02_Walk_03: 21300020
+      02_Walk_04: 21300022
+      02_Walk_05: 21300024
+      02_Walk_06: 21300026
+      02_Walk_07: 21300028
+      03_Sleeve_Windup_01: 21300032
+      03_Sleeve_Windup_02: 21300034
+      03_Sleeve_Windup_03: 21300036
+      03_Sleeve_Windup_04: 21300038
+      04_Sleeve_Hit1_01: 21300040
+      04_Sleeve_Hit1_02: 21300042
+      04_Sleeve_Hit1_03: 21300044
+      04_Sleeve_Hit1_04: 21300046
+      05_Sleeve_Hit1To2_01: 21300048
+      05_Sleeve_Hit1To2_02: 21300050
+      05_Sleeve_Hit1To2_03: 21300052
+      06_Sleeve_Hit2_01: 21300054
+      06_Sleeve_Hit2_02: 21300056
+      06_Sleeve_Hit2_03: 21300058
+      06_Sleeve_Hit2_04: 21300060
+      07_Sleeve_Hit2To3_01: 21300064
+      08_Sleeve_Hit3_01: 21300066
+      08_Sleeve_Hit3_02: 21300068
+      08_Sleeve_Hit3_03: 21300070
+      08_Sleeve_Hit3_04: 21300072
+      09_Sleeve_Hit3_End_01: 21300080
+      09_Sleeve_Hit3_End_02: 21300082
+      09_Sleeve_Hit3_End_03: 21300084
+      09_Sleeve_Hit3_End_04: 21300086
+      09_Sleeve_Hit3_End_05: 21300088
+      09_Sleeve_Hit3_End_06: 21300090
+      09_Sleeve_Hit3_End_07: 21300092
+      10_Vulnerable_01: 21300096
+      10_Vulnerable_02: 21300098
+      10_Vulnerable_03: 21300100
+      11_GetUp_01: 21300102
+      11_GetUp_02: 21300104
+      11_GetUp_03: 21300106
+      11_GetUp_04: 21300108
+      12_Lotus_2_01: 21300112
+      12_Lotus_2_02: 21300114
+      12_Lotus_2_03: 21300116
+      12_Lotus_2_04: 21300118
+      12_Lotus_2_05: 21300120
+      12_Lotus_2_06: 21300122
+      12_Lotus_2_07: 21300124
+      13_Lotus_1_01: 21300128
+      13_Lotus_1_02: 21300130
+      13_Lotus_1_03: 21300132
+      13_Lotus_1_04: 21300134
+      13_Lotus_1_05: 21300136
+      13_Lotus_1_06: 21300138
+      13_Lotus_1_07: 21300140
+      13_Lotus_1_08: 21300142

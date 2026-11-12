@@ -1,8 +1,8 @@
 ﻿namespace Tyu.Scripts.Boss.FSM
 {
-    public class CanLockStateMachine : AbstractStateMachine
+    public class BossStateMachine : AbstractStateMachine
     {
-        public CanLockStateMachine(IStateMachine _owner) : base(_owner)
+        public BossStateMachine(IStateMachine _owner) : base(_owner)
         {
         }
 
@@ -22,6 +22,16 @@
         {
             if (_locked) return;
             base.ChangeState(keyValue);
+        }
+
+        public void MakeDealTime()
+        {
+            
+        }
+
+        public void ChangeDealTime()
+        {
+            
         }
     }
 }

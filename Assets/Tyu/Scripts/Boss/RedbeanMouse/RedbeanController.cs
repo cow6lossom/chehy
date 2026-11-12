@@ -12,7 +12,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         [SerializeField] private List<AttackSettingSO> secAttacks;
         [SerializeField] private List<AttackMoveSO> attackMoves;
         [SerializeField] private StatementSettingSO stat;
-        private CanLockStateMachine _behaviourStateMachine;
+        private BossStateMachine _behaviourStateMachine;
         public GetNoneCoolAttackModule GetNoneCoolAttack { get; private set; }
         public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
         public float lastAtkTime { get; private set; }
@@ -26,7 +26,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             moveMd.Speed = stat.FirSpeed;
             healthMd.OnSecondPhase += SecondPhase;
             CoolTimeChecker = new PatternCoolTimeChecker();
-            _behaviourStateMachine = new CanLockStateMachine(this);
+            _behaviourStateMachine = new BossStateMachine(this);
             _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle",
                 renderMd, this, this));
             _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase",
