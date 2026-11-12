@@ -686,6 +686,7 @@ GameObject:
   - component: {fileID: 592332677}
   - component: {fileID: 592332678}
   - component: {fileID: 592332679}
+  - component: {fileID: 592332680}
   m_Layer: 0
   m_Name: Lotus Flower (2)
   m_TagString: Untagged
@@ -817,6 +818,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &592332680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592332675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
 --- !u!1 &703807404
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +866,7 @@ MonoBehaviour:
   speed: 5
   distance: 5
   flowerDistanceInterval: 1
+  attackScale: 
   flowerInterval: 0.5
   explosionDelay: 1
   explosionRange: 2
@@ -3352,6 +3366,7 @@ GameObject:
   - component: {fileID: 990475526}
   - component: {fileID: 990475527}
   - component: {fileID: 990475528}
+  - component: {fileID: 990475529}
   m_Layer: 0
   m_Name: Lotus Flower
   m_TagString: Untagged
@@ -3483,6 +3498,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &990475529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990475524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
 --- !u!198 &1353232477 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 924636460556680395, guid: 6bba72324afbdd74b9a2c1d340b9cd07, type: 3}
@@ -3630,6 +3657,7 @@ GameObject:
   - component: {fileID: 1621842447}
   - component: {fileID: 1621842452}
   - component: {fileID: 1621842453}
+  - component: {fileID: 1621842454}
   m_Layer: 0
   m_Name: Lotus
   m_TagString: Untagged
@@ -3816,6 +3844,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0138425855, y: -0.50594854}
   m_Size: {x: 0.9149116, y: 0.46831936}
   m_Direction: 1
+--- !u!114 &1621842454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621842446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
 --- !u!1 &1764054057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4049,6 +4089,7 @@ GameObject:
   - component: {fileID: 2076876325}
   - component: {fileID: 2076876326}
   - component: {fileID: 2076876327}
+  - component: {fileID: 2076876328}
   m_Layer: 0
   m_Name: Lotus Flower (1)
   m_TagString: Untagged
@@ -4180,6 +4221,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2076876328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076876323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
 --- !u!1 &2136024477
 GameObject:
   m_ObjectHideFlags: 0
