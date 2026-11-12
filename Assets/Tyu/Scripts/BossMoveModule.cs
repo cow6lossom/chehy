@@ -7,7 +7,7 @@ namespace Tyu.Scripts
 {
     public class BossMoveModule : MovementModule
     {
-        private bool _isStopped;
+        private bool _isStopped = true;
 
         private void FixedUpdate()
         {
