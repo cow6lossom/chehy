@@ -66,7 +66,6 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             base.Exit();
             _owner.CoolTimeChecker.ResetLastAtk(StateEnum.Stab);
-            _owner.ResetLastAttack(_firStab.DealTime);
         }
     }
 }

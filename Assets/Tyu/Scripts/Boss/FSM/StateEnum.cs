@@ -6,6 +6,7 @@ namespace Tyu.Scripts.Boss.FSM
         Idle,
         Chase,
         Phase2,
+        DealTime,
 
         #region RedBeanMouse
 
