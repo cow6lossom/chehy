@@ -12,29 +12,35 @@ namespace Key._00.Scripts.Skill {
         [SerializeField] private float speed = 3f;
         [SerializeField] private float lifeTime = 5f;
         [SerializeField] private float grabTime = 3f;
-        [SerializeField] private float damageInterval = 1f; //딜 주는 간격
+        [SerializeField] private float damageInterval = 1f; // 딜 주는 간격
 
         public event Action OnCoolTimeReset;
 
         private static LotusFlower _currentFlower;
         
-        private Transform _playerTrm;
+        [SerializeField] private Transform _playerTrm;
         private AttackSettingSO attackSetting;
         private Rigidbody2D rigid;
         private Player _player;
+        private LotusFlowerAnimation _animator;
         
         private float currentHP;
+        
 
         private void Awake() {
             rigid = GetComponent<Rigidbody2D>();
         }
 
-        public void Initialize(Transform pTrm, AttackSettingSO  setting) {
+        public void Initialize(Transform pTrm, AttackSettingSO  setting, Vector3 pos) {
             if (_currentFlower != null && _currentFlower != this) {
                 _currentFlower.Die(); // 2번 생성 방지용
             }
+            
+            _animator =  GetComponentInChildren<LotusFlowerAnimation>();
 
             _currentFlower = this;
+            transform.position = pos;
+            rigid.position = pos;
             currentHP = MaxHP;
             _playerTrm = pTrm;
             attackSetting = setting;
@@ -64,7 +70,7 @@ namespace Key._00.Scripts.Skill {
 
         private IEnumerator AttackCoroutine() {
             _player.MoveCompo.StopMove();
-            _player.MoveCompo.enabled = false;
+            _player.enabled = false;
             rigid.linearVelocity = Vector2.zero;
 
             float time = 0f;
@@ -110,7 +116,7 @@ namespace Key._00.Scripts.Skill {
             StopAllCoroutines();
 
             if (_player != null) 
-                _player.MoveCompo.enabled = true;
+                _player.enabled = true;
             
             if (_currentFlower == this) 
                 _currentFlower = null;

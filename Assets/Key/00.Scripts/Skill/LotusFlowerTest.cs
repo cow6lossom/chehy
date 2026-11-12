@@ -45,7 +45,7 @@ namespace Key._00.Scripts.Skill {
             _currentFlower = Instantiate(lotusFlower, lotusFlower.transform.position, Quaternion.identity);
             _currentFlower.OnCoolTimeReset += ResetCoolTime;
             _currentFlower.gameObject.SetActive(true);
-            _currentFlower.Initialize(_player.transform, attackSetting);
+            _currentFlower.Initialize(_player.transform, attackSetting, lotusFlower.transform.position);
         }
 
         private void TryAttack() {
@@ -62,7 +62,7 @@ namespace Key._00.Scripts.Skill {
             _currentFlower2.OnAttackEnd += ResetCoolTime2;
             _currentFlower2.gameObject.SetActive(true);
             Vector2 dir = _player.transform.position - _currentFlower2.transform.position;
-            _currentFlower2.Initialize(dir, attackSetting2);
+            _currentFlower2.Initialize(dir, attackSetting2, lotusFlower2.transform.position);
         }
 
         private void ResetCoolTime2() {
