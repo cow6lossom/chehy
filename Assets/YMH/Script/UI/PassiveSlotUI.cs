@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.EventSystems;
 
-public class PassiveSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class PassiveSlotUI : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private Image _iconImage;
-    [SerializeField] private TMP_Text _levelText;
-    [SerializeField] private PassiveInfoUI _infoUI;
 
     private PassiveBase _passive;
     private Action<PassiveBase> _onClick;
@@ -24,17 +21,16 @@ public class PassiveSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         bool hasPassive = passive != null;
 
         _iconImage.enabled = hasPassive;
-        _button.interactable = hasPassive;
+        _button.interactable = hasPassive || onClick != null;
 
         if (!hasPassive)
         {
             _iconImage.sprite = null;
-            _levelText.text = "";
-            return;
         }
-
-        _iconImage.sprite = passive.Data.Icon;
-        _levelText.text = "Lv." + passive.Level;
+        else
+        {
+            _iconImage.sprite = passive.Data.Icon;
+        }
 
         if (_onClick != null)
             _button.onClick.AddListener(OnClick);
@@ -43,17 +39,5 @@ public class PassiveSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private void OnClick()
     {
         _onClick?.Invoke(_passive);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (_passive != null && _infoUI != null)
-            _infoUI.ShowInfo(_passive);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (_infoUI != null)
-            _infoUI.HideInfo();
     }
 }

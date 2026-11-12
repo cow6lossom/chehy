@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace Key._00.Scripts.Skill {
     public class LotusFlowerTest : MonoBehaviour {
         
-        //연꽃들이 제대로 작동하는 지 테스트 하기     위해 이 부분은 AI로 작성하였습니다.
+        //연꽃들이 제대로 작동하는 지 테스트 하기 위해 이 부분은 AI로 작성하였습니다.
         
         
         
