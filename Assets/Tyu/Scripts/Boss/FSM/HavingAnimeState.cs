@@ -19,13 +19,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         public virtual void Enter()
         {
-            base.Enter();
             _renderMd.ChangeAnimBool(_animHash, true);
         }
 
         public virtual void Exit()
         {
-            base.Exit();
             _renderMd.ChangeAnimBool(_animHash, false);
         }
     }
