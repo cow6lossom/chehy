@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public class RedbeanController : AbstractBoss, IStateMachine, IHaveDealTime
+    public class RedbeanController : AbstractBoss, IStateMachine
     {
         [SerializeField] private List<AttackSettingSO> firAttacks;
         [SerializeField] private List<AttackSettingSO> secAttacks;
@@ -28,7 +28,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             CoolTimeChecker = new PatternCoolTimeChecker();
             _behaviourStateMachine = new BossStateMachine(this);
             _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle",
-                renderMd, this, this));
+                renderMd, this));
             _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase",
                 renderMd, this, firAttacks, secAttacks));
             _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "Somea",
@@ -58,14 +58,6 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             _behaviourStateMachine.CallbackTrigger();
         }
-
-        public void ResetLastAttack(float dealTimeSet) //딜타임 초기화
-        {
-            lastAtkTime = Time.time;
-            dealTime = dealTimeSet;
-        }
-        public bool IsDealTime() => lastAtkTime + dealTime <= Time.time;
-
         private void Update()
         {
         }

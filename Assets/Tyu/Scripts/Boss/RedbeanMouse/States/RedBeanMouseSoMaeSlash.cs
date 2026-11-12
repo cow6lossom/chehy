@@ -14,6 +14,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private int _attackCount;
         private AttackSettingSO _firAttack;
         private AttackSettingSO _lastAttack;
+        private BossStateMachine stateMachine;
         
         public RedBeanMouseSoMaeSlash(AbstractStateMachine _stateMachine, string anim,
             RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
@@ -22,6 +23,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             GetDatas.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
             GetDatas.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
             _owner.CoolTimeChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
+            stateMachine = _stateMachine as BossStateMachine;
         }
 
         public override void Enter()
@@ -38,7 +40,6 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _attackCount = 0;
             base.Exit();
             _owner.CoolTimeChecker.ResetLastAtk(StateEnum.SoMeaAttack);
-            _owner.ResetLastAttack(_firAttack.DealTime);
         }
 
         public override void AnimationCallback()
@@ -55,6 +56,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             }
 
             _attackCount++;
+        }
+
+        public override void AnimationEndCallback()
+        {
+            stateMachine.ChangeToDealTime(AttackEnum.Slash, _firAttack.DealTime);
         }
         /*
          * 死ぬなら電車は止めないように！

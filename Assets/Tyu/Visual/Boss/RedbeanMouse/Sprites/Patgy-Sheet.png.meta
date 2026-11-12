@@ -49,151 +49,151 @@ TextureImporter:
     second: 02_Walk_07
   - first:
       213: 21300032
-    second: 03_Sleeve_Windup_01
+    second: 03_Sleeve_Sweep_01
   - first:
       213: 21300034
-    second: 03_Sleeve_Windup_02
+    second: 03_Sleeve_Sweep_02
   - first:
       213: 21300036
-    second: 03_Sleeve_Windup_03
+    second: 03_Sleeve_Sweep_03
   - first:
       213: 21300038
-    second: 03_Sleeve_Windup_04
+    second: 03_Sleeve_Sweep_04
   - first:
       213: 21300040
-    second: 04_Sleeve_Hit1_01
+    second: 03_Sleeve_Sweep_05
   - first:
       213: 21300042
-    second: 04_Sleeve_Hit1_02
+    second: 03_Sleeve_Sweep_06
   - first:
       213: 21300044
-    second: 04_Sleeve_Hit1_03
+    second: 03_Sleeve_Sweep_07
   - first:
       213: 21300046
-    second: 04_Sleeve_Hit1_04
+    second: 03_Sleeve_Sweep_08
   - first:
       213: 21300048
-    second: 05_Sleeve_Hit1To2_01
+    second: 03_Sleeve_Sweep_09
   - first:
       213: 21300050
-    second: 05_Sleeve_Hit1To2_02
+    second: 03_Sleeve_Sweep_10
   - first:
       213: 21300052
-    second: 05_Sleeve_Hit1To2_03
+    second: 03_Sleeve_Sweep_11
   - first:
       213: 21300054
-    second: 06_Sleeve_Hit2_01
+    second: 03_Sleeve_Sweep_12
   - first:
       213: 21300056
-    second: 06_Sleeve_Hit2_02
+    second: 03_Sleeve_Sweep_13
   - first:
       213: 21300058
-    second: 06_Sleeve_Hit2_03
+    second: 03_Sleeve_Sweep_14
   - first:
       213: 21300060
-    second: 06_Sleeve_Hit2_04
+    second: 03_Sleeve_Sweep_15
   - first:
       213: 21300064
-    second: 07_Sleeve_Hit2To3_01
+    second: 03_Sleeve_Sweep_16
   - first:
       213: 21300066
-    second: 08_Sleeve_Hit3_01
+    second: 03_Sleeve_Sweep_17
   - first:
       213: 21300068
-    second: 08_Sleeve_Hit3_02
+    second: 03_Sleeve_Sweep_18
   - first:
       213: 21300070
-    second: 08_Sleeve_Hit3_03
+    second: 03_Sleeve_Sweep_19
   - first:
       213: 21300072
-    second: 08_Sleeve_Hit3_04
+    second: 03_Sleeve_Sweep_20
   - first:
       213: 21300080
-    second: 09_Sleeve_Hit3_End_01
+    second: 03_Sleeve_Sweep_21
   - first:
       213: 21300082
-    second: 09_Sleeve_Hit3_End_02
+    second: 03_Sleeve_Sweep_22
   - first:
       213: 21300084
-    second: 09_Sleeve_Hit3_End_03
+    second: 03_Sleeve_Sweep_23
   - first:
       213: 21300086
-    second: 09_Sleeve_Hit3_End_04
+    second: 03_Sleeve_Sweep_24
   - first:
       213: 21300088
-    second: 09_Sleeve_Hit3_End_05
+    second: 03_Sleeve_Sweep_25
   - first:
       213: 21300090
-    second: 09_Sleeve_Hit3_End_06
+    second: 03_Sleeve_Sweep_26
   - first:
       213: 21300092
-    second: 09_Sleeve_Hit3_End_07
+    second: 03_Sleeve_Sweep_27
   - first:
       213: 21300096
-    second: 10_Vulnerable_01
+    second: 04_Vulnerable_01
   - first:
       213: 21300098
-    second: 10_Vulnerable_02
+    second: 04_Vulnerable_02
   - first:
       213: 21300100
-    second: 10_Vulnerable_03
+    second: 04_Vulnerable_03
   - first:
       213: 21300102
-    second: 11_GetUp_01
+    second: 05_GetUp_01
   - first:
       213: 21300104
-    second: 11_GetUp_02
+    second: 05_GetUp_02
   - first:
       213: 21300106
-    second: 11_GetUp_03
+    second: 05_GetUp_03
   - first:
       213: 21300108
-    second: 11_GetUp_04
+    second: 05_GetUp_04
   - first:
       213: 21300112
-    second: 12_Lotus_2_01
+    second: 06_Lotus_2_01
   - first:
       213: 21300114
-    second: 12_Lotus_2_02
+    second: 06_Lotus_2_02
   - first:
       213: 21300116
-    second: 12_Lotus_2_03
+    second: 06_Lotus_2_03
   - first:
       213: 21300118
-    second: 12_Lotus_2_04
+    second: 06_Lotus_2_04
   - first:
       213: 21300120
-    second: 12_Lotus_2_05
+    second: 06_Lotus_2_05
   - first:
       213: 21300122
-    second: 12_Lotus_2_06
+    second: 06_Lotus_2_06
   - first:
       213: 21300124
-    second: 12_Lotus_2_07
+    second: 06_Lotus_2_07
   - first:
       213: 21300128
-    second: 13_Lotus_1_01
+    second: 07_Lotus_1_01
   - first:
       213: 21300130
-    second: 13_Lotus_1_02
+    second: 07_Lotus_1_02
   - first:
       213: 21300132
-    second: 13_Lotus_1_03
+    second: 07_Lotus_1_03
   - first:
       213: 21300134
-    second: 13_Lotus_1_04
+    second: 07_Lotus_1_04
   - first:
       213: 21300136
-    second: 13_Lotus_1_05
+    second: 07_Lotus_1_05
   - first:
       213: 21300138
-    second: 13_Lotus_1_06
+    second: 07_Lotus_1_06
   - first:
       213: 21300140
-    second: 13_Lotus_1_07
+    second: 07_Lotus_1_07
   - first:
       213: 21300142
-    second: 13_Lotus_1_08
+    second: 07_Lotus_1_08
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -470,7 +470,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 03_Sleeve_Windup_01
+      name: 03_Sleeve_Sweep_01
       rect:
         serializedVersion: 2
         x: 0
@@ -486,7 +486,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 03_Sleeve_Windup_02
+      name: 03_Sleeve_Sweep_02
       rect:
         serializedVersion: 2
         x: 128
@@ -502,7 +502,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 03_Sleeve_Windup_03
+      name: 03_Sleeve_Sweep_03
       rect:
         serializedVersion: 2
         x: 256
@@ -518,7 +518,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 03_Sleeve_Windup_04
+      name: 03_Sleeve_Sweep_04
       rect:
         serializedVersion: 2
         x: 384
@@ -534,7 +534,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 04_Sleeve_Hit1_01
+      name: 03_Sleeve_Sweep_05
       rect:
         serializedVersion: 2
         x: 512
@@ -550,7 +550,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 04_Sleeve_Hit1_02
+      name: 03_Sleeve_Sweep_06
       rect:
         serializedVersion: 2
         x: 640
@@ -566,7 +566,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 04_Sleeve_Hit1_03
+      name: 03_Sleeve_Sweep_07
       rect:
         serializedVersion: 2
         x: 768
@@ -582,7 +582,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 04_Sleeve_Hit1_04
+      name: 03_Sleeve_Sweep_08
       rect:
         serializedVersion: 2
         x: 896
@@ -598,7 +598,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 05_Sleeve_Hit1To2_01
+      name: 03_Sleeve_Sweep_09
       rect:
         serializedVersion: 2
         x: 0
@@ -614,7 +614,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 05_Sleeve_Hit1To2_02
+      name: 03_Sleeve_Sweep_10
       rect:
         serializedVersion: 2
         x: 128
@@ -630,7 +630,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 05_Sleeve_Hit1To2_03
+      name: 03_Sleeve_Sweep_11
       rect:
         serializedVersion: 2
         x: 256
@@ -646,7 +646,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 06_Sleeve_Hit2_01
+      name: 03_Sleeve_Sweep_12
       rect:
         serializedVersion: 2
         x: 384
@@ -662,7 +662,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 06_Sleeve_Hit2_02
+      name: 03_Sleeve_Sweep_13
       rect:
         serializedVersion: 2
         x: 512
@@ -678,7 +678,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 06_Sleeve_Hit2_03
+      name: 03_Sleeve_Sweep_14
       rect:
         serializedVersion: 2
         x: 640
@@ -694,7 +694,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 06_Sleeve_Hit2_04
+      name: 03_Sleeve_Sweep_15
       rect:
         serializedVersion: 2
         x: 768
@@ -710,7 +710,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 07_Sleeve_Hit2To3_01
+      name: 03_Sleeve_Sweep_16
       rect:
         serializedVersion: 2
         x: 0
@@ -726,7 +726,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 08_Sleeve_Hit3_01
+      name: 03_Sleeve_Sweep_17
       rect:
         serializedVersion: 2
         x: 128
@@ -742,7 +742,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 08_Sleeve_Hit3_02
+      name: 03_Sleeve_Sweep_18
       rect:
         serializedVersion: 2
         x: 256
@@ -758,7 +758,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 08_Sleeve_Hit3_03
+      name: 03_Sleeve_Sweep_19
       rect:
         serializedVersion: 2
         x: 384
@@ -774,7 +774,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 08_Sleeve_Hit3_04
+      name: 03_Sleeve_Sweep_20
       rect:
         serializedVersion: 2
         x: 512
@@ -790,7 +790,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_01
+      name: 03_Sleeve_Sweep_21
       rect:
         serializedVersion: 2
         x: 0
@@ -806,7 +806,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_02
+      name: 03_Sleeve_Sweep_22
       rect:
         serializedVersion: 2
         x: 128
@@ -822,7 +822,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_03
+      name: 03_Sleeve_Sweep_23
       rect:
         serializedVersion: 2
         x: 256
@@ -838,7 +838,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_04
+      name: 03_Sleeve_Sweep_24
       rect:
         serializedVersion: 2
         x: 384
@@ -854,7 +854,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_05
+      name: 03_Sleeve_Sweep_25
       rect:
         serializedVersion: 2
         x: 512
@@ -870,7 +870,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_06
+      name: 03_Sleeve_Sweep_26
       rect:
         serializedVersion: 2
         x: 640
@@ -886,7 +886,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 09_Sleeve_Hit3_End_07
+      name: 03_Sleeve_Sweep_27
       rect:
         serializedVersion: 2
         x: 768
@@ -902,7 +902,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 10_Vulnerable_01
+      name: 04_Vulnerable_01
       rect:
         serializedVersion: 2
         x: 0
@@ -918,7 +918,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 10_Vulnerable_02
+      name: 04_Vulnerable_02
       rect:
         serializedVersion: 2
         x: 128
@@ -934,7 +934,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 10_Vulnerable_03
+      name: 04_Vulnerable_03
       rect:
         serializedVersion: 2
         x: 256
@@ -950,7 +950,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 11_GetUp_01
+      name: 05_GetUp_01
       rect:
         serializedVersion: 2
         x: 384
@@ -966,7 +966,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 11_GetUp_02
+      name: 05_GetUp_02
       rect:
         serializedVersion: 2
         x: 512
@@ -982,7 +982,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 11_GetUp_03
+      name: 05_GetUp_03
       rect:
         serializedVersion: 2
         x: 640
@@ -998,7 +998,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 11_GetUp_04
+      name: 05_GetUp_04
       rect:
         serializedVersion: 2
         x: 768
@@ -1014,7 +1014,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_01
+      name: 06_Lotus_2_01
       rect:
         serializedVersion: 2
         x: 0
@@ -1030,7 +1030,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_02
+      name: 06_Lotus_2_02
       rect:
         serializedVersion: 2
         x: 128
@@ -1046,7 +1046,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_03
+      name: 06_Lotus_2_03
       rect:
         serializedVersion: 2
         x: 256
@@ -1062,7 +1062,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_04
+      name: 06_Lotus_2_04
       rect:
         serializedVersion: 2
         x: 384
@@ -1078,7 +1078,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_05
+      name: 06_Lotus_2_05
       rect:
         serializedVersion: 2
         x: 512
@@ -1094,7 +1094,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_06
+      name: 06_Lotus_2_06
       rect:
         serializedVersion: 2
         x: 640
@@ -1110,7 +1110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 12_Lotus_2_07
+      name: 06_Lotus_2_07
       rect:
         serializedVersion: 2
         x: 768
@@ -1126,7 +1126,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_01
+      name: 07_Lotus_1_01
       rect:
         serializedVersion: 2
         x: 0
@@ -1142,7 +1142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_02
+      name: 07_Lotus_1_02
       rect:
         serializedVersion: 2
         x: 128
@@ -1158,7 +1158,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_03
+      name: 07_Lotus_1_03
       rect:
         serializedVersion: 2
         x: 256
@@ -1174,7 +1174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_04
+      name: 07_Lotus_1_04
       rect:
         serializedVersion: 2
         x: 384
@@ -1190,7 +1190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_05
+      name: 07_Lotus_1_05
       rect:
         serializedVersion: 2
         x: 512
@@ -1206,7 +1206,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_06
+      name: 07_Lotus_1_06
       rect:
         serializedVersion: 2
         x: 640
@@ -1222,7 +1222,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_07
+      name: 07_Lotus_1_07
       rect:
         serializedVersion: 2
         x: 768
@@ -1238,7 +1238,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: 13_Lotus_1_08
+      name: 07_Lotus_1_08
       rect:
         serializedVersion: 2
         x: 896
@@ -1271,52 +1271,52 @@ TextureImporter:
       02_Walk_05: 21300024
       02_Walk_06: 21300026
       02_Walk_07: 21300028
-      03_Sleeve_Windup_01: 21300032
-      03_Sleeve_Windup_02: 21300034
-      03_Sleeve_Windup_03: 21300036
-      03_Sleeve_Windup_04: 21300038
-      04_Sleeve_Hit1_01: 21300040
-      04_Sleeve_Hit1_02: 21300042
-      04_Sleeve_Hit1_03: 21300044
-      04_Sleeve_Hit1_04: 21300046
-      05_Sleeve_Hit1To2_01: 21300048
-      05_Sleeve_Hit1To2_02: 21300050
-      05_Sleeve_Hit1To2_03: 21300052
-      06_Sleeve_Hit2_01: 21300054
-      06_Sleeve_Hit2_02: 21300056
-      06_Sleeve_Hit2_03: 21300058
-      06_Sleeve_Hit2_04: 21300060
-      07_Sleeve_Hit2To3_01: 21300064
-      08_Sleeve_Hit3_01: 21300066
-      08_Sleeve_Hit3_02: 21300068
-      08_Sleeve_Hit3_03: 21300070
-      08_Sleeve_Hit3_04: 21300072
-      09_Sleeve_Hit3_End_01: 21300080
-      09_Sleeve_Hit3_End_02: 21300082
-      09_Sleeve_Hit3_End_03: 21300084
-      09_Sleeve_Hit3_End_04: 21300086
-      09_Sleeve_Hit3_End_05: 21300088
-      09_Sleeve_Hit3_End_06: 21300090
-      09_Sleeve_Hit3_End_07: 21300092
-      10_Vulnerable_01: 21300096
-      10_Vulnerable_02: 21300098
-      10_Vulnerable_03: 21300100
-      11_GetUp_01: 21300102
-      11_GetUp_02: 21300104
-      11_GetUp_03: 21300106
-      11_GetUp_04: 21300108
-      12_Lotus_2_01: 21300112
-      12_Lotus_2_02: 21300114
-      12_Lotus_2_03: 21300116
-      12_Lotus_2_04: 21300118
-      12_Lotus_2_05: 21300120
-      12_Lotus_2_06: 21300122
-      12_Lotus_2_07: 21300124
-      13_Lotus_1_01: 21300128
-      13_Lotus_1_02: 21300130
-      13_Lotus_1_03: 21300132
-      13_Lotus_1_04: 21300134
-      13_Lotus_1_05: 21300136
-      13_Lotus_1_06: 21300138
-      13_Lotus_1_07: 21300140
-      13_Lotus_1_08: 21300142
+      03_Sleeve_Sweep_01: 21300032
+      03_Sleeve_Sweep_02: 21300034
+      03_Sleeve_Sweep_03: 21300036
+      03_Sleeve_Sweep_04: 21300038
+      03_Sleeve_Sweep_05: 21300040
+      03_Sleeve_Sweep_06: 21300042
+      03_Sleeve_Sweep_07: 21300044
+      03_Sleeve_Sweep_08: 21300046
+      03_Sleeve_Sweep_09: 21300048
+      03_Sleeve_Sweep_10: 21300050
+      03_Sleeve_Sweep_11: 21300052
+      03_Sleeve_Sweep_12: 21300054
+      03_Sleeve_Sweep_13: 21300056
+      03_Sleeve_Sweep_14: 21300058
+      03_Sleeve_Sweep_15: 21300060
+      03_Sleeve_Sweep_16: 21300064
+      03_Sleeve_Sweep_17: 21300066
+      03_Sleeve_Sweep_18: 21300068
+      03_Sleeve_Sweep_19: 21300070
+      03_Sleeve_Sweep_20: 21300072
+      03_Sleeve_Sweep_21: 21300080
+      03_Sleeve_Sweep_22: 21300082
+      03_Sleeve_Sweep_23: 21300084
+      03_Sleeve_Sweep_24: 21300086
+      03_Sleeve_Sweep_25: 21300088
+      03_Sleeve_Sweep_26: 21300090
+      03_Sleeve_Sweep_27: 21300092
+      04_Vulnerable_01: 21300096
+      04_Vulnerable_02: 21300098
+      04_Vulnerable_03: 21300100
+      05_GetUp_01: 21300102
+      05_GetUp_02: 21300104
+      05_GetUp_03: 21300106
+      05_GetUp_04: 21300108
+      06_Lotus_2_01: 21300112
+      06_Lotus_2_02: 21300114
+      06_Lotus_2_03: 21300116
+      06_Lotus_2_04: 21300118
+      06_Lotus_2_05: 21300120
+      06_Lotus_2_06: 21300122
+      06_Lotus_2_07: 21300124
+      07_Lotus_1_01: 21300128
+      07_Lotus_1_02: 21300130
+      07_Lotus_1_03: 21300132
+      07_Lotus_1_04: 21300134
+      07_Lotus_1_05: 21300136
+      07_Lotus_1_06: 21300138
+      07_Lotus_1_07: 21300140
+      07_Lotus_1_08: 21300142

@@ -10,19 +10,17 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         private BossStateMachine stateMachine;
         private IHaveDealTime _dealTime;
         public RedbeanMouseIdle(AbstractStateMachine _stateMachine, string anim, 
-            RenderModule _renderMd, RedbeanController owner, IHaveDealTime dealTimeCheck) 
+            RenderModule _renderMd, RedbeanController owner) 
             : base(_stateMachine, anim,_renderMd)
         {
             _owner = owner;
             stateMachine = base.stateMachine as BossStateMachine;
-            _dealTime = dealTimeCheck;
         }
 
         public override void UpdateState()
         {
             base.UpdateState();
-            if (!_dealTime.IsDealTime())
-                stateMachine.ChangeState(StateEnum.Chase);
+            stateMachine.ChangeState(StateEnum.Chase);
         }
     }
 }
