@@ -30,7 +30,10 @@ namespace Key._00.Scripts.Skill {
         private LotusFlowerAnimation[] _animators;
 
         public void Initialize(Vector2 dir, AttackSettingSO setting, Vector3 pos) {
-                _animators = gameObject.GetComponentsInChildren<LotusFlowerAnimation>();
+            _animators = new LotusFlowerAnimation[flowers.Length];
+            for (int i = 0; i < flowers.Length; i++) {
+                _animators[i] = flowers[i].GetComponentInChildren<LotusFlowerAnimation>();
+            }
             
             transform.position = pos;
             foreach (Rigidbody2D flower in flowers) {
@@ -55,7 +58,12 @@ namespace Key._00.Scripts.Skill {
             for (int i = 0; i < flowers.Length; i++) {
                 yield return flowerCoroutines[i];
                 Explode(flowers[i].position, attackSetting.Damage * attackScale[i]);
-                _animators[i].SetDead();                
+
+                _animators[i].SetDead();
+                while (!_animators[i].IsEnd) {
+                    yield return null;
+                }
+
                 Destroy(flowers[i].gameObject);
 
                 if (i < flowers.Length - 1) {
