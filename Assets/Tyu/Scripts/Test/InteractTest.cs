@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Test
 {
-    public class InteractTest : MonoBehaviour, IInteratable
+    public class InteractTest : MonoBehaviour, IInteractable
     {
         public void InteractEffect()
         {

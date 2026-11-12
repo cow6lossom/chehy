@@ -27,7 +27,7 @@ namespace Tyu.Scripts.Boss
         public PatternCoolTimer(AttackSettingSO setting)
         {
             _lastAtkTime = 0f;
-            _coolTime = setting.Cooltime;
+            _coolTime = setting.CoolTime;
         }
         
         public bool CheckCoolTime()

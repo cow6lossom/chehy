@@ -1,4 +1,5 @@
-﻿using PrimeTween;
+﻿using System.Collections.Generic;
+using PrimeTween;
 using Tyu.Modules;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.Modules;
@@ -7,20 +8,20 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public class RedBeanMouseSoMaeSlash : AttackState
+    public class RedBeanMouseSoMaeSlash : HavingAnimeState
     {
         private RedbeanController _owner;
         private int _attackCount;
         private AttackSettingSO _firAttack;
         private AttackSettingSO _lastAttack;
         
-        public RedBeanMouseSoMaeSlash(AbstractStateMachine _stateMachine, string anim, AttackModule attackMd, RenderModule renderMd, 
-            RedbeanController owner,PatternCoolTimeChecker coolChecker,AttackSettingSO one, AttackSettingSO two) : base(_stateMachine, anim, attackMd, renderMd, coolChecker)
+        public RedBeanMouseSoMaeSlash(AbstractStateMachine _stateMachine, string anim,
+            RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
         {
             _owner = owner;
-            _firAttack = one;
-            _lastAttack = two;
-            _coolChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
+            GetDatas.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
+            GetDatas.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
+            _owner.CoolTimeChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
         }
 
         public override void Enter()
@@ -36,7 +37,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             _attackCount = 0;
             base.Exit();
-            _coolChecker.ResetLastAtk(StateEnum.SoMeaAttack);
+            _owner.CoolTimeChecker.ResetLastAtk(StateEnum.SoMeaAttack);
+            _owner.ResetLastAttack(_firAttack.DealTime);
         }
 
         public override void AnimationCallback()
@@ -45,14 +47,18 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             {
                 case 0:
                 case 1:
-                    _attackMd.TryAttack(_firAttack);
+                    _owner.attackMd.TryAttack(_firAttack);
                     break;
                 case 2:
-                    _attackMd.TryAttack(_lastAttack);
+                    _owner.attackMd.TryAttack(_lastAttack);
                     break;
             }
 
             _attackCount++;
         }
+        /*
+         * 死ぬなら電車は止めないように！
+         * はぁ殺してやるよ。。。
+         */
     }
 }

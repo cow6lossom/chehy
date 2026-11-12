@@ -4,12 +4,15 @@ namespace Tyu.Scripts.Boss.FSM
     {
         
         Idle,
-        Move,
+        Chase,
+        Phase2,
 
         #region RedBeanMouse
 
-        SoMeaAttack
-
+        SoMeaAttack,
+        Stab,
+        Lotus1,
+        Lotus2,
         #endregion
     }
 }
