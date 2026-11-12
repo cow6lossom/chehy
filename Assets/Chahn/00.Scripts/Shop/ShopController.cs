@@ -169,6 +169,21 @@ public class ShopController : MonoBehaviour
         offer.MarkPurchased();
         return true;
     }
+
+    public bool TryGetSellPrice(PassiveBase passive, out int sellPrice)
+    {
+        sellPrice = 0;
+
+        if (passive == null || passive.Data == null || shopConfig == null)
+            return false;
+
+        foreach (ShopLevelConfig config in shopConfig.LevelConfigs)
+        {
+              
+        }
+
+        return false;
+    }
 }
 
 

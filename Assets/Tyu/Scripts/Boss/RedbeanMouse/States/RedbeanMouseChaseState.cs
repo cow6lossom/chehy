@@ -45,7 +45,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _owner.moveMd.SetMoveDir(dir.normalized);
         }
 
-        
+        public override void Enter()
+        {
+            base.Enter();
+            _owner.moveMd.StartMove();
+        }
 
         public override void Exit()
         {

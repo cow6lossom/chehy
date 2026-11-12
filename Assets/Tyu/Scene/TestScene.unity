@@ -507,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &923017789
 SpriteRenderer:
   serializedVersion: 3
@@ -760,6 +760,7 @@ Transform:
   - {fileID: 339795808}
   - {fileID: 1925413075}
   - {fileID: 912615904}
+  - {fileID: 1566364562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1269241960
@@ -776,13 +777,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.Boss.RedbeanMouse.RedbeanController
   <attackMd>k__BackingField: {fileID: 1925413074}
   <healthMd>k__BackingField: {fileID: 912615903}
-  <bossStat>k__BackingField: {fileID: 0}
-  <renderMd>k__BackingField: {fileID: 0}
-  <moveMd>k__BackingField: {fileID: 0}
-  firAttacks: []
+  <bossStat>k__BackingField: {fileID: 11400000, guid: bab5f82d17aa1f744865f9984dcf6e61, type: 2}
+  <renderMd>k__BackingField: {fileID: 1698008033}
+  <moveMd>k__BackingField: {fileID: 1566364561}
+  dealTimeList: {fileID: 11400000, guid: a3085bdae70aff541ac79d37589d2798, type: 2}
+  firAttacks:
+  - {fileID: 0}
   secAttacks: []
   attackMoves: []
-  stat: {fileID: 0}
+--- !u!1 &1566364560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1566364562}
+  - component: {fileID: 1566364561}
+  m_Layer: 0
+  m_Name: MoveModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1566364561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566364560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a466306199f545e28de2fa2a75fe32c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.BossMoveModule
+--- !u!4 &1566364562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566364560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1269241959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1698008029
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +912,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8116745628450284637, guid: bbb884dd9676ff944bd8456b820be654, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87253286f7c94d52bee1885eba6e217f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -887,7 +933,7 @@ Animator:
   m_GameObject: {fileID: 1698008029}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd3ba8b9fa7644a4180e1a6fa9402401, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

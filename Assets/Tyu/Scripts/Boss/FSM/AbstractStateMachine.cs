@@ -33,9 +33,9 @@ namespace Tyu.Scripts.Boss.FSM
                 Debug.LogError("존재하지 않는 키값 대입 이유로 상태 추가 취소");
                 return;
             }
-            currentState.Enter();
-            currentState = value;
             currentState.Exit();
+            currentState = value;
+            currentState.Enter();
         }
 
         public virtual void UpdateState()

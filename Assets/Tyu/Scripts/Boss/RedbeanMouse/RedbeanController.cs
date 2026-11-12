@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Boss.RedbeanMouse
 {
-    public class RedbeanController : AbstractBoss, IStateMachine, IHaveDealTime
+    public class RedbeanController : AbstractBoss, IStateMachine
     {
+        [SerializeField] private DealTimeAnimListSO dealTimeList;
         [SerializeField] private List<AttackSettingSO> firAttacks;
         [SerializeField] private List<AttackSettingSO> secAttacks;
         [SerializeField] private List<AttackMoveSO> attackMoves;
-        [SerializeField] private StatementSettingSO stat;
-        private CanLockStateMachine _behaviourStateMachine;
+        private BossStateMachine _behaviourStateMachine;
         public GetNoneCoolAttackModule GetNoneCoolAttack { get; private set; }
         public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
         public float lastAtkTime { get; private set; }
@@ -23,19 +23,20 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             base.Initialize(_playerTrm);
             moveMd.Init();
-            moveMd.Speed = stat.FirSpeed;
+            moveMd.Speed = bossStat.FirSpeed;
             healthMd.OnSecondPhase += SecondPhase;
             CoolTimeChecker = new PatternCoolTimeChecker();
-            _behaviourStateMachine = new CanLockStateMachine(this);
+            _behaviourStateMachine = new BossStateMachine(this);
             _behaviourStateMachine.AddState(StateEnum.Idle, new RedbeanMouseIdle(_behaviourStateMachine, "Idle",
-                renderMd, this, this));
+                renderMd, this));
             _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Chase",
                 renderMd, this, firAttacks, secAttacks));
             _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "Somea",
                 this, renderMd, firAttacks));
-            _behaviourStateMachine.AddState(StateEnum.Stab, new RedbeanMouseManyStab(_behaviourStateMachine, "Stab",
-                renderMd, this, firAttacks, attackMoves));
+            // _behaviourStateMachine.AddState(StateEnum.Stab, new RedbeanMouseManyStab(_behaviourStateMachine, "Stab",
+            //     renderMd, this, firAttacks, attackMoves));
 
+            var dealTime = new DealTimeState(_behaviourStateMachine, renderMd, moveMd, dealTimeList);
 
             GetNoneCoolAttack = new GetNoneCoolAttackModule(CoolTimeChecker);
         }
@@ -58,14 +59,6 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             _behaviourStateMachine.CallbackTrigger();
         }
-
-        public void ResetLastAttack(float dealTimeSet) //딜타임 초기화
-        {
-            lastAtkTime = Time.time;
-            dealTime = dealTimeSet;
-        }
-        public bool IsDealTime() => lastAtkTime + dealTime <= Time.time;
-
         private void Update()
         {
         }
