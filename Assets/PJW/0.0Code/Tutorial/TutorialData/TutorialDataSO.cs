@@ -8,8 +8,10 @@ public class TutorialDataSO : ScriptableObject
 
     [field:SerializeField]public TutorialType Type {  get; private set; }
 
+    [Min(1)]
     [field:SerializeField]public Vector3 Position { get; private set; }
 
+    [Min(1)]
     [field:SerializeField]public float Radius { get; private set; }
 }
 public enum TutorialType
