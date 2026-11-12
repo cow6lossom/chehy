@@ -957,7 +957,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 20
     m_Bottom: 80
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 80
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1035,7 +1035,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 1
+  m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 50, y: 50}
@@ -4488,7 +4488,6 @@ MonoBehaviour:
   passiveManager: {fileID: 1253972521}
   shopController: {fileID: 1088121349}
   passiveSelectionPanel: {fileID: 98380245}
-  closeSelectionPanelButton: {fileID: 511024610}
   selectedSlotPrefab: {fileID: -6299506728510865142, guid: b95329659af3b8747a96356e7e932432, type: 3}
   ownedSlotPrefab: {fileID: -3161423423575389907, guid: bdcebc801715ebc4f895942e5da8eb0a, type: 3}
   ownedSlotContainer: {fileID: 214082656}

@@ -69,7 +69,7 @@ namespace Chahn._00.Scripts.Shop
 
             foreach (ShopOfferSlotUI slot in offerSlots) //그 슬롯한테 이제 샀으니까 버튼 끄라고 함
             {
-                slot.SetPurchaseAvailable(false);
+                slot.SetPurchaseAvailable(true);
             }
         }
 

@@ -16,8 +16,6 @@ public class ShopController : MonoBehaviour
     private readonly List<ShopOffer> _currentOffers = new();
     public IReadOnlyList<ShopOffer> CurrentOffers => _currentOffers; //접근할때
     public event Action<IReadOnlyList<ShopOffer>> OnOffersGenerated;
-    
-    public bool HasPurchasedCurrentOffers => _currentOffers.Exists(x => x.IsPurchased);
 
     public void GenerateOffers()
     {
@@ -145,7 +143,7 @@ public class ShopController : MonoBehaviour
         
         if (!_currentOffers.Contains(offer)) return false;
 
-        if (HasPurchasedCurrentOffers) return false;
+        if (offer.IsPurchased) return false;
         
         if (currencyWallet == null || passiveManager == null) return false;
 

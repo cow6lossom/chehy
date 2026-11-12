@@ -13,7 +13,7 @@ public class ShopSellUI : MonoBehaviour
    
    [Header("SelectionPanel")]
    [SerializeField] private GameObject passiveSelectionPanel; //전체
-   [SerializeField] private Button closeSelectionPanelButton;
+
    
    [Header("Slot")]
    [SerializeField] private PassiveSlotUI selectedSlotPrefab;
@@ -35,21 +35,19 @@ public class ShopSellUI : MonoBehaviour
 
    private void Awake()
    {
-       addPassiveButton.onClick.AddListener(OpenSelectionPanel);
-       closeSelectionPanelButton.onClick.AddListener(CloseSelectionPanel);
+       addPassiveButton.onClick.AddListener(ActivateSelectionPanel);
        cancelSellButton.onClick.AddListener(ClearSelection);
    }
 
    private void OnEnable()
    {
        ClearSelection();
-       CloseSelectionPanel();
+       ActivateSelectionPanel();
    }
 
    private void OnDestroy()
    {
-       addPassiveButton.onClick.RemoveListener(OpenSelectionPanel);
-       closeSelectionPanelButton.onClick.RemoveListener(CloseSelectionPanel);
+       addPassiveButton.onClick.RemoveListener(ActivateSelectionPanel);
        cancelSellButton.onClick.RemoveListener(ClearSelection);
    }
    
@@ -96,7 +94,7 @@ public class ShopSellUI : MonoBehaviour
            selectedSlotInstances.Add(slot);
        }
        
-       addPassiveButton.transform.SetAsFirstSibling();
+       addPassiveButton.transform.SetAsLastSibling();
    }
 
    private void HandleSelectedPassiveRemoved(PassiveBase passive)
@@ -114,7 +112,7 @@ public class ShopSellUI : MonoBehaviour
        ClearSlotInstances(selectedSlotInstances);
        
        totalSellPriceText.text = "0";
-       addPassiveButton.transform.SetAsFirstSibling();
+       addPassiveButton.transform.SetAsLastSibling();
    }
 
    private void HandleOwnedPassiveSelected(PassiveBase passive)
@@ -124,21 +122,17 @@ public class ShopSellUI : MonoBehaviour
        
        selectedPassives.Add(passive);
        RefreshSelectedSlots();
-       CloseSelectionPanel();
+       ActivateSelectionPanel();
    }
 
 
-   private void OpenSelectionPanel()
+   private void ActivateSelectionPanel()
    {
+       bool isPanelOpened = passiveSelectionPanel.activeSelf;
+       passiveSelectionPanel.SetActive(!isPanelOpened);
        RefreshOwnedSlots();
-       passiveSelectionPanel.SetActive(true);
    }
-
-   private void CloseSelectionPanel()
-   {
-       passiveSelectionPanel.SetActive(false);
-       Debug.Log("close selection panel");
-   }
+   
 
    private void ClearSlotInstances(List<PassiveSlotUI> slotInstances)
    {
