@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,44 +7,42 @@ namespace Chahn._00.Scripts.Shop
 {
     public class ShopUI : MonoBehaviour
     {
-        [SerializeField] private ShopController shopController;
         [SerializeField] private ShopInteractable shopInteractable;
-        [SerializeField] private ShopOfferSlotUI[] offerSlots;
         [SerializeField] private GameObject shopPanel;
-        [SerializeField] private Button resetOfferButton;
         [SerializeField] private CurrencyWallet currencyWallet;
         [SerializeField] private TextMeshProUGUI coinText;
+        
+        [Header("UI Scripts")]
+        [SerializeField] private ShopBuyUI shopBuyUI;
+        [SerializeField] private ShopSellUI shopSellUI;
+        
+        [Header("Buttons")]
+        [SerializeField] private Button buyPanelButton;
+        [SerializeField] private Button sellPanelButton;
+        
+        
         private bool IsOpen => shopPanel.activeSelf;
 
         private void Awake()
         {
             shopInteractable.OnInteracted += Toggle;
-            shopController.OnOffersGenerated += DisplayOfferSlots;
-            resetOfferButton.onClick.AddListener(HandleRefreshButton);
             currencyWallet.OnCoinChanged += UpdateCoinText;
-
-            foreach (var slot in offerSlots)
-            {
-                slot.OnPurchaseRequested += HandlePurchaseRequested; //HandlePurchaseRequested 실행
-            }
+            
+            buyPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopBuyUI.gameObject));
+            sellPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopSellUI.gameObject));
+            
         }
 
         private void Start()
         {
             UpdateCoinText(currencyWallet.CurrentCoins);
+            shopPanel.SetActive(false);
         }
 
         private void OnDestroy()
         {
             shopInteractable.OnInteracted -= Toggle;
-            shopController.OnOffersGenerated -= DisplayOfferSlots;
-            resetOfferButton.onClick.RemoveListener(HandleRefreshButton);
             currencyWallet.OnCoinChanged -= UpdateCoinText;
-            
-            foreach (var slot in offerSlots)
-            {
-                slot.OnPurchaseRequested -= HandlePurchaseRequested; //HandlePurchaseRequested 실행
-            }
         }
         
 
@@ -57,35 +54,25 @@ namespace Chahn._00.Scripts.Shop
                 return;
             }
 
-            shopController.EnsureOffersGenerated();
+            MainShopPanelEnabled();
+        }
+
+        private void MainShopPanelEnabled()
+        {
+            if (shopBuyUI == null || shopSellUI == null) return;
+            
+            SetActiveTargetPanel(shopBuyUI.gameObject);
             shopPanel.SetActive(true);
         }
 
-        private void HandlePurchaseRequested(ShopOffer offer) //Invoke 되면 어떤 슬롯에서 정보를 받았는지 받고 어떤 패시브인지도
+        private void SetActiveTargetPanel(GameObject targetPanel)
         {
-            bool succeeded = shopController.TryPurchaseOffer(offer);
-
-            if (!succeeded) return;
-
-            foreach (ShopOfferSlotUI slot in offerSlots) //그 슬롯한테 이제 샀으니까 버튼 끄라고 함
-            {
-                slot.SetPurchaseAvailable(true);
-            }
+            shopBuyUI.gameObject.SetActive(shopBuyUI.gameObject == targetPanel);
+            shopSellUI.gameObject.SetActive(shopSellUI.gameObject == targetPanel);
         }
-
-        private void DisplayOfferSlots(IReadOnlyList<ShopOffer> offers)
-        {
-            for (int i = 0; i < offerSlots.Length; i++)
-            {
-                offerSlots[i].Bind(offers[i]);
-            }
-        }
-
-
-        private void HandleRefreshButton()
-        {
-            shopController.TryRefreshOffers();
-        }
+        
+        
+        
 
         private void Update()
         {

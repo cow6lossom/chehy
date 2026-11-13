@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Chahn._00.Scripts.Shop;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -168,19 +169,51 @@ public class ShopController : MonoBehaviour
         return true;
     }
 
-    public bool TryGetSellPrice(PassiveBase passive, out int sellPrice)
+    public int GetSellPrice(PassiveBase passive)
     {
-        sellPrice = 0;
+        if (passive == null || shopConfig == null) return 0;
 
-        if (passive == null || passive.Data == null || shopConfig == null)
-            return false;
-
-        foreach (ShopLevelConfig config in shopConfig.LevelConfigs)
+        foreach (var config in shopConfig.LevelConfigs)
         {
-              
+            if (config == null) continue;
+            
+            if (config.Level == passive.Level) 
+                return config.SellPrice;
+        }
+        
+        return 0;
+    }
+    
+    public bool TrySellPassives(IReadOnlyList<PassiveBase> passives)
+    {
+        if (passives == null || 
+            passives.Count == 0 || 
+            passiveManager == null ||
+            currencyWallet == null ||
+            shopConfig == null) return false;
+        
+        int totalSellPrice = 0;
+
+        foreach (PassiveBase passive in passives)
+        {
+            if (passive == null) return false;
+            if (!passiveManager.OwnedPassives.Contains(passive)) return false;
+            
+            int sellPrice = GetSellPrice(passive);
+            
+            if (sellPrice <= 0) return false;
+            
+            totalSellPrice += sellPrice;
         }
 
-        return false;
+        foreach (PassiveBase passive in passives)
+        {
+            if (!passiveManager.RemovePassive(passive))
+                return false;
+        }
+        
+        currencyWallet.Add(totalSellPrice);
+        return true;
     }
 }
 

@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class ShopSellUI : MonoBehaviour
 {
 
-   [Header("Managers")]
+   [Header("Manager & Controller")]
    [SerializeField] private PassiveManager passiveManager;
    [SerializeField] private ShopController shopController;
    
    [Header("SelectionPanel")]
    [SerializeField] private GameObject passiveSelectionPanel; //전체
-
    
    [Header("Slot")]
    [SerializeField] private PassiveSlotUI selectedSlotPrefab;
@@ -28,27 +27,30 @@ public class ShopSellUI : MonoBehaviour
    
    [Header("Text")]
    [SerializeField] private TextMeshProUGUI totalSellPriceText;
-
+   
    private readonly List<PassiveBase> selectedPassives = new(); //판매하려고 선택한 패시브
    private readonly List<PassiveSlotUI> ownedSlotInstances = new(); //코드로 생성한 보유 패시브 슬롯
    private readonly List<PassiveSlotUI> selectedSlotInstances = new(); //코드로 생성한 선택한 패시브 슬롯
-
+   private int TotalSellPrice { get; set; }
+   
    private void Awake()
    {
-       addPassiveButton.onClick.AddListener(ActivateSelectionPanel);
+       addPassiveButton.onClick.AddListener(ToggleSelectionPanel);
        cancelSellButton.onClick.AddListener(ClearSelection);
+       confirmSellButton.onClick.AddListener(HandleConfirmSell);
    }
 
    private void OnEnable()
    {
        ClearSelection();
-       ActivateSelectionPanel();
+       passiveSelectionPanel.SetActive(false);
    }
 
    private void OnDestroy()
    {
-       addPassiveButton.onClick.RemoveListener(ActivateSelectionPanel);
+       addPassiveButton.onClick.RemoveListener(ToggleSelectionPanel);
        cancelSellButton.onClick.RemoveListener(ClearSelection);
+       confirmSellButton.onClick.RemoveListener(HandleConfirmSell);
    }
    
 
@@ -84,7 +86,8 @@ public class ShopSellUI : MonoBehaviour
    private void RefreshSelectedSlots()
    {
        ClearSlotInstances(selectedSlotInstances);
-
+       
+       TotalSellPrice = 0;
        foreach (PassiveBase passive in selectedPassives)
        {
            PassiveSlotUI slot = Instantiate(selectedSlotPrefab, selectedSlotContainer);
@@ -92,9 +95,17 @@ public class ShopSellUI : MonoBehaviour
            slot.SetPassive(passive, HandleSelectedPassiveRemoved);
            
            selectedSlotInstances.Add(slot);
+           
+           TotalSellPrice += shopController.GetSellPrice(passive);
        }
        
+       totalSellPriceText.SetText(TotalSellPrice.ToString());
        addPassiveButton.transform.SetAsLastSibling();
+       
+       if (selectedPassives.Count <= 0) 
+           confirmSellButton.interactable = false;
+       else
+           confirmSellButton.interactable = true;
    }
 
    private void HandleSelectedPassiveRemoved(PassiveBase passive)
@@ -103,16 +114,24 @@ public class ShopSellUI : MonoBehaviour
            return;
        
        selectedPassives.Remove(passive);
+       
        RefreshSelectedSlots();
+   }
+
+   private void HandleConfirmSell()
+   {
+       if (selectedPassives.Count <= 0) return;
+       
+       if (shopController.TrySellPassives(selectedPassives))
+       {
+           ClearSelection();
+       }
    }
 
    private void ClearSelection()
    {
        selectedPassives.Clear();
-       ClearSlotInstances(selectedSlotInstances);
-       
-       totalSellPriceText.text = "0";
-       addPassiveButton.transform.SetAsLastSibling();
+       RefreshSelectedSlots();
    }
 
    private void HandleOwnedPassiveSelected(PassiveBase passive)
@@ -122,15 +141,17 @@ public class ShopSellUI : MonoBehaviour
        
        selectedPassives.Add(passive);
        RefreshSelectedSlots();
-       ActivateSelectionPanel();
+       
+       ToggleSelectionPanel();
    }
 
-
-   private void ActivateSelectionPanel()
+   private void ToggleSelectionPanel()
    {
        bool isPanelOpened = passiveSelectionPanel.activeSelf;
        passiveSelectionPanel.SetActive(!isPanelOpened);
-       RefreshOwnedSlots();
+       
+       if (!isPanelOpened) 
+           RefreshOwnedSlots();
    }
    
 
