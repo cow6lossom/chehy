@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace Chahn._00.Scripts.Shop
@@ -15,6 +16,7 @@ namespace Chahn._00.Scripts.Shop
         [Header("UI Scripts")]
         [SerializeField] private ShopBuyUI shopBuyUI;
         [SerializeField] private ShopSellUI shopSellUI;
+        [SerializeField] private ShopHealUI shopHealUI;
         
         [Header("Buttons")]
         [SerializeField] private Button buyPanelButton;
@@ -59,9 +61,11 @@ namespace Chahn._00.Scripts.Shop
 
         private void MainShopPanelEnabled()
         {
-            if (shopBuyUI == null || shopSellUI == null) return;
+            if (shopHealUI == null || shopBuyUI == null || shopSellUI == null) return;
             
             SetActiveTargetPanel(shopBuyUI.gameObject);
+            
+            shopHealUI.gameObject.SetActive(true);
             shopPanel.SetActive(true);
         }
 
@@ -70,8 +74,6 @@ namespace Chahn._00.Scripts.Shop
             shopBuyUI.gameObject.SetActive(shopBuyUI.gameObject == targetPanel);
             shopSellUI.gameObject.SetActive(shopSellUI.gameObject == targetPanel);
         }
-        
-        
         
 
         private void Update()

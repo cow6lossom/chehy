@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Chahn._00.Scripts.Shop
 {
-    public sealed class ShopOffer //이번 상점에 제시된 판매 상품 (모음 아닌 indivisual)
+    public sealed class ShopOffer //이번 상점에 제시된 판매 상품 (모음 아닌 individual)
     {
         public PassiveData PassiveData { get; private set; }
         public int Level { get; }
