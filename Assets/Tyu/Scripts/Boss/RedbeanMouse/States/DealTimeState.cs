@@ -19,6 +19,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         
         public DealTimeState(AbstractStateMachine _stateMachine, RenderModule renderMd, BossMoveModule moveMd, DealTimeAnimListSO data) : base(_stateMachine)
         {
+            _dealTimeAnimDict = new();
             _renderMd = renderMd;
             _moveMd = moveMd;
             foreach (var anim in data.DealTimeAnims)

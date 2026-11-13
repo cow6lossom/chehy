@@ -32,16 +32,19 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.UpdateState();
             if (!_owner._isSecPhase)
             {
-                if (!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _firAttacks, out var data))
+                if (_owner.GetNoneCoolAttack.TryGetAttackData(distance, _firAttacks, out var data))
+                {
+                    Debug.Log(7);
                     stateMachine.ChangeState(data.Type);
+                }
             }
             else
             {
-                if(!_owner.GetNoneCoolAttack.TryGetAttackData(distance, _secAttacks, out var data))
+                if(_owner.GetNoneCoolAttack.TryGetAttackData(distance, _secAttacks, out var data))
                     stateMachine.ChangeState(data.Type);
             }
-                
             
+            renderMd.FlipX(dir);
             _owner.moveMd.SetMoveDir(dir.normalized);
         }
 

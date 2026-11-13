@@ -1,9 +1,10 @@
-﻿using Tyu.Scripts.Results;
-
-namespace Tyu.Scripts
+﻿namespace Tyu.Scripts.Modules
 {
-    public interface IHealthHavable
+    public interface IHealthHavable : IDamageable
     {
-        void GetDamage(float damage);
+        public float GetCurrentHp();
+        public float GetMaxHp();
+        public void HealHp(float value);
+        public HealthModule GetHealthModule();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Key._00.Scripts.Skill {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class LotusFlower : MonoBehaviour, IHealthHavable {
+    public class LotusFlower : MonoBehaviour, IDamageable {
         [Header("Lotus Flower")]
         [SerializeField] private float MaxHP = 10f;
         [SerializeField] private float speed = 3f;
@@ -37,10 +37,9 @@ namespace Key._00.Scripts.Skill {
             }
             
             _animator =  GetComponentInChildren<LotusFlowerAnimation>();
-
             _currentFlower = this;
             transform.position = pos;
-            rigid.position = pos;
+            
             currentHP = MaxHP;
             _playerTrm = pTrm;
             attackSetting = setting;
@@ -62,7 +61,10 @@ namespace Key._00.Scripts.Skill {
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
+            if (currentHP <= 0) return;
             if (!other.TryGetComponent(out Player player)) return;
+            
+            _animator.SetCatch();
 
             StopAllCoroutines();
             StartCoroutine(AttackCoroutine());
@@ -107,7 +109,19 @@ namespace Key._00.Scripts.Skill {
             currentHP = 0;
             rigid.linearVelocity = Vector2.zero;
             StopAllCoroutines();
-            
+
+            if (_currentFlower == this)
+                _currentFlower = null;
+
+            StartCoroutine(DieCoroutine());
+        }
+
+        private IEnumerator DieCoroutine() {
+            _animator.SetDead();
+            while (!_animator.IsEnd) {
+                yield return null;
+            }
+
             Destroy(gameObject); // 풀링 할 거면 나중에 수정 
         }
 
