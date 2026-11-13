@@ -10,6 +10,7 @@ namespace Tyu.Scripts.Modules
 
         protected float MaxHp;
         protected float _currentHp;
+        public event Action<float> OnHpChanged;
         public event Action OnDamaged;
         public event Action OnDeath;
         protected IDamageable _owner;
