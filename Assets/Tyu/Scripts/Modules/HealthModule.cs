@@ -8,8 +8,8 @@ namespace Tyu.Scripts.Modules
     public class HealthModule : MonoBehaviour
     {
 
-        protected float MaxHp;
-        protected float _currentHp;
+        public float MaxHp { get; protected set; }
+        public float _currentHp { get; protected set; }
         public event Action<float> OnHpChanged;
         public event Action OnDamaged;
         public event Action OnDeath;
@@ -21,7 +21,6 @@ namespace Tyu.Scripts.Modules
             _currentHp = MaxHp;
             _owner = owner;
         }
-
         public virtual void GetDamage(float damage)
         {
             _currentHp -= damage;
@@ -33,7 +32,6 @@ namespace Tyu.Scripts.Modules
             }
             OnHpChanged?.Invoke(_currentHp);
         }
-
         public virtual void HealHp(float value)
         {
             _currentHp += value;
