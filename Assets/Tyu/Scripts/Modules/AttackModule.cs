@@ -28,7 +28,7 @@ namespace Tyu.Modules
                 {
                     var target = _resultArray[i];
                     Debug.Log(122323);
-                    if (target.TryGetComponent<IHealthHavable>(out var compo))
+                    if (target.TryGetComponent<IDamageable>(out var compo))
                         compo.GetDamage(data.Damage);
                 }
         }

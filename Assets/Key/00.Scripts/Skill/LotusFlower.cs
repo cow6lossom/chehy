@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Key._00.Scripts.Skill {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class LotusFlower : MonoBehaviour, IHealthHavable {
+    public class LotusFlower : MonoBehaviour, IDamageable {
         [Header("Lotus Flower")]
         [SerializeField] private float MaxHP = 10f;
         [SerializeField] private float speed = 3f;
