@@ -20,8 +20,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public bool _isSecPhase { get; private set; }
         [SerializeField] private Transform player;
 
-        [ContextMenu("Test")]
-        private void Init() => Initialize(player);
+        private void Start()=> Initialize(player);
         
         public override void Initialize(Transform _playerTrm)
         {
@@ -35,7 +34,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                 renderMd, this));
             _behaviourStateMachine.AddState(StateEnum.Chase, new RedbeanMouseChaseState(_behaviourStateMachine, "Walk",
                 renderMd, this, firAttacks, secAttacks));
-            _behaviourStateMachine.AddState(StateEnum.SoMeaAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SleeveAttack",
+            _behaviourStateMachine.AddState(StateEnum.SleeveAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SleeveAttack",
                 this, renderMd, firAttacks));
             // _behaviourStateMachine.AddState(StateEnum.Stab, new RedbeanMouseManyStab(_behaviourStateMachine, "Stab",
             //     renderMd, this, firAttacks, attackMoves));
@@ -73,6 +72,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         public Vector2 GetDirToPlayer()
         {
+            Debug.Log("used");
             return (TargetPlayer.position - transform.position).normalized;
         }
 

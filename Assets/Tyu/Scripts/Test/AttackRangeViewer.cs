@@ -15,11 +15,13 @@ namespace Tyu.Scripts.Test
             Gizmos.color = Color.red;
             Matrix4x4 basicMatrix = Gizmos.matrix;
             Gizmos.matrix = Matrix4x4.TRS(
-                (Vector2)transform.position + (Vector2)(transform.right * settingSo.Distance),
+                (Vector2)transform.position,
                 Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z),
                 Vector3.one
             );
-            Gizmos.DrawWireCube(Vector2.zero, settingSo.Size);
+
+            var isRight = transform.right.x > 0;
+            Gizmos.DrawWireCube(Vector2.zero + settingSo.Pos * new Vector2(isRight ? 1 :-1, 1), settingSo.Size);
 
             Gizmos.matrix = basicMatrix;
             

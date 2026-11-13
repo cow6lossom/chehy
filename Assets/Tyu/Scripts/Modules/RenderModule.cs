@@ -18,7 +18,7 @@ namespace Tyu.Scripts.Modules
         public void FlipX(Vector2 dir)
         {
             dir = dir.normalized;
-            _flipTarget.rotation = new Quaternion(0f, MathF.Sign(dir.x) > 0 ? 180 : 0, 0f, 0f);
+            _flipTarget.rotation = new Quaternion(0f, MathF.Sign(dir.x) > 0 ? 0 : 180, 0f, 0f);
         }
         
         public void EndTrigger() => _machine.EndTrigger();
