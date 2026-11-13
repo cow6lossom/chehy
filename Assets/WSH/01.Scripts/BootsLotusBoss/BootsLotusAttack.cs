@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Shaders;
 using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
@@ -14,17 +17,36 @@ namespace WSH._01.Scripts.BootsLotusBoss
 
         [Header("BossStatSO")] public BossListSO List;
 
-        private ISkill _currentSkill;
+        [Header("Number")]
+        [SerializeField] private int _currentOrder;
+        [SerializeField] private float _duringTime;
+        
+        public event Action OnDead;
         
         private void Awake()
         {
             Initialize();
+            SkillWork();
+        }
+
+        private void OnEnable()
+        {
+            OnDead += _lotusGrudge.Dead;
+            OnDead += _waterPillar.Dead;
+            OnDead += _pondHand.Dead;
+        }
+
+        private void OnDisable()
+        {
+            OnDead -= _lotusGrudge.Dead;
+            OnDead -= _waterPillar.Dead;
+            OnDead -= _pondHand.Dead;
         }
 
         void Initialize()
         {
             InitializeCompo();
-            InitializeValue();
+            // InitializeValue();
         }
         
         void InitializeCompo()
@@ -43,9 +65,35 @@ namespace WSH._01.Scripts.BootsLotusBoss
             _dontTouch.GetBossStat(List.list[3]);
         }
 
-        void SkillWork()
+        public void SkillWork()
         {
-            _currentSkill.Attack();
+            if (_currentOrder == 0)
+            {
+                _lotusGrudge.StartCoroutine(_lotusGrudge.NoticeTime());
+            }
+            else if (_currentOrder == 1)
+            {
+                _waterPillar.StartCoroutine(_lotusGrudge.NoticeTime());
+            }
+        }
+
+        public IEnumerator NextSkill()
+        {
+            _currentOrder++;
+            if (_currentOrder >= 2) _currentOrder = 0;
+            
+            yield return new WaitForSeconds(_duringTime);
+            SkillWork();
+        }
+
+        public void RaiseDead()
+        {
+            OnDead?.Invoke();
+        }
+
+        public void ChangeSkill(int skillNumber)
+        {
+            _currentOrder = skillNumber;
         }
     }
 }

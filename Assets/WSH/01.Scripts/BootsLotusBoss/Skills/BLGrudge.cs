@@ -2,10 +2,12 @@ using System.Collections;
 using Key._00.Scripts;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.Modules;
+using Unity.VisualScripting;
 using UnityEngine;
+using WSH._01.Scripts.BootsLotusBoss;
 using WSH._09.SO;
 
-public class BLGrudge : ISkill // 장화의 원한
+public class BLGrudge : MonoBehaviour // 장화의 원한
 {
     [Header("StatSO")] private BossStatDataSO _bossStat;
     
@@ -16,6 +18,7 @@ public class BLGrudge : ISkill // 장화의 원한
     [SerializeField] private float _noticeTime; // 예고 시간
     [SerializeField] private float _dealTime; // 공격 받을 시간
     [SerializeField] private float _enterTime; // 우물 들어가는 시간
+
     
     [Header("Range")]
     [SerializeField] private float _angleRange; // 각도 범위
@@ -38,10 +41,10 @@ public class BLGrudge : ISkill // 장화의 원한
 
     void ExitState()
     {
-        
+        transform.parent.GetComponent<BootsLotusAttack>().ChangeSkill(1);
     }
 
-    public void Attack()
+    void Attack()
     {
         Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, _radiusRange, _whatIsPlayer);
 
@@ -56,18 +59,14 @@ public class BLGrudge : ISkill // 장화의 원한
                 
                 if (player.TryGetComponent<HealthModule>(out HealthModule health))
                 {
-                    //health.GetDamage(_damage);
-                    StartCoroutine(DealTime());
+                    health.GetDamage(_damage);
                 }
             }
-            else
-            {
-                Debug.Log(0);
-            }
+            StartCoroutine(DealTime());
         }
     }
 
-    IEnumerator NoticeTime()
+    public IEnumerator NoticeTime()
     {
         yield return new WaitForSeconds(_noticeTime);
         Attack();
@@ -76,11 +75,18 @@ public class BLGrudge : ISkill // 장화의 원한
     IEnumerator DealTime()
     {
         yield return new WaitForSeconds(_dealTime);
+        StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
     }
 
     public void GetBossStat(BossStatDataSO bossStat)
     {
         _bossStat = bossStat;
+    }
+
+    public void Dead()
+    {
+        StopCoroutine(NoticeTime());
+        StopCoroutine(DealTime());
     }
     
     private void OnDrawGizmos()
