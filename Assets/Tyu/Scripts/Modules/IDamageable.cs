@@ -2,7 +2,7 @@
 
 namespace Tyu.Scripts
 {
-    public interface IHealthHavable
+    public interface IDamageable
     {
         void GetDamage(float damage);
     }
