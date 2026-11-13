@@ -17,13 +17,13 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _renderMd = renderMd;
         }
 
-        public virtual void Enter()
+        public override void Enter()
         {
             base.Enter();
             _renderMd.ChangeAnimBool(_animHash, true);
         }
 
-        public virtual void Exit()
+        public override void Exit()
         {
             base.Exit();
             _renderMd.ChangeAnimBool(_animHash, false);

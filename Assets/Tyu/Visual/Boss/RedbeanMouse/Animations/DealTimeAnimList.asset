@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DealTimeAnimList
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.DealTimeAnimListSO
   <DealTimeAnims>k__BackingField:
-  - <Type>k__BackingField: 0
-    <cont>k__BackingField: 
+  - <Type>k__BackingField: 1
+    <dealTimeAnim>k__BackingField: SleeveVulnerable

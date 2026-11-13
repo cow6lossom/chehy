@@ -6,10 +6,13 @@ using UnityEngine;
 namespace Key._00.Scripts.Skill {
     public class LotusFlower2 : MonoBehaviour {
         [Header("Lotus Flower 2")]
+        
         [SerializeField] private Rigidbody2D[] flowers;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float distance = 5f;
         [SerializeField] private float flowerDistanceInterval = 1f; // 꽃 사이의 간격
+        [SerializeField] private float[] attackScale;
+        
         
         
         [SerializeField] private float flowerInterval = 0.5f;
@@ -24,10 +27,13 @@ namespace Key._00.Scripts.Skill {
 
         private Vector2 _dir;
         private AttackSettingSO attackSetting;
-        private LotusFlowerAnimation _animator;
+        private LotusFlowerAnimation[] _animators;
 
         public void Initialize(Vector2 dir, AttackSettingSO setting, Vector3 pos) {
-                _animator = gameObject.GetComponentInChildren<LotusFlowerAnimation>();
+            _animators = new LotusFlowerAnimation[flowers.Length];
+            for (int i = 0; i < flowers.Length; i++) {
+                _animators[i] = flowers[i].GetComponentInChildren<LotusFlowerAnimation>();
+            }
             
             transform.position = pos;
             foreach (Rigidbody2D flower in flowers) {
@@ -51,7 +57,13 @@ namespace Key._00.Scripts.Skill {
 
             for (int i = 0; i < flowers.Length; i++) {
                 yield return flowerCoroutines[i];
-                Explode(flowers[i].position);
+                Explode(flowers[i].position, attackSetting.Damage * attackScale[i]);
+
+                _animators[i].SetDead();
+                while (!_animators[i].IsEnd) {
+                    yield return null;
+                }
+
                 Destroy(flowers[i].gameObject);
 
                 if (i < flowers.Length - 1) {
@@ -80,7 +92,8 @@ namespace Key._00.Scripts.Skill {
             yield return new WaitForSeconds(explosionDelay);
         }
 
-        private void Explode(Vector2 pos) {
+        
+        private void Explode(Vector2 pos, float damage) {
             ParticleSystem particle = Instantiate(explosionParticle, pos, explosionParticle.transform.rotation);
             particle.gameObject.SetActive(true);
             particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -91,7 +104,7 @@ namespace Key._00.Scripts.Skill {
             Collider2D[] targets = Physics2D.OverlapCircleAll(pos, explosionRange, _whatIsPlayer);
             foreach (Collider2D target in targets) {
                 if (target.TryGetComponent(out Player player)) {
-                    player.GetDamage(attackSetting.Damage);
+                    player.GetDamage(damage);
                     break;
                 }
             }
