@@ -24,16 +24,21 @@ namespace Tyu.Scripts.Modules
 
         public virtual void GetDamage(float damage)
         {
-            if (_currentHp > damage)
+            _currentHp -= damage;
+            OnDamaged?.Invoke();
+            if(_currentHp <= 0)
             {
-                _currentHp -= damage;
-                OnDamaged?.Invoke();
-            }
-            else
-            {
-                _currentHp -= damage;
+                _currentHp = 0;
                 OnDeath?.Invoke();
             }
+            OnHpChanged?.Invoke(_currentHp);
+        }
+
+        public virtual void HealHp(float value)
+        {
+            _currentHp += value;
+            _currentHp = Mathf.Clamp(_currentHp, 0, MaxHp);
+            OnHpChanged?.Invoke(_currentHp);
         }
     }
 }
