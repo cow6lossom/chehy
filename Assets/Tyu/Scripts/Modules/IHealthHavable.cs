@@ -5,5 +5,6 @@
         public float GetCurrentHp();
         public float GetMaxHp();
         public void HealHp(float value);
+        public HealthModule GetHealthModule();
     }
 }
