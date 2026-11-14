@@ -6,7 +6,7 @@ using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
 {
-    public class BLWaterPillar : ISkill
+    public class BLWaterPillar : MonoBehaviour
     {
         [Header("StatSO")] private BossStatDataSO _bossStat;
         
@@ -33,22 +33,22 @@ namespace WSH._01.Scripts.BootsLotusBoss
             
         }
 
-        private void EnterState()
+        public void EnterState()
         {
         
         }
     
-        private void UpdateState()
+        public void UpdateState()
         {
-        
+            
         }
 
-        void ExitState()
+        public void ExitState()
         {
-        
+            transform.parent.GetComponent<BootsLotusAttack>().ChangeSkill(0);
         }
 
-        public void Attack()
+        void Attack()
         {
             Collider2D[] target = Physics2D.OverlapBoxAll(_centerTrm.position, _range, _whatIsPlayer);
 
@@ -56,13 +56,13 @@ namespace WSH._01.Scripts.BootsLotusBoss
             {
                 if (player.TryGetComponent<HealthModule>(out var health))
                 {
-                    //health.GetDamage(_damage);
-                    StartCoroutine(DealTime());
+                    health.GetDamage(_damage);
                 }
             }
+            StartCoroutine(DealTime());
         }
         
-        IEnumerator NoticeTime()
+        public IEnumerator NoticeTime()
         {
             yield return new WaitForSeconds(_noticeTime);
             Attack();
@@ -71,11 +71,18 @@ namespace WSH._01.Scripts.BootsLotusBoss
         IEnumerator DealTime()
         {
             yield return new WaitForSeconds(_dealTime);
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
         }
         
         public void GetBossStat(BossStatDataSO bossStat)
         {
             _bossStat = bossStat;
+        }
+
+        public void Dead()
+        {
+            StopCoroutine(NoticeTime());
+            StopCoroutine(DealTime());
         }
 
         private void OnDrawGizmos()

@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using WSH._01.Scripts.BootsLotusBoss;
 using WSH._09.SO;
 
-public class BLDontTouch : ISkill
+public class BLDontTouch : MonoBehaviour
 {
     [Header("StatSO")] private BossStatDataSO _bossStat;
     
@@ -11,7 +12,22 @@ public class BLDontTouch : ISkill
     [SerializeField] private float _resistanceTime; // 공격 받을 시간
     [SerializeField] private float _enterTime; // 우물 들어가는 시간
 
-    IEnumerator NoticeTIme()
+    public void EnterState()
+    {
+        
+    }
+    
+    public void UpdateState()
+    {
+        
+    }
+
+    public void ExitState()
+    {
+        transform.parent.GetComponent<BootsLotusAttack>().ChangeSkill(0);
+    }
+    
+    public IEnumerator NoticeTIme()
     {
         yield return new WaitForSeconds(_noticeTime);
     }

@@ -337,7 +337,10 @@ MonoBehaviour:
   _player: {fileID: 0}
   _damage: 0
   _noticeTime: 0
+  _coolPassiveTime: 10
+  _lastPassiveTime: 0
   _range: 0
+  _passiving: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 0
@@ -3020,6 +3023,8 @@ MonoBehaviour:
   _pondHand: {fileID: 0}
   _dontTouch: {fileID: 0}
   List: {fileID: 0}
+  _currentOrder: 0
+  _duringTime: 0
 --- !u!1 &1851521289
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,16 +3070,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLGrudge
   _damage: 0
-  _noticeTime: 0
-  _dealTime: 0
-  _enterTime: 0
-  _angleRange: 0
-  _radiusRange: 0
-  _segments: 0
+  _noticeTime: 1
+  _dealTime: 1
+  _enterTime: 1
+  _angleRange: 1
+  _radiusRange: 1
+  _segments: 1
   _attacking: 0
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1 &1876255396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3119,15 +3124,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ac392804213db4b90ef449cf163395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WSH._01.Scripts.BootsLotusBoss.BLWaterPillar
-  _centerTrm: {fileID: 0}
-  _range: {x: 0, y: 0}
+  _centerTrm: {fileID: 1239500135}
+  _range: {x: 15, y: 1}
   _damage: 0
-  _noticeTime: 0
-  _dealTime: 0
-  _enterTime: 0
+  _noticeTime: 1
+  _dealTime: 1
+  _enterTime: 1
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2560
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
