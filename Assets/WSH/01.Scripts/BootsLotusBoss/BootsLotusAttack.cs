@@ -10,12 +10,12 @@ namespace WSH._01.Scripts.BootsLotusBoss
     public class BootsLotusAttack : MonoBehaviour
     {
         [Header("BossSkill")]
-        [SerializeField] private BLGrudge _lotusGrudge;
-        [SerializeField] private BLWaterPillar _waterPillar;
-        [SerializeField] private BLPondHand _pondHand;
-        [SerializeField] private BLDontTouch _dontTouch;
+        public BLGrudge lotusGrudge { get; private set; }
+        public BLWaterPillar waterPillar { get; private set; }
+        public BLPondHand pondHand { get; private set; }
+        public BLDontTouch dontTouch { get; private set; }
 
-        [Header("BossStatSO")] public BossListSO List;
+        [Header("BossStatSO")] public BossListSO[] List;
 
         [Header("Number")]
         [SerializeField] private int _currentOrder;
@@ -26,54 +26,53 @@ namespace WSH._01.Scripts.BootsLotusBoss
         private void Awake()
         {
             Initialize();
-            SkillWork();
         }
 
         private void OnEnable()
         {
-            OnDead += _lotusGrudge.Dead;
-            OnDead += _waterPillar.Dead;
-            OnDead += _pondHand.Dead;
+            OnDead += lotusGrudge.Dead;
+            OnDead += waterPillar.Dead;
+            OnDead += pondHand.Dead;
         }
 
         private void OnDisable()
         {
-            OnDead -= _lotusGrudge.Dead;
-            OnDead -= _waterPillar.Dead;
-            OnDead -= _pondHand.Dead;
+            OnDead -= lotusGrudge.Dead;
+            OnDead -= waterPillar.Dead;
+            OnDead -= pondHand.Dead;
         }
 
         void Initialize()
         {
             InitializeCompo();
-            // InitializeValue();
+            InitializeDataSet(0);
         }
         
         void InitializeCompo()
         {
-            _lotusGrudge = GetComponentInChildren<BLGrudge>();
-            _waterPillar = GetComponentInChildren<BLWaterPillar>();
-            _pondHand = GetComponentInChildren<BLPondHand>();
-            _dontTouch = GetComponentInChildren<BLDontTouch>();
+            lotusGrudge = GetComponentInChildren<BLGrudge>();
+            waterPillar = GetComponentInChildren<BLWaterPillar>();
+            pondHand = GetComponentInChildren<BLPondHand>();
+            dontTouch = GetComponentInChildren<BLDontTouch>();
         }
 
-        void InitializeValue()
+        void InitializeDataSet(int value)
         {
-            _lotusGrudge.GetBossStat(List.list[0]);
-            _waterPillar.GetBossStat(List.list[1]);
-            _pondHand.GetBossStat(List.list[2]);
-            _dontTouch.GetBossStat(List.list[3]);
+            lotusGrudge.GetBossStat(List[value].list[0]);
+            waterPillar.GetBossStat(List[value].list[1]);
+            pondHand.GetBossStat(List[value].list[2]);
+            dontTouch.GetBossStat(List[value].list[3]);
         }
 
         public void SkillWork()
         {
             if (_currentOrder == 0)
             {
-                _lotusGrudge.StartCoroutine(_lotusGrudge.NoticeTime());
+                lotusGrudge.StartCoroutine(lotusGrudge.NoticeTime());
             }
             else if (_currentOrder == 1)
             {
-                _waterPillar.StartCoroutine(_lotusGrudge.NoticeTime());
+                waterPillar.StartCoroutine(waterPillar.NoticeTime());
             }
         }
 
@@ -81,7 +80,6 @@ namespace WSH._01.Scripts.BootsLotusBoss
         {
             _currentOrder++;
             if (_currentOrder >= 2) _currentOrder = 0;
-            
             yield return new WaitForSeconds(_duringTime);
             SkillWork();
         }
@@ -89,11 +87,6 @@ namespace WSH._01.Scripts.BootsLotusBoss
         public void RaiseDead()
         {
             OnDead?.Invoke();
-        }
-
-        public void ChangeSkill(int skillNumber)
-        {
-            _currentOrder = skillNumber;
         }
     }
 }

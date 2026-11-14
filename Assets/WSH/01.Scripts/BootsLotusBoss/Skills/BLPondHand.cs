@@ -24,25 +24,19 @@ public class BLPondHand : MonoBehaviour
     [SerializeField] private bool _passiving;
     
     [SerializeField] private LayerMask _whatIsPlayer;
-
-    public void EnterState()
-    {
-        
-    }
     
-    public void UpdateState()
+    void SettingValue()
     {
-            
-    }
+        _damage = _bossStat.Damage;
+        _noticeTime = _bossStat.NoticeTime;
+        _range  = _bossStat.Range;
 
-    public void ExitState()
-    {
-        transform.parent.GetComponent<BootsLotusAttack>().SkillWork();
+        _whatIsPlayer = _bossStat.WhatIsPlayer;
     }
 
     private void Update()
     {
-        if (_lastPassiveTime + _coolPassiveTime > Time.time && !_passiving)
+        if ((_lastPassiveTime + _coolPassiveTime < Time.time) && !_passiving)
         {
             StartCoroutine(NoticeTime());
         }
@@ -51,6 +45,7 @@ public class BLPondHand : MonoBehaviour
     void Attack()
     {
         if (_player == null) return;
+        
         Collider2D target = Physics2D.OverlapCircle(_player.transform.position, _range, _whatIsPlayer);
 
         if (target != null)
@@ -63,17 +58,20 @@ public class BLPondHand : MonoBehaviour
         }
     }
 
-    public IEnumerator NoticeTime()
+    IEnumerator NoticeTime()
     {
+        Debug.Log(2);
         _passiving = true;
         yield return new WaitForSeconds(_noticeTime);
         Attack();
         _lastPassiveTime = Time.time;
+        _passiving = false;
     }
 
     public void GetBossStat(BossStatDataSO bossStat)
     {
         _bossStat = bossStat;
+        SettingValue();
     }
 
     public void Dead()

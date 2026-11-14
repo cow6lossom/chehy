@@ -18,34 +18,31 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     [SerializeField] private float _noticeTime; // 예고 시간
     [SerializeField] private float _dealTime; // 공격 받을 시간
     [SerializeField] private float _enterTime; // 우물 들어가는 시간
+    [SerializeField] private float _lastPotectTime;
+    [SerializeField] private float _coolPotectTime;
 
-    
     [Header("Range")]
-    [SerializeField] private float _angleRange; // 각도 범위
-    [SerializeField] private float _radiusRange; // 각도 길이
-    [SerializeField] private float _segments; // 범위 분할 개수
+    [SerializeField] private float _angleRange; // 각도 범위 - 개별
+    [SerializeField] private float _radiusRange; // 각도 길이 - 개별
+    [SerializeField] private float _segments; // 범위 분할 개수 - 개별
 
     [SerializeField] private bool _attacking; // 공격 상태
 
     [SerializeField] private LayerMask _whatIsPlayer;
 
-    private void EnterState()
+    void SettingValue()
     {
-        
-    }
-    
-    private void UpdateState()
-    {
-        
-    }
+        _damage = _bossStat.Damage;
+        _noticeTime = _bossStat.NoticeTime;
+        _dealTime = _bossStat.DealTime;
+        _enterTime = _bossStat.EnterTime;
+        _radiusRange = _bossStat.Range;
 
-    void ExitState()
-    {
-        transform.parent.GetComponent<BootsLotusAttack>().ChangeSkill(1);
+        _whatIsPlayer = _bossStat.WhatIsPlayer;
     }
 
     void Attack()
-    {
+    { 
         Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, _radiusRange, _whatIsPlayer);
 
         foreach (var player in target)
@@ -55,32 +52,40 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
 
             if (angle <= _angleRange / 2f)
             {
-                Debug.Log(1);
-                
                 if (player.TryGetComponent<HealthModule>(out HealthModule health))
                 {
                     health.GetDamage(_damage);
                 }
             }
-            StartCoroutine(DealTime());
         }
+        StartCoroutine(DealTime());
     }
 
     public IEnumerator NoticeTime()
     {
+        Debug.Log(0);
         yield return new WaitForSeconds(_noticeTime);
         Attack();
     }
-    
+
     IEnumerator DealTime()
     {
         yield return new WaitForSeconds(_dealTime);
-        StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
+        yield return new WaitForSeconds(_enterTime);
+
+        if (_lastPotectTime + _coolPotectTime < Time.time)
+        {
+            yield return new WaitForSeconds(_enterTime);
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().dontTouch.NoticeTIme());
+        }
+        else
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
     }
 
     public void GetBossStat(BossStatDataSO bossStat)
     {
         _bossStat = bossStat;
+        SettingValue();
     }
 
     public void Dead()
@@ -91,6 +96,8 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     
     private void OnDrawGizmos()
     {
+        if (_bossStat == null) return;
+        
         Gizmos.color = Color.red;
 
         Vector3 center = transform.position;
