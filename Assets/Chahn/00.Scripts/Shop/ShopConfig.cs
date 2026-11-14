@@ -10,7 +10,7 @@ public class ShopConfig : ScriptableObject //상점 전체에서 사용하는 �
     public IReadOnlyList<PassiveData> PassivePool => passivePool; //외부에서 접근할 용
 
     [Header("상점 기본 설정")] 
-    [SerializeField, Min(1)] private int displayCount = 5; //5개의 스킬 랜덤 뽑기
+    [SerializeField, Min(1)] private int displayCount = 3; //5개의 스킬 랜덤 뽑기
 
     [SerializeField, Min(0)] private int refreshCost = 5; //새로 고침하기 위한 엽전 수
     

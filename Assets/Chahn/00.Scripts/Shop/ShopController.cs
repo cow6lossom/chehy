@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Chahn._00.Scripts.Shop;
+using Tyu.Scripts.Modules;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +19,22 @@ public class ShopController : MonoBehaviour
     public IReadOnlyList<ShopOffer> CurrentOffers => _currentOffers; //접근할때
     public event Action<IReadOnlyList<ShopOffer>> OnOffersGenerated;
 
+    [SerializeField] private MonoBehaviour healthProvider;
+    private IHealthHavable playerHealth;
+
+    private void Awake()
+    {
+        if (healthProvider is not IHealthHavable provider)
+        {
+            Debug.LogError("플레이어가 인터페이스 상속을 안함");
+            return;
+        }
+        
+        playerHealth = provider;
+    }
+    
+
+    #region BuyOffers
     public void GenerateOffers()
     {
         _currentOffers.Clear();
@@ -168,6 +185,10 @@ public class ShopController : MonoBehaviour
         offer.MarkPurchased();
         return true;
     }
+    
+    #endregion
+    
+    #region SellOffer
 
     public int GetSellPrice(PassiveBase passive)
     {
@@ -215,6 +236,115 @@ public class ShopController : MonoBehaviour
         currencyWallet.Add(totalSellPrice);
         return true;
     }
+    
+
+    #endregion
+    
+    #region LevelUp
+    public int GetLevelUpPrice(PassiveBase passive)
+    {
+        if (passive == null || shopConfig == null || passive.Level >= 3)
+        {
+            return 0;
+        }
+
+        foreach (var config in shopConfig.LevelConfigs)
+        {
+            if (config == null) continue;
+            
+            if (config.Level == passive.Level)
+                return config.LevelUpPrice;
+        }
+
+        return 0;
+    }
+
+
+    public bool TryLevelUpPassive(PassiveBase passive)
+    {
+        if (passive == null || passiveManager == null || currencyWallet == null || shopConfig == null) return false;
+        
+        if (!passiveManager.OwnedPassives.Contains(passive)) return false;
+        if (passive.Level >= 3) return false;
+        
+        int cost = GetLevelUpPrice(passive);
+
+        if (cost <= 0) return false;
+
+        if (!currencyWallet.TrySpend(cost)) return false;
+
+        bool wasEquippedPassive = passiveManager.EquippedPassives.Contains(passive);
+        
+        if (wasEquippedPassive) passiveManager.UnequipPassive(passive);
+        
+        int previousLevel = passive.Level;
+        
+        passive.LevelUp();
+
+        if (previousLevel == passive.Level)
+        {
+            currencyWallet.Add(cost);
+            
+            if (wasEquippedPassive) passiveManager.EquipPassive(passive);
+
+            return false;
+        }
+        
+        if (wasEquippedPassive) passiveManager.EquipPassive(passive);
+        
+        return true;
+
+    }
+
+    public bool CanAffordLevelUp(PassiveBase selectedPassive)
+    {
+        if (selectedPassive == null || currencyWallet == null) return false;
+        
+        int cost = GetLevelUpPrice(selectedPassive);
+
+        return currencyWallet.CurrentCoins >= cost && cost > 0;
+    }
+    #endregion
+   
+    #region Heal
+
+    private bool CanHealPlayer()
+    {
+        if (playerHealth == null || currencyWallet == null || shopConfig == null) return false;
+
+        float currentHp = playerHealth.GetCurrentHp();
+        float maxHp = playerHealth.GetMaxHp();
+        
+        if (maxHp <= 0f) return false;
+        
+        if (currentHp >= maxHp) return false;
+        
+        int healCost = shopConfig.HealCost;
+        
+        if (healCost <= 0) return false;
+        
+        return currencyWallet.CurrentCoins >= healCost;
+    }
+    public bool TryHealPlayer()
+    {
+        if (!CanHealPlayer()) return false;
+        
+        int healCost = shopConfig.HealCost;
+        float healRatio = shopConfig.HealRatio;
+        
+        if (healRatio <= 0f) return false;
+
+        if (!currencyWallet.TrySpend(healCost)) return false;
+
+        float maxHp = playerHealth.GetMaxHp();
+        float healAmount = maxHp * healRatio;
+        
+        playerHealth.HealHp(healAmount);
+        
+        return true;
+    }
+
+    #endregion
 }
 
 

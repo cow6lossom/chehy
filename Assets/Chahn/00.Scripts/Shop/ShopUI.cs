@@ -17,10 +17,13 @@ namespace Chahn._00.Scripts.Shop
         [SerializeField] private ShopBuyUI shopBuyUI;
         [SerializeField] private ShopSellUI shopSellUI;
         [SerializeField] private ShopHealUI shopHealUI;
+        [SerializeField] private ShopLevelUpUI shopLevelUpUI;
         
         [Header("Buttons")]
         [SerializeField] private Button buyPanelButton;
         [SerializeField] private Button sellPanelButton;
+        [SerializeField] private Button levelUpPanelButton;
+        
         
         
         private bool IsOpen => shopPanel.activeSelf;
@@ -32,6 +35,7 @@ namespace Chahn._00.Scripts.Shop
             
             buyPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopBuyUI.gameObject));
             sellPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopSellUI.gameObject));
+            levelUpPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopLevelUpUI.gameObject));
             
         }
 
@@ -55,13 +59,17 @@ namespace Chahn._00.Scripts.Shop
                 shopPanel.SetActive(false);
                 return;
             }
-
+            
             MainShopPanelEnabled();
         }
 
         private void MainShopPanelEnabled()
         {
-            if (shopHealUI == null || shopBuyUI == null || shopSellUI == null) return;
+            if (shopHealUI == null || shopBuyUI == null || shopSellUI == null)
+            {
+                Debug.LogWarning("check inspector");
+                return;
+            }
             
             SetActiveTargetPanel(shopBuyUI.gameObject);
             
@@ -73,6 +81,7 @@ namespace Chahn._00.Scripts.Shop
         {
             shopBuyUI.gameObject.SetActive(shopBuyUI.gameObject == targetPanel);
             shopSellUI.gameObject.SetActive(shopSellUI.gameObject == targetPanel);
+            shopLevelUpUI.gameObject.SetActive(shopLevelUpUI.gameObject == targetPanel);
         }
         
 

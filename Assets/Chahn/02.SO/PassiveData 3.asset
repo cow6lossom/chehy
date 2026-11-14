@@ -15,7 +15,10 @@ MonoBehaviour:
   PassiveName: "\uC2DD\uD61C "
   Description: "50% \uCCB4\uB825 \uC5C5"
   Icon: {fileID: 1610700703, guid: 44a05f46360969748b7df379fdba70b6, type: 3}
-  Grade: 0
   Type: 2
   Duration: 2
   Range: 0
+  levelUpDescription:
+  - attack power increased by 10%
+  - attack power increased by 20%
+  - attack power increased by 30%

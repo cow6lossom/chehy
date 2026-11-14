@@ -1,13 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopHealUI : MonoBehaviour
 {
+    [SerializeField] private ShopController shopController;
     [SerializeField] private GameObject healConfirmPanel;
     [Header("Buttons")] 
     [SerializeField] private Button selectHealButton;
     [SerializeField] private Button confirmHealButton;
     [SerializeField] private Button cancelHealButton;
+
+    public event Action OnHealSucceeded;
 
 
     private void Awake()
@@ -33,10 +37,16 @@ public class ShopHealUI : MonoBehaviour
     private void ActivateConfirmPanel()
     {
         healConfirmPanel.SetActive(true);
+        selectHealButton.interactable = false;
     }
 
     private void HandleConfirmHeal()
     {
+        bool succeeded = shopController.TryHealPlayer();
+        
+        if (succeeded)
+            OnHealSucceeded?.Invoke();
+            
         CloseConfirmPanel();
     }
     private void HandleCancel()
@@ -46,7 +56,8 @@ public class ShopHealUI : MonoBehaviour
     
     private void CloseConfirmPanel()
     {
-        healConfirmPanel.SetActive(false);
+        healConfirmPanel.SetActive(false); 
+        selectHealButton.interactable = true;
     }
 
 }

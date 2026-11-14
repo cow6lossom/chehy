@@ -15,7 +15,10 @@ MonoBehaviour:
   PassiveName: "\uCF69 "
   Description: "\uCF69 \uB358\uC9C0\uAE30 \uACF5\uACA9"
   Icon: {fileID: -9114454347476129682, guid: 18b1f5dd226e84743bf28ed75fcc23a7, type: 3}
-  Grade: 0
   Type: 0
   Duration: 3
   Range: 2
+  levelUpDescription:
+  - attack power increased by 10%
+  - attack power increased by 20%
+  - attack power increased by 30%
