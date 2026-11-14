@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public interface IState
+public abstract class ISkill : MonoBehaviour
 {
-    void SkillWork();
-    
-    
+    protected virtual void Attack()
+    {
+        
+    }
 }

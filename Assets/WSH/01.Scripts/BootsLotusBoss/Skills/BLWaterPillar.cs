@@ -6,7 +6,7 @@ using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
 {
-    public class BLWaterPillar : MonoBehaviour
+    public class BLWaterPillar : ISkill
     {
         [Header("StatSO")] private BossStatDataSO _bossStat;
         

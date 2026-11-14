@@ -4,7 +4,7 @@ using Tyu.Scripts.Modules;
 using UnityEngine;
 using WSH._09.SO;
 
-public class BLPondHand : MonoBehaviour
+public class BLPondHand : ISkill
 {
     [Header("StatSO")] private BossStatDataSO _bossStat;
     
@@ -20,7 +20,7 @@ public class BLPondHand : MonoBehaviour
     
     [SerializeField] private LayerMask _whatIsPlayer;
 
-    void Attack()
+   public void Attack()
     {
         Collider2D target = Physics2D.OverlapCircle(_player.transform.position, _range, _whatIsPlayer);
 

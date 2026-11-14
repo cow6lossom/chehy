@@ -13,6 +13,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
         [SerializeField] private BLDontTouch _dontTouch;
 
         [Header("BossStatSO")] public BossListSO List;
+
+        private ISkill _currentSkill;
         
         private void Awake()
         {

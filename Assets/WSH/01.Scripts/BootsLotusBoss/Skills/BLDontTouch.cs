@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using WSH._09.SO;
 
-public class BLDontTouch : MonoBehaviour
+public class BLDontTouch : ISkill
 {
     [Header("StatSO")] private BossStatDataSO _bossStat;
     
@@ -25,5 +25,4 @@ public class BLDontTouch : MonoBehaviour
     {
         _bossStat = bossStat;
     }
-
 }

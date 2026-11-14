@@ -5,7 +5,7 @@ using Tyu.Scripts.Modules;
 using UnityEngine;
 using WSH._09.SO;
 
-public class BLGrudge : MonoBehaviour // 장화의 원한
+public class BLGrudge : ISkill // 장화의 원한
 {
     [Header("StatSO")] private BossStatDataSO _bossStat;
     
@@ -41,7 +41,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         
     }
 
-    public void Attack()
+    protected void Attack()
     {
         Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, _radiusRange, _whatIsPlayer);
 
