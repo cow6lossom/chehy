@@ -15,7 +15,10 @@ MonoBehaviour:
   PassiveName: "\uD325 "
   Description: "\uD325 \uB358\uC9C0\uAE30 \uACF5\uACA9"
   Icon: {fileID: -8116745628450284637, guid: bbb884dd9676ff944bd8456b820be654, type: 3}
-  Grade: 0
   Type: 0
   Duration: 2
   Range: 5
+  levelUpDescription:
+  - attack power increased by 10%
+  - attack power increased by 20%
+  - attack power increased by 30%
