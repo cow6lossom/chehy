@@ -855,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998aa37fe5a37e347b6ca24f1c308ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLGrudge
+  _playerTrm: {fileID: 232729132}
   _damage: 0
   _noticeTime: 1
   _dealTime: 1
