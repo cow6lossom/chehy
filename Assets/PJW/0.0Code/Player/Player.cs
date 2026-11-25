@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Tyu.Modules;
+using Tyu.Scripts.SO;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -13,16 +15,21 @@ public class Player : MonoBehaviour, IDamageable
 
     public PlayerMovment MoveCompo { get; private set; }
 
+    public PlayerAttack Attackomppo { get; private set; }
+
     private void Awake()
     {
         InputCompo = GetComponentInChildren<Input>();
 
-        MoveCompo = GetComponentInChildren<PlayerMovment>();
+        //MoveCompo = GetComponentInChildren<PlayerMovment>();
+
+        Attackomppo = GetComponentInChildren<PlayerAttack>();
     }
 
     private void Start()
     {
-        InputCompo.OnMoveSet += MoveCompo.SetMoveDir;
+        //InputCompo.OnMoveSet += MoveCompo.SetMoveDir;
+        InputCompo.OnAttackPressed += Attackomppo.Attack;
     }
 
     public void GetDamage(float damage)
@@ -37,6 +44,6 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        InputCompo.OnMoveSet -= MoveCompo.SetMoveDir;
+        //InputCompo.OnMoveSet -= MoveCompo.SetMoveDir;
     }
 }

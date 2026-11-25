@@ -1,5 +1,6 @@
 
 using System;
+using Tyu.Scripts.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
