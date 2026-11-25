@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BLPondHandStatData
   m_EditorClassIdentifier: Assembly-CSharp::WSH._09.SO.BossStatDataSO
   <Damage>k__BackingField: 0
-  <Range>k__BackingField: 4
+  <Range>k__BackingField: 2
   <NoticeTime>k__BackingField: 3
   <DealTime>k__BackingField: 3
   <EnterTime>k__BackingField: 3

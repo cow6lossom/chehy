@@ -8,7 +8,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
 {
     public class BLWaterPillar : MonoBehaviour
     {
-        [Header("StatSO")] private BossStatDataSO _bossStat;
+        [Header("StatSO")]
+        [SerializeField] private BossStatDataSO _bossStat;
         
         [SerializeField] private Transform _centerTrm; // 공격 범위 중심
         [SerializeField] private Vector2 _range; // 범위
@@ -25,7 +26,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
         
         void SettingValue()
         {
-            _range = new Vector2(_bossStat.Range, _bossStat.Range);
+            _range = new Vector2(_bossStat.Range, 1.5f);
             
             _damage = _bossStat.Damage;
             _noticeTime = _bossStat.NoticeTime;

@@ -8,8 +8,8 @@ namespace Tyu.Scripts.Modules
     public class HealthModule : MonoBehaviour
     {
 
-        public float MaxHp { get; protected set; }
-        public float _currentHp { get; protected set; }
+        [field : SerializeField]public float MaxHp { get; protected set; }
+        [field:SerializeField]public float _currentHp { get; protected set; }
         public event Action<float> OnHpChanged;
         public event Action OnDamaged;
         public event Action OnDeath;
