@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d3d30b7ea84f1480f8068924495cef, type: 3}
   m_Name: AttackSetting
   m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
-  <Distance>k__BackingField: 1.71
-  <Size>k__BackingField: {x: 2.62, y: 3.53}
-  <DefaultDamage>k__BackingField: 5
+  <Pos>k__BackingField: {x: 1.4, y: 0}
+  <Size>k__BackingField: {x: 2.67, y: 0.6}
+  <Type>k__BackingField: 0
+  <AttackType>k__BackingField: 0
+  <IsSymbol>k__BackingField: 0
+  <HaveRandomPatterns>k__BackingField: 0
+  <RandomPatterns>k__BackingField: []
+  <Damage>k__BackingField: 5
+  <CoolTime>k__BackingField: 0
+  <DealTime>k__BackingField: 0
+  <maxDetect>k__BackingField: 0
+  <minDetect>k__BackingField: 0
