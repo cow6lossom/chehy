@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BLWaterPillarStatData
   m_EditorClassIdentifier: Assembly-CSharp::WSH._09.SO.BossStatDataSO
   <Damage>k__BackingField: 0
-  <Range>k__BackingField: 3
+  <Range>k__BackingField: 15
   <NoticeTime>k__BackingField: 3
   <DealTime>k__BackingField: 3
   <EnterTime>k__BackingField: 3
