@@ -244,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 232729129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.12, y: 0.24, z: 0}
+  m_LocalPosition: {x: -1.48, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -379,7 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5338c448c7fb01448aa5750657f3d869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLPondHand
-  _player: {fileID: 0}
+  _bossStat: {fileID: 11400000, guid: 941021b044f813042bbe31925468cbe8, type: 2}
+  _player: {fileID: 232729132}
   _damage: 0
   _noticeTime: 0
   _coolPassiveTime: 20
@@ -403,7 +404,7 @@ GameObject:
   m_Layer: 0
   m_Name: LotusBoss
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -416,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 706030833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -482,10 +483,11 @@ GameObject:
   m_Component:
   - component: {fileID: 843869575}
   - component: {fileID: 843869576}
+  - component: {fileID: 843869577}
   m_Layer: 0
   m_Name: BootsBoss
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -498,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 843869574}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -517,6 +519,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BootsBoss
   _healthCompo: {fileID: 0}
+--- !u!70 &843869577
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843869574}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &1239500133
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +611,7 @@ Transform:
   - {fileID: 843869575}
   - {fileID: 706030834}
   - {fileID: 338649425}
+  - {fileID: 1988350445}
   - {fileID: 1839369616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -619,9 +659,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0b93f9b5fb632408a1ee3dcf022217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLDontTouch
+  _bossStat: {fileID: 0}
   _noticeTime: 0
   _protectTime: 0
   _enterTime: 0
+  _dealNoticeTime: 0
+  _dealTime: 0
+  _damage: 0
+  _whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1820662885
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998aa37fe5a37e347b6ca24f1c308ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLGrudge
+  _animation: {fileID: 0}
+  _myself: {fileID: 843869575}
   _playerTrm: {fileID: 232729132}
   _damage: 0
   _noticeTime: 1
@@ -866,6 +915,7 @@ MonoBehaviour:
   _radiusRange: 1
   _segments: 5
   _attacking: 0
+  _targeting: 0
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -880,7 +930,7 @@ GameObject:
   - component: {fileID: 1876255397}
   - component: {fileID: 1876255398}
   m_Layer: 0
-  m_Name: BLWaterPillar
+  m_Name: WaterPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -913,8 +963,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ac392804213db4b90ef449cf163395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WSH._01.Scripts.BootsLotusBoss.BLWaterPillar
+  _bossStat: {fileID: 11400000, guid: cde2084e612b3dd459476b96b63060f8, type: 2}
   _centerTrm: {fileID: 1239500135}
-  _range: {x: 15, y: 1}
+  _range: {x: 15, y: 1.5}
   _damage: 0
   _noticeTime: 0
   _dealTime: 0
@@ -922,6 +973,53 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!1 &1988350444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988350445}
+  - component: {fileID: 1988350446}
+  m_Layer: 0
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988350445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988350444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1239500135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1988350446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988350444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b35eab951fd9354e9ec0dbfe6cf147e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BootsLotusMovement
+  _animation: {fileID: 0}
+  _bootsBossTrm: {fileID: 0}
+  _lotusBossTrm: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
