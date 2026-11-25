@@ -16,6 +16,6 @@ MonoBehaviour:
   <defaultHealth>k__BackingField: 3000
   <secondPhaseHealth>k__BackingField: 50
   <FirSpeed>k__BackingField: 5
-  <FirDistance>k__BackingField: 10
+  <FirDistance>k__BackingField: 0.2
   <SecSpeed>k__BackingField: 7
   <SecDistance>k__BackingField: 10

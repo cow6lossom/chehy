@@ -26,6 +26,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             base.Initialize(_playerTrm);
             moveMd.Init();
+            healthMd.Initialize(bossStat, this);
             moveMd.Speed = bossStat.FirSpeed;
             healthMd.OnSecondPhase += SecondPhase;
             CoolTimeChecker = new PatternCoolTimeChecker();

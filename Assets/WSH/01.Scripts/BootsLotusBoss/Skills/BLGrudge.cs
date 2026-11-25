@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using Key._00.Scripts;
-using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.Modules;
-using Unity.VisualScripting;
 using UnityEngine;
 using WSH._01.Scripts.BootsLotusBoss;
 using WSH._09.SO;
@@ -13,6 +9,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     [Header("StatSO")] private BossStatDataSO _bossStat;
 
     [SerializeField] private BossAnimation _animation;
+    [SerializeField] private Transform _myself;
     [SerializeField] private Transform _playerTrm;
 
     [Header("Stat")]
@@ -34,7 +31,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     [SerializeField] private bool _targeting;
 
     [SerializeField] private LayerMask _whatIsPlayer;
-
+    
     void SettingValue()
     {
         _damage = _bossStat.Damage;
@@ -50,21 +47,21 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     {
         if (_targeting)
         {
-            Vector2 dir = (_playerTrm.position - transform.position).normalized;
+            Vector2 dir = (_playerTrm.position - _myself.position).normalized;
             float playerAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-            transform.rotation = Quaternion.Euler(0f, 0f, playerAngle);
+            _myself.rotation = Quaternion.Euler(0f, 0f, playerAngle);
         }
     }
 
     void Attack()
     { 
-        Collider2D[] target = Physics2D.OverlapCircleAll(transform.position, _radiusRange, _whatIsPlayer);
+        Collider2D[] target = Physics2D.OverlapCircleAll(_myself.position, _radiusRange, _whatIsPlayer);
 
         foreach (var player in target)
         {
-            Vector2 direction = player.transform.position - transform.position;
-            float angle = Vector2.Angle(transform.right, direction); // 방향 구하기
+            Vector2 direction = player.transform.position - _myself.position;
+            float angle = Vector2.Angle(_myself.right, direction); // 방향 구하기
 
             if (angle <= _angleRange / 2f)
             {
@@ -93,7 +90,8 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         if (_lastPotectTime + _coolPotectTime < Time.time)
         {
             yield return new WaitForSeconds(_enterTime);
-            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().dontTouch.NoticeTIme());
+            _lastPotectTime = Time.time;
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().dontTouch.NoticeTime());
         }
         else
             StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
@@ -119,11 +117,11 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         
         Gizmos.color = Color.red;
 
-        Vector3 center = transform.position;
+        Vector3 center = _myself.position;
         Vector3 previousPoint = center;
         
         // 캐릭터가 바라보는 방향
-        float forwardAngle = Mathf.Atan2(transform.right.y, transform.right.x) * Mathf.Rad2Deg; // 플레이어가 바라보는 방향
+        float forwardAngle = Mathf.Atan2(_myself.right.y, _myself.right.x) * Mathf.Rad2Deg; // 플레이어가 바라보는 방향
 
         float startAngle = forwardAngle - _angleRange / 2f; // 부채꼴이 시작하는 각도
 
