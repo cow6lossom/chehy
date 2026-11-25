@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
 using System.Collections;
-using MoreMountains.Feedbacks;
 
 namespace Key._00.Scripts.Skill {
     public class LotusFlowerAnimation : MonoBehaviour {
-        [SerializeField] private MMF_Player dissolveFeedback;
         [SerializeField] private ParticleSystem dissolveParticle;
         [SerializeField] private Material dissolveMask;
         [SerializeField] private float particleRate = 70f;
+        [SerializeField, Min(0.01f)] private float dissolveDuration = 0.65f;
 
         private Animator _animator;
         private SpriteRenderer _sr;
@@ -18,6 +17,7 @@ namespace Key._00.Scripts.Skill {
         private Sprite _sprite;
         private Color[] _pixels;
         private ParticleSystem _particle;
+        private Vector2 _dissolveRange;
         private float _previousDissolve;
         private float _particleCount;
         
@@ -44,8 +44,6 @@ namespace Key._00.Scripts.Skill {
             IsEnd = false;
             _previousDissolve = 0f;
             _particleCount = 1f;
-            _material.SetFloat("_Dissolve", 0f);
-            dissolveFeedback.Initialization();
             _particle = Instantiate(dissolveParticle, _sr.transform.position, dissolveParticle.transform.rotation);
             _particle.gameObject.SetActive(true);
             _particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -57,11 +55,10 @@ namespace Key._00.Scripts.Skill {
             ParticleSystemRenderer sr = _particle.GetComponent<ParticleSystemRenderer>();
             sr.sortingLayerID = _sr.sortingLayerID;
             sr.sortingOrder = _sr.sortingOrder + 1;
-            Destroy(_particle.gameObject, dissolveFeedback.TotalDuration + main.startLifetime.constantMax / main.simulationSpeed + 0.1f);
+            Destroy(_particle.gameObject, dissolveDuration + main.startLifetime.constantMax / main.simulationSpeed + 0.1f);
             _animator.SetBool(deadHash, true);
-            dissolveFeedback.PlayFeedbacks();
             _particle.Play(false);
-            EmitDissolveParticles(true);
+            EmitDissolveParticles(0f, true);
         }
 
         public void SetCatch() {
@@ -78,7 +75,7 @@ namespace Key._00.Scripts.Skill {
         }
 
         private IEnumerator WaitForDissolve() {
-            while (dissolveFeedback.IsPlaying) {
+            while (_previousDissolve < 1f) {
                 yield return null;
             }
 
@@ -86,12 +83,13 @@ namespace Key._00.Scripts.Skill {
         }
 
         private void LateUpdate() {
-            if (!_animator.GetBool(deadHash) || IsEnd) return;
+            if (!_animator.GetBool(deadHash) || _previousDissolve >= 1f) return;
 
-            EmitDissolveParticles();
+            float dissolve = Mathf.MoveTowards(_previousDissolve, 1f, Time.deltaTime / dissolveDuration);
+            EmitDissolveParticles(dissolve);
         }
 
-        private void EmitDissolveParticles(bool start = false) {
+        private void EmitDissolveParticles(float dissolve, bool start = false) {
             if (_sprite != _sr.sprite) {
                 _sprite = _sr.sprite;
                 Rect rect = _sprite.textureRect;
@@ -108,20 +106,25 @@ namespace Key._00.Scripts.Skill {
                 RenderTexture.active = previous;
                 RenderTexture.ReleaseTemporary(target);
                 _pixels = _maskTexture.GetPixels();
-            }
 
-            float dissolve = _material.GetFloat("_Dissolve");
-            float previousEdge = Mathf.Lerp(1.08f, -0.08f, _previousDissolve);
-            float edge = Mathf.Lerp(1.08f, -0.08f, dissolve);
-            if (start) {
-                edge = float.MinValue;
-                for (int i = 0; i < _pixels.Length; i++) {
-                    if (_pixels[i].a < 0.1f) continue;
+                float minEdge = 1.08f;
+                float maxEdge = -0.08f;
+                foreach (Color pixel in _pixels) {
+                    if (pixel.a < 0.1f) continue;
 
-                    edge = Mathf.Max(edge, _pixels[i].r);
+                    minEdge = Mathf.Min(minEdge, pixel.r);
+                    maxEdge = Mathf.Max(maxEdge, pixel.r);
                 }
 
-                edge -= 0.001f;
+                _dissolveRange = new Vector2(maxEdge + 0.01f, minEdge - 0.01f);
+            }
+
+            float previousEdge = Mathf.SmoothStep(_dissolveRange.x, _dissolveRange.y, _previousDissolve);
+            float edge = Mathf.SmoothStep(_dissolveRange.x, _dissolveRange.y, dissolve);
+            _material.SetFloat("_Dissolve", dissolve >= 1f ? 1f : Mathf.InverseLerp(1.08f, -0.08f, edge));
+
+            if (start) {
+                edge = _dissolveRange.x - 0.011f;
                 previousEdge = edge + 0.035f;
             }
 

@@ -159,7 +159,6 @@ MonoBehaviour:
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
-      serializedVersion: 2
       m_Bits: 1024
     minDepth: 0
     maxDepth: 0
@@ -168,7 +167,19 @@ MonoBehaviour:
   damage: 3
   health: 5
   _attackPoint: {fileID: 820420655}
+  sr: {fileID: 0}
+  rigid: {fileID: 0}
+  _attackRange: 2
   speed: 9.73
+  _targetArr:
+  - {fileID: 0}
+  _target: {fileID: 0}
+  _color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  _isAttacking: 0
 --- !u!50 &251584279
 Rigidbody2D:
   serializedVersion: 5
@@ -418,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 314175325}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.21, y: -3.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -763,7 +774,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d770387b19642b469d7aa01b055f7ec, type: 2}
+  - {fileID: 2100000, guid: b81fbc8cd95099b43a4b938efc7a2e9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -831,10 +842,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
-  dissolveFeedback: {fileID: 592332681}
   dissolveParticle: {fileID: 6362684730305818971}
   dissolveMask: {fileID: 2100000, guid: 173da697868935f4fa705db99544e56a, type: 2}
   particleRate: 70
+  dissolveDuration: 0.65
 --- !u!114 &592332681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,7 +967,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: 980147891
         Label: MMFeedback
-        OriginalLabel: 
+        OriginalLabel: Material Set Property
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -3685,7 +3696,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d770387b19642b469d7aa01b055f7ec, type: 2}
+  - {fileID: 2100000, guid: b81fbc8cd95099b43a4b938efc7a2e9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3753,10 +3764,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
-  dissolveFeedback: {fileID: 990475530}
   dissolveParticle: {fileID: 6362684730305818971}
   dissolveMask: {fileID: 2100000, guid: 173da697868935f4fa705db99544e56a, type: 2}
   particleRate: 70
+  dissolveDuration: 0.65
 --- !u!114 &990475530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4218,7 +4229,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d770387b19642b469d7aa01b055f7ec, type: 2}
+  - {fileID: 2100000, guid: b81fbc8cd95099b43a4b938efc7a2e9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4338,10 +4349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
-  dissolveFeedback: {fileID: 1621842455}
   dissolveParticle: {fileID: 6362684730305818971}
   dissolveMask: {fileID: 2100000, guid: 173da697868935f4fa705db99544e56a, type: 2}
   particleRate: 70
+  dissolveDuration: 0.65
 --- !u!114 &1621842455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4463,7 +4474,7 @@ MonoBehaviour:
         Active: 1
         UniqueID: -120844211
         Label: MMFeedback
-        OriginalLabel: 
+        OriginalLabel: Material Set Property
         ChannelMode: 0
         Channel: 0
         MMChannelDefinition: {fileID: 0}
@@ -4886,7 +4897,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d770387b19642b469d7aa01b055f7ec, type: 2}
+  - {fileID: 2100000, guid: b81fbc8cd95099b43a4b938efc7a2e9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4954,10 +4965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e990a9c13c9443b79b81bd0ff7859f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key._00.Scripts.Skill.LotusFlowerAnimation
-  dissolveFeedback: {fileID: 2076876329}
   dissolveParticle: {fileID: 6362684730305818971}
   dissolveMask: {fileID: 2100000, guid: 173da697868935f4fa705db99544e56a, type: 2}
   particleRate: 70
+  dissolveDuration: 0.65
 --- !u!114 &2076876329
 MonoBehaviour:
   m_ObjectHideFlags: 0
