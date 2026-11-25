@@ -9,7 +9,7 @@ namespace Tyu.Scripts.SO
     public class AttackSettingSO : ScriptableObject
     {
         [Header("Range")]
-        [field:SerializeField, Min(0)] public float Distance { get; private set; }
+        [field:SerializeField] public Vector2 Pos { get; private set; }
         [field:SerializeField] public Vector2 Size { get; private set; }
         [field: Space(10)]
         [Header("Settings")]
@@ -18,15 +18,16 @@ namespace Tyu.Scripts.SO
         [field:SerializeField] public bool IsSymbol { get; private set; }
         [field:SerializeField] public bool HaveRandomPatterns { get; private set; }
         [field: SerializeField] public List<AttackSettingSO> RandomPatterns { get; private set; }
-        
-        
-        [field:Space(10)]
+
+
+        [field: Space(10)]
         [Header("Attack")]
-        [field: SerializeField, Min(0) ] public float Damage { get; private set; }
-        [field:SerializeField,Min(0) ] public float CoolTime { get; private set; }
-        [field:SerializeField, Min(0)] public float DealTime { get; private set; }
-        [field:SerializeField, Min(0)] public float maxDetect { get; private set; }
-        [field:SerializeField, Min(0)] public float minDetect { get; private set; }
+        [field: SerializeField, Min(0)]
+        public float Damage { get; private set; } = 0;
+        [field:SerializeField,Min(0) ] public float CoolTime { get; private set; } = 0;
+        [field:SerializeField, Min(0)] public float DealTime { get; private set; } = 0;
+        [field:SerializeField, Min(0)] public float maxDetect { get; private set; } = 0;
+        [field:SerializeField, Min(0)] public float minDetect { get; private set; } = 0;
 
         private void OnValidate()
         {

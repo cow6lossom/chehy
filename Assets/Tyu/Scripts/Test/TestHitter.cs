@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tyu.Scripts.Test
 {
-    public class TestHitter : MonoBehaviour, IHealthHavable
+    public class TestHitter : MonoBehaviour, IDamageable
     {
         public float CurrentHp;
         public void GetDamage(float damage)

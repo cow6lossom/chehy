@@ -26,7 +26,7 @@ namespace Tyu.Scripts.Boss
                         result = data;
                         return true;
                     }
-                if (!_coolTimeChecker.CheckCoolTime(attack.Type)) continue;
+                if (!_coolTimeChecker.CheckCoolTime(attack.AttackType)) continue;
                 if (distance < attack.minDetect) continue;
                 if (distance > attack.maxDetect) continue;
                 result = attack;
@@ -46,7 +46,7 @@ namespace Tyu.Scripts.Boss
             {
                 int idx = Random.Range(0, list.Count);
                 var target = list[idx];
-                if (_coolTimeChecker.CheckCoolTime(target.Type))
+                if (_coolTimeChecker.CheckCoolTime(target.AttackType))
                 {
                     list.RemoveAt(idx);
                     continue;

@@ -11,11 +11,11 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
     public class RedBeanMouseSoMaeSlash : HavingAnimeState
     {
         private RedbeanController _owner;
-        private int _attackCount;
+        private int _attackCount =0;
         private AttackSettingSO _firAttack;
         private AttackSettingSO _lastAttack;
         private BossStateMachine stateMachine;
-        private bool _isAttacked;
+        private bool _isAttacked= false;
         
         public RedBeanMouseSoMaeSlash(AbstractStateMachine _stateMachine, string anim,
             RedbeanController owner, RenderModule renderMd, List<AttackSettingSO> attacks) : base(_stateMachine, anim, renderMd)
@@ -23,14 +23,15 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _owner = owner;
             GetDatas.GetAttackData(attacks, AttackEnum.Slash, ref _firAttack);
             GetDatas.GetAttackData(attacks, AttackEnum.CircleSlash, ref _lastAttack);
-            _owner.CoolTimeChecker.AddCoolTimer(StateEnum.SoMeaAttack, _firAttack);
+            Debug.Log(_lastAttack);
+            _owner.CoolTimeChecker.AddCoolTimer(AttackEnum.Slash, _firAttack);
             stateMachine = _stateMachine as BossStateMachine;
         }
 
         public override void Enter()
         {
             
-            Vector2 dir = _owner.transform.position - _owner.TargetPlayer.transform.position;
+            var dir = _owner.GetDirToPlayer();
             _renderMd.FlipX(dir);
             base.Enter();
             
@@ -41,7 +42,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _attackCount = 0;
             _isAttacked = false;
             base.Exit();
-            _owner.CoolTimeChecker.ResetLastAtk(StateEnum.SoMeaAttack);
+            _owner.CoolTimeChecker.ResetLastAtk(AttackEnum.Slash);
         }
 
         public override void AnimationCallback()

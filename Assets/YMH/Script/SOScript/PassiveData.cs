@@ -32,4 +32,16 @@ public class PassiveData : ScriptableObject //패시브 자체의 정보
 
     public float Duration;
     public float Range;
+
+    [SerializeField, TextArea] private string[] levelUpDescription = new string[3];
+
+    public string GetLevelUpDescription(int level)
+    {
+        int index = level - 1;
+        
+        if (index < 0 ||  index >= levelUpDescription.Length)
+            return "";
+        
+        return levelUpDescription[index];
+    }
 }

@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Shaders;
 using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
@@ -7,45 +10,83 @@ namespace WSH._01.Scripts.BootsLotusBoss
     public class BootsLotusAttack : MonoBehaviour
     {
         [Header("BossSkill")]
-        [SerializeField] private BLGrudge _lotusGrudge;
-        [SerializeField] private BLWaterPillar _waterPillar;
-        [SerializeField] private BLPondHand _pondHand;
-        [SerializeField] private BLDontTouch _dontTouch;
+        public BLGrudge lotusGrudge { get; private set; }
+        public BLWaterPillar waterPillar { get; private set; }
+        public BLPondHand pondHand { get; private set; }
+        public BLDontTouch dontTouch { get; private set; }
 
-        [Header("BossStatSO")] public BossListSO List;
+        [Header("BossStatSO")] public BossListSO[] List;
 
-        private ISkill _currentSkill;
+        [Header("Number")]
+        [SerializeField] private int _currentOrder;
+        [SerializeField] private float _duringTime;
+        
+        public event Action OnDead;
         
         private void Awake()
         {
             Initialize();
         }
 
+        private void OnEnable()
+        {
+            OnDead += lotusGrudge.Dead;
+            OnDead += waterPillar.Dead;
+            OnDead += pondHand.Dead;
+        }
+
+        private void OnDisable()
+        {
+            OnDead -= lotusGrudge.Dead;
+            OnDead -= waterPillar.Dead;
+            OnDead -= pondHand.Dead;
+        }
+
         void Initialize()
         {
             InitializeCompo();
-            InitializeValue();
+            InitializeDataSet(0);
         }
         
         void InitializeCompo()
         {
-            _lotusGrudge = GetComponentInChildren<BLGrudge>();
-            _waterPillar = GetComponentInChildren<BLWaterPillar>();
-            _pondHand = GetComponentInChildren<BLPondHand>();
-            _dontTouch = GetComponentInChildren<BLDontTouch>();
+            lotusGrudge = GetComponentInChildren<BLGrudge>();
+            waterPillar = GetComponentInChildren<BLWaterPillar>();
+            pondHand = GetComponentInChildren<BLPondHand>();
+            dontTouch = GetComponentInChildren<BLDontTouch>();
         }
 
-        void InitializeValue()
+        void InitializeDataSet(int value)
         {
-            _lotusGrudge.GetBossStat(List.list[0]);
-            _waterPillar.GetBossStat(List.list[1]);
-            _pondHand.GetBossStat(List.list[2]);
-            _dontTouch.GetBossStat(List.list[3]);
+            lotusGrudge.GetBossStat(List[value].list[0]);
+            waterPillar.GetBossStat(List[value].list[1]);
+            pondHand.GetBossStat(List[value].list[2]);
+            dontTouch.GetBossStat(List[value].list[3]);
         }
 
-        void SkillWork()
+        public void SkillWork()
         {
-            
+            if (_currentOrder == 0)
+            {
+                lotusGrudge.StartCoroutine(lotusGrudge.NoticeTime());
+            }
+            else if (_currentOrder == 1)
+            {
+                waterPillar.StartCoroutine(waterPillar.NoticeTime());
+            }
+        }
+
+        public IEnumerator NextSkill()
+        {
+            _currentOrder++;
+            if (_currentOrder >= 2) _currentOrder = 0;
+            yield return new WaitForSeconds(_duringTime);
+            SkillWork();
+        }
+
+        public void RaiseDead()
+        {
+            OnDead?.Invoke();
         }
     }
 }

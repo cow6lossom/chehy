@@ -5,7 +5,7 @@ using UnityEngine.Splines;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour, IHealthHavable
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private float health = 100f;
 

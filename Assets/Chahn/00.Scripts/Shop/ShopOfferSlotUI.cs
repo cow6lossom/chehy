@@ -50,6 +50,9 @@ public class ShopOfferSlotUI : MonoBehaviour
 
     public void SetPurchaseAvailable(bool value)
     {
-        buyButton.interactable = value && (CurrentOffer != null && !CurrentOffer.IsPurchased);
+        buyButton.interactable = 
+            value && 
+            CurrentOffer != null && 
+            !CurrentOffer.IsPurchased;
     }
 }

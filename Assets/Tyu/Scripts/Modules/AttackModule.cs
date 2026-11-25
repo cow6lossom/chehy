@@ -19,15 +19,16 @@ namespace Tyu.Modules
 
         public void TryAttack(AttackSettingSO data)
         {
-                Vector2 pos = transform.position + transform.right * data.Distance;
+            var isRight = transform.right.x > 0;
+                Vector2 pos = (Vector2)transform.position + (data.Pos * new Vector2(isRight ? 1 : -1, 1));
                 int cnt = Physics2D.OverlapBox(pos, data.Size, transform.eulerAngles.z, target, _resultArray);
                 if (cnt < 1) return;
             
                 for (int i = 0; i < cnt; i++)
                 {
                     var target = _resultArray[i];
-
-                    if (target.TryGetComponent<IHealthHavable>(out var compo))
+                    Debug.Log(122323);
+                    if (target.TryGetComponent<IDamageable>(out var compo))
                         compo.GetDamage(data.Damage);
                 }
         }

@@ -7,15 +7,21 @@ namespace Tyu.Scripts.Boss
 {
     public class PatternCoolTimeChecker
     {
-        public Dictionary<StateEnum, PatternCoolTimer> dict;
+        public Dictionary<AttackEnum, PatternCoolTimer> dict;
 
-        public void AddCoolTimer(StateEnum type, AttackSettingSO data)
+        public PatternCoolTimeChecker()
+        {
+            dict = new();
+        }
+        
+        
+        public void AddCoolTimer(AttackEnum type, AttackSettingSO data)
         {
             PatternCoolTimer timer = new(data);
             dict.Add(type, timer);
         }
-        public bool CheckCoolTime(StateEnum type) => dict[type].CheckCoolTime();
-        public void ResetLastAtk(StateEnum type) => dict[type].SetLastAtk();
+        public bool CheckCoolTime(AttackEnum type) => dict[type].CheckCoolTime();
+        public void ResetLastAtk(AttackEnum type) => dict[type].SetLastAtk();
         
     }
 

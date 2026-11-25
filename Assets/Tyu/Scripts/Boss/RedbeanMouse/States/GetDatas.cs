@@ -11,7 +11,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         {
             foreach (var data in list)
             {
-                if (data.IsSymbol && data.AttackType == target)
+                if (data.AttackType == target)
                 {
                     owner = data;
                     return;

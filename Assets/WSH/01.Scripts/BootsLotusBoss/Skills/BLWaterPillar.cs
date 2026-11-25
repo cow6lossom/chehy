@@ -6,7 +6,7 @@ using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
 {
-    public class BLWaterPillar : ISkill
+    public class BLWaterPillar : MonoBehaviour
     {
         [Header("StatSO")] private BossStatDataSO _bossStat;
         
@@ -22,33 +22,20 @@ namespace WSH._01.Scripts.BootsLotusBoss
         [SerializeField] private float _enterTime; // 우물 들어가는 시간
     
         [SerializeField] private LayerMask _whatIsPlayer;
-
-        private void Awake()
+        
+        void SettingValue()
         {
+            _range = new Vector2(_bossStat.Range, _bossStat.Range);
             
+            _damage = _bossStat.Damage;
+            _noticeTime = _bossStat.NoticeTime;
+            _dealTime = _bossStat.DealTime;
+            _enterTime = _bossStat.EnterTime;
+
+            _whatIsPlayer = _bossStat.WhatIsPlayer;
         }
 
-        void Initialize()
-        {
-            
-        }
-
-        private void EnterState()
-        {
-        
-        }
-    
-        private void UpdateState()
-        {
-        
-        }
-
-        void ExitState()
-        {
-        
-        }
-
-        public void Attack()
+        void Attack()
         {
             Collider2D[] target = Physics2D.OverlapBoxAll(_centerTrm.position, _range, _whatIsPlayer);
 
@@ -56,14 +43,15 @@ namespace WSH._01.Scripts.BootsLotusBoss
             {
                 if (player.TryGetComponent<HealthModule>(out var health))
                 {
-                    //health.GetDamage(_damage);
-                    StartCoroutine(DealTime());
+                    health.GetDamage(_damage);
                 }
             }
+            StartCoroutine(DealTime());
         }
         
-        IEnumerator NoticeTime()
+        public IEnumerator NoticeTime()
         {
+            Debug.Log(1);
             yield return new WaitForSeconds(_noticeTime);
             Attack();
         }
@@ -71,16 +59,26 @@ namespace WSH._01.Scripts.BootsLotusBoss
         IEnumerator DealTime()
         {
             yield return new WaitForSeconds(_dealTime);
+
+            yield return new WaitForSeconds(_enterTime);
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
         }
-        
+
         public void GetBossStat(BossStatDataSO bossStat)
         {
             _bossStat = bossStat;
+            SettingValue();
+        }
+
+        public void Dead()
+        {
+            StopCoroutine(NoticeTime());
+            StopCoroutine(DealTime());
         }
 
         private void OnDrawGizmos()
         {
-            if(_centerTrm == null) return;
+            if(_centerTrm == null || _bossStat == null) return;
             
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(_centerTrm.position, _range);

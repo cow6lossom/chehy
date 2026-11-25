@@ -30,10 +30,18 @@ MonoBehaviour:
   levelConfigs:
   - level: 1
     purchasePrice: 1
+    sellPrice: 3
     weight: 5
+    levelUpPrice: 5
   - level: 2
     purchasePrice: 2
+    sellPrice: 4
     weight: 3.5
+    levelUpPrice: 8
   - level: 3
     purchasePrice: 3
+    sellPrice: 5
     weight: 1
+    levelUpPrice: 0
+  healCost: 50
+  healRatio: 0.3

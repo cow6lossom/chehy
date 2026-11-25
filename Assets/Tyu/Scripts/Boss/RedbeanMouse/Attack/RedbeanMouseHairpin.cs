@@ -79,7 +79,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             {
                 var target = _results[i];
 
-                if (target.TryGetComponent<IHealthHavable>(out var compo))
+                if (target.TryGetComponent<IDamageable>(out var compo))
                 {
                     compo.GetDamage(_atkData.Damage);
                     _isAttacked = true;

@@ -11,12 +11,19 @@ namespace Tyu.Scripts.Boss.FSM
 
         public AbstractStateMachine(IStateMachine _owner)
         {
+            stateDict = new();
             owner = _owner;
         }
         
         public virtual void Initialize(StateEnum keyValue)
         {
-            ChangeState(keyValue);
+            if (!stateDict.TryGetValue(keyValue, out var value))
+            {
+                Debug.LogError("존재하지 않는 키값 대입 이유로 상태 추가 취소");
+                return;
+            }
+            currentState = value;
+            currentState.Enter();
         }
         
         public void AddState(StateEnum keyValue, AbstractState state)
@@ -35,7 +42,9 @@ namespace Tyu.Scripts.Boss.FSM
             }
             currentState.Exit();
             currentState = value;
+            Debug.Log(currentState);
             currentState.Enter();
+            Debug.Log(3423);
         }
 
         public virtual void UpdateState()

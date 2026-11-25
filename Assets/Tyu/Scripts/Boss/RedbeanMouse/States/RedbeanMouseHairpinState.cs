@@ -60,7 +60,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         public override void Exit()
         {
             base.Exit();
-            _owner.CoolTimeChecker.ResetLastAtk(_attackData.Type);
+            _owner.CoolTimeChecker.ResetLastAtk(_attackData.AttackType);
         }
     }
 }
