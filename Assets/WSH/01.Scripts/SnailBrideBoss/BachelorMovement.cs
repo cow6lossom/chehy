@@ -1,16 +1,44 @@
+using System;
 using UnityEngine;
 
-public class BachelorMovement : MonoBehaviour
+namespace WSH._01.Scripts.SnailBrideBoss
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class BachelorMovement : MovementModule
     {
+        [SerializeField] private Vector2 _moveDir;
         
-    }
+        [SerializeField] private float _speed;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private bool _isLive;
+        [SerializeField] private bool _canMove;
+
+        private void Awake()
+        {
+            
+        }
+
+        private void OnEnable()
+        {
+            
+        }
+
+        private void OnDisable()
+        {
+            
+        }
+
+        private void Update()
+        {
+            if (!_isLive) return;
+
+            
+            // if (!_canMove)
+            //     GetDirection();
+        }
+
+        Vector2 GetDirection(Transform target)
+        {
+            return (target.position - transform.position).normalized;
+        }
     }
 }

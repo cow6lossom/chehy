@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class Bachelor : MonoBehaviour
+namespace WSH._01.Scripts.SnailBrideBoss
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Bachelor : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private BachelorMovement _movement;
+    
     }
 }
