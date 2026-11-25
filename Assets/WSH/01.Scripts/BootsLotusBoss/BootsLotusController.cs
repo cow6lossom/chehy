@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using Tyu.Scripts;
-using Tyu.Scripts.Modules;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance;
 
 namespace WSH._01.Scripts.BootsLotusBoss
 {

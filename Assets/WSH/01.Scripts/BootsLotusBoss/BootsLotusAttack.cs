@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Shaders;
 using WSH._09.SO;
 
 namespace WSH._01.Scripts.BootsLotusBoss
