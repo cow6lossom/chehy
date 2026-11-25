@@ -31,7 +31,6 @@ public class TutorialRunner : MonoBehaviour
     {
         int currentNumberQuest = tutorialDic.FirstOrDefault(x => x.Value == currentTutorialDataSO).Key;
         currentTutorialDataSO = tutorialDic[currentNumberQuest+1];
-        taskCompletionSource.SetResult(false);
     }
 
     private void Awake()
@@ -47,22 +46,32 @@ public class TutorialRunner : MonoBehaviour
     public async void RunningTutorial()
     {
         Debug.Log($"QuestNumber Start");
-        await taskCompletionSource.Task;
+        await WaitForStepAsync();
         Debug.Log($"QuestNumber End");
 
     }
 
+    public async Task WaitForStepAsync()
+    {
+        taskCompletionSource = new TaskCompletionSource<bool>();
+        await taskCompletionSource.Task;
+    }
+
+
     public void CheackSuscessTutorial()
     {
-        if(currentTutorialDataSO.Type == TutorialType.GetItem)
+        if(taskCompletionSource != null && !taskCompletionSource.Task.IsCompleted)
         {
-            taskCompletionSource.SetResult(true);
-        }
-        else if(currentTutorialDataSO.Type == TutorialType.GoArrived)
-        {
-            taskCompletionSource.SetResult(true);
-        }
+            if(currentTutorialDataSO.Type == TutorialType.GetItem)
+            {
+                taskCompletionSource.SetResult(true);
+            }
+            else if(currentTutorialDataSO.Type == TutorialType.GoArrived)
+            {
+                taskCompletionSource.SetResult(true);
+            }
         Change();
+        }
     }
 
     private void OnDrawGizmos()
