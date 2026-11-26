@@ -1,3 +1,4 @@
+using PrimeTween;
 using UnityEngine;
 using WSH._01.Scripts.BootsLotusBoss;
 
@@ -16,8 +17,20 @@ public class BootsLotusMovement : MonoBehaviour
         _animation = transform.parent.GetComponentInChildren<BossAnimation>();
     }
 
+    public void BossEnter(Transform bossTrm)
+    {
+        Tween.Position(bossTrm, new Vector3(0, -10, 0), 2f, ease: Ease.InOutBack);
+    }
+
+    public void BossExit(Transform bossTrm, Vector3 pos)
+    {
+        bossTrm.position = pos;
+        Tween.Position(bossTrm, new Vector3(0, 0, 0), 1f);
+    }
+    
     public void DontTouchMove()
     {
-        _lotusBossTrm.position = _bootsBossTrm.position + new Vector3(5,0,0);
+        _lotusBossTrm.position =
+            _lotusBossTrm.position.x > 0 ? _bootsBossTrm.position - new Vector3(5, 0, 0) : _bootsBossTrm.position + new Vector3(5, 0, 0);
     }
 }

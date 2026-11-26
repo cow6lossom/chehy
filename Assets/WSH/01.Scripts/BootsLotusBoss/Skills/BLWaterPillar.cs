@@ -10,6 +10,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
         [Header("StatSO")]
         [SerializeField] private BLBossStatDataSO blBossStat;
         
+        [SerializeField] private Transform _boots;
+        [SerializeField] private Transform _lotus;
         [SerializeField] private Transform _centerTrm; // 공격 범위 중심
         [SerializeField] private Vector2 _range; // 범위
         
@@ -52,6 +54,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
         public IEnumerator NoticeTime()
         {
             Debug.Log(1);
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_boots, new Vector3(-8, -10, 0));
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_lotus, new Vector3(8, -10, 0));
             yield return new WaitForSeconds(_noticeTime);
             Attack();
         }
@@ -61,6 +65,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
             yield return new WaitForSeconds(_dealTime);
 
             yield return new WaitForSeconds(_enterTime);
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossEnter(_boots);
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossEnter(_lotus);
             StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
         }
 

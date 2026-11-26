@@ -56,10 +56,10 @@ namespace WSH._01.Scripts.BootsLotusBoss
 
         void InitializeDataSet(int value)
         {
-            lotusGrudge.GetBossStat(List[value].list[0]);
-            waterPillar.GetBossStat(List[value].list[1]);
-            pondHand.GetBossStat(List[value].list[2]);
-            dontTouch.GetBossStat(List[value].list[3]);
+            lotusGrudge.GetBossStat(List[value].onePageList[0]);
+            waterPillar.GetBossStat(List[value].onePageList[1]);
+            pondHand.GetBossStat(List[value].onePageList[2]);
+            dontTouch.GetBossStat(List[value].onePageList[3]);
         }
 
         public void SkillWork()

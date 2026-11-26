@@ -8,6 +8,7 @@ namespace WSH._09.SO
         [field:SerializeField] public float Health { get; private set; }
         [field:SerializeField] public float MaxHealth { get; private set; }
 
-        public BLBossStatDataSO[] list;
+        public BLBossStatDataSO[] onePageList;
+        public BLBossStatDataSO[] twoPageList;
     }
 }

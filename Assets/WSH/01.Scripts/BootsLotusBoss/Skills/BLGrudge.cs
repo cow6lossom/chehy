@@ -76,7 +76,13 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
 
     public IEnumerator NoticeTime()
     {
-        Debug.Log(0);
+        int random = Random.Range(0, 2);
+
+        if (random == 0)
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(-8, -10, 0));
+        else
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(8, -10, 0));
+        
         _targeting = true;
         yield return new WaitForSeconds(_noticeTime);
         Attack();
@@ -91,11 +97,14 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         {
             yield return new WaitForSeconds(_enterTime);
             _lastPotectTime = Time.time;
-            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().dontTouch.NoticeTime());
+            StartCoroutine(transform.root.GetComponent<BootsLotusAttack>().dontTouch.NoticeTime());
         }
         else
-            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
-        
+        {
+            StartCoroutine(transform.root.GetComponent<BootsLotusAttack>().NextSkill());
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossEnter(_myself);
+        }
+
         _targeting = false;
     }
 
@@ -125,7 +134,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
 
         float startAngle = forwardAngle - _angleRange / 2f; // 부채꼴이 시작하는 각도
 
-        for (int i = 0; i <= _segments; i++) // 
+        for (int i = 0; i <= _segments; i++)
         {
             float currentAngle = startAngle + (_angleRange / _segments) * i; // 현재 각도를 초기 각도와 i만큼 더함
 
