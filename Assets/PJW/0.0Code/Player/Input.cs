@@ -53,4 +53,29 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
             OnIsInteractPressed?.Invoke();
         }
     }
+
+    public void OnSkill(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnOpen(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnUse(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
+    }
 }
