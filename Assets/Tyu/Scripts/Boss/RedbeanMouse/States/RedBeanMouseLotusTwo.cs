@@ -22,7 +22,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             stateMachine = _stateMachine as BossStateMachine; 
             GetDatas.GetAttackData(attacks, AttackEnum.Lotus, ref _data);
             GetDatas.GetAttackData(_data.RandomPatterns, AttackEnum.Lotus1, ref _data);
-            _owner.CoolTimeChecker.AddCoolTimer(AttackEnum.Lotus2, _data);
+            _owner.CoolTimeChecker.AddCoolTimer(AttackEnum.Lotus, _data);
         }
         
         public override void AnimationCallback()

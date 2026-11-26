@@ -34,6 +34,7 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             base.Enter();
         }
 
+        
         public override void AnimationCallback()
         {
             base.AnimationCallback();
@@ -42,13 +43,20 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _usingFlower.Initialize(_owner.TargetPlayer, _data, _owner.transform.position);
             _usingFlower.OnCoolTimeReset += GetEventFromLotus;
         }
-
+        
+        
+        
         private void GetEventFromLotus()
         {
             _usingFlower.OnCoolTimeReset -= GetEventFromLotus;
             
             _owner.CoolTimeChecker.ResetLastAtk(AttackEnum.Lotus1);
-            stateMachine.ChangeToDealTime(AttackEnum.Lotus1, _data.DealTime);
+            stateMachine.ChangeToDealTime(AttackEnum.Lotus, _data.DealTime);
+        }
+
+        public override void AnimationEndCallback()
+        {
+            base.AnimationEndCallback();
             
         }
     }
