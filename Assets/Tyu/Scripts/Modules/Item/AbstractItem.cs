@@ -4,9 +4,14 @@ namespace Tyu.Scripts.Modules.Item
 {
     public abstract class AbstractItem
     {
+        public virtual void UseItem()
+        {
+            
+        }
         public virtual void GetItem()
         {
             
         }
+        
     }
 }

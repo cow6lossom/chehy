@@ -23,12 +23,18 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
             _owner = owner;
             GetDatas.GetAttackData(attacks, AttackEnum.Lotus, ref _data);
             GetDatas.GetAttackData(_data.RandomPatterns, AttackEnum.Lotus1, ref _data);
-            
+            _owner.CoolTimeChecker.AddCoolTimer(AttackEnum.Lotus1, _data);
+
         }
 
         public override void Enter()
         {
             base.Enter();
+        }
+
+        public override void AnimationCallback()
+        {
+            base.AnimationCallback();
             _usingFlower = _maker.MakeLotus(_owner.transform.position);
             _usingFlower.gameObject.SetActive(true);
             _usingFlower.Initialize(_owner.TargetPlayer, _data, _owner.transform.position);
