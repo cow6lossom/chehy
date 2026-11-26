@@ -683,8 +683,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f12934b052dd2448e3ffb791bf45b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  _attackSettingSO: {fileID: 0}
-  _AttackModule: {fileID: 0}
+  maxBuffer: 5
+  target:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  isPlayer: 0
+  _attackSettingSO: {fileID: 11400000, guid: cd7d557e9b037de4eb04848c235d2115, type: 2}
 --- !u!1 &1566364560
 GameObject:
   m_ObjectHideFlags: 0

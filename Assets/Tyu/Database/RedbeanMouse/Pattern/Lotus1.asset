@@ -21,6 +21,6 @@ MonoBehaviour:
   <RandomPatterns>k__BackingField: []
   <Damage>k__BackingField: 5
   <CoolTime>k__BackingField: 7
-  <DealTime>k__BackingField: 1
+  <DealTime>k__BackingField: 2
   <maxDetect>k__BackingField: 9.48
   <minDetect>k__BackingField: 2.84
