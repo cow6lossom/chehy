@@ -85,7 +85,6 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
         {
             MouseDir = Mouse.current.position.ReadValue();
             Dashed?.Invoke(MouseDir);
-            Debug.Log(MouseDir);
         }
     }
 
