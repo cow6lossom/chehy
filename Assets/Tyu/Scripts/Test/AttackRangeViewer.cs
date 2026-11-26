@@ -7,6 +7,7 @@ namespace Tyu.Scripts.Test
     {
         [SerializeField] private AttackSettingSO settingSo;
         [SerializeField] private bool debug;
+        [SerializeField] private bool isPlayer;
 
         private void OnDrawGizmos()
         {
@@ -20,7 +21,7 @@ namespace Tyu.Scripts.Test
                 Vector3.one
             );
 
-            var isRight = transform.right.x > 0;
+            var isRight = transform.right.x > 0 || isPlayer;
             Gizmos.DrawWireCube(Vector2.zero + settingSo.Pos * new Vector2(isRight ? 1 :-1, 1), settingSo.Size);
 
             Gizmos.matrix = basicMatrix;

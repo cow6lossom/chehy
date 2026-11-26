@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿/*
+
+using System.Collections;
 using Key._00.Scripts.DummyEnemy;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -90,3 +92,5 @@ namespace Key._00.Scripts {
         }
     }
 }
+
+*/

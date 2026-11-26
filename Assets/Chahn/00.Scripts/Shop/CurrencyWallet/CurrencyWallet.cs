@@ -37,4 +37,13 @@ public class CurrencyWallet : MonoBehaviour //보유하고 있는 엽전과 엽�
         OnCoinChanged?.Invoke(CurrentCoins);
         return true;
     }
+
+    private void LoseHalfCoins()
+    {
+        if (CurrentCoins <= 0)
+            return;
+
+        CurrentCoins /= 2;
+        OnCoinChanged?.Invoke(CurrentCoins);
+    }
 }
