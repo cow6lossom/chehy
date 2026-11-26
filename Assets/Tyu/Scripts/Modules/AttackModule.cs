@@ -13,12 +13,12 @@ namespace Tyu.Modules
         [SerializeField] private bool isPlayer;
         private Collider2D[] _resultArray;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _resultArray = new Collider2D[maxBuffer];
         }
 
-        public void TryAttack(AttackSettingSO data)
+        public virtual void TryAttack(AttackSettingSO data)
         {
             var isRight = transform.right.x > 0 || isPlayer;
                 Vector2 pos = (Vector2)transform.position + (data.Pos * new Vector2(isRight ? 1 : -1, 1));

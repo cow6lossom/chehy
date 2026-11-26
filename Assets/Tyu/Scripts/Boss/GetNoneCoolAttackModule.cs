@@ -21,11 +21,12 @@ namespace Tyu.Scripts.Boss
             {
                 if(!attack.IsSymbol) continue;
                 if (attack.HaveRandomPatterns)
-                    if (GetRandomPattern(attack, distance,out var data))
+                    if (GetRandomPattern(attack, distance, out var data))
                     {
                         result = data;
                         return true;
                     }
+                    else continue;
                 if (!_coolTimeChecker.CheckCoolTime(attack.AttackType)) continue;
                 if (distance < attack.minDetect) continue;
                 if (distance > attack.maxDetect) continue;

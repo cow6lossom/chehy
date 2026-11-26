@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Key._00.Scripts.Skill;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.SO;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
         [SerializeField] private List<AttackSettingSO> firAttacks;
         [SerializeField] private List<AttackSettingSO> secAttacks;
         [SerializeField] private List<AttackMoveSO> attackMoves;
+        [SerializeField] private RedBeanLotusMaker lotusMaker;
+        
         private BossStateMachine _behaviourStateMachine;
         public GetNoneCoolAttackModule GetNoneCoolAttack { get; private set; }
         public PatternCoolTimeChecker CoolTimeChecker { get; private set; }
@@ -37,8 +40,8 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
                 renderMd, this, firAttacks, secAttacks));
             _behaviourStateMachine.AddState(StateEnum.SleeveAttack, new RedBeanMouseSoMaeSlash(_behaviourStateMachine, "SleeveAttack",
                 this, renderMd, firAttacks));
-            // _behaviourStateMachine.AddState(StateEnum.Stab, new RedbeanMouseManyStab(_behaviourStateMachine, "Stab",
-            //     renderMd, this, firAttacks, attackMoves));
+            _behaviourStateMachine.AddState(StateEnum.Lotus1, new RedbeanMouseLotusOne(_behaviourStateMachine,  "Lotus1", renderMd, this, firAttacks, lotusMaker));
+            _behaviourStateMachine.AddState(StateEnum.Lotus2, new RedBeanMouseLotusTwo(_behaviourStateMachine,  "Lotus2", renderMd, this, firAttacks, lotusMaker));
 
             var dealTime = new DealTimeState(_behaviourStateMachine, renderMd, moveMd, dealTimeList);
 
