@@ -1,14 +1,12 @@
-using System;
 using System.Collections;
 using Tyu.Scripts.Modules;
 using UnityEngine;
-using WSH._01.Scripts.BootsLotusBoss;
 using WSH._09.SO;
 
 public class BLPondHand : MonoBehaviour
 {
     [Header("StatSO")]
-    [SerializeField] private BossStatDataSO _bossStat;
+    [SerializeField] private BLBossStatDataSO blBossStat;
     
     [SerializeField] private Transform _player;
     
@@ -28,11 +26,11 @@ public class BLPondHand : MonoBehaviour
     
     void SettingValue()
     {
-        _damage = _bossStat.Damage;
-        _noticeTime = _bossStat.NoticeTime;
-        _range  = _bossStat.Range;
+        _damage = blBossStat.Damage;
+        _noticeTime = blBossStat.NoticeTime;
+        _range  = blBossStat.Range;
 
-        _whatIsPlayer = _bossStat.WhatIsPlayer;
+        _whatIsPlayer = blBossStat.WhatIsPlayer;
     }
 
     private void Update()
@@ -68,9 +66,9 @@ public class BLPondHand : MonoBehaviour
         _passiving = false;
     }
 
-    public void GetBossStat(BossStatDataSO bossStat)
+    public void GetBossStat(BLBossStatDataSO blBossStat)
     {
-        _bossStat = bossStat;
+        this.blBossStat = blBossStat;
         SettingValue();
     }
 

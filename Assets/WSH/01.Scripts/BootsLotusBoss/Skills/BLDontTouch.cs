@@ -1,14 +1,15 @@
 using System.Collections;
 using Tyu.Scripts.Modules;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using WSH._01.Scripts.BootsLotusBoss;
 using WSH._09.SO;
 
 public class BLDontTouch : MonoBehaviour
 {
+    [FormerlySerializedAs("_bossStat")]
     [Header("StatSO")]
-    [SerializeField] private BossStatDataSO _bossStat;
+    [SerializeField] private BLBossStatDataSO blBossStat;
     
     [Header("Time")]
     [SerializeField] private float _noticeTime; // 예고 시간
@@ -24,9 +25,9 @@ public class BLDontTouch : MonoBehaviour
     
     void SettingValue()
     {
-        _noticeTime = _bossStat.NoticeTime;
-        _protectTime = _bossStat.DealTime;
-        _damage = _bossStat.Damage;
+        _noticeTime = blBossStat.NoticeTime;
+        _protectTime = blBossStat.DealTime;
+        _damage = blBossStat.Damage;
     }
     
     public IEnumerator NoticeTime()
@@ -43,7 +44,7 @@ public class BLDontTouch : MonoBehaviour
     public IEnumerator Counter()
     {
         yield return new WaitForSeconds(_dealNoticeTime);
-        var target = Physics2D.OverlapBox(transform.position, new Vector2(_bossStat.Range, _bossStat.Range), _whatIsPlayer);
+        var target = Physics2D.OverlapBox(transform.position, new Vector2(blBossStat.Range, blBossStat.Range), _whatIsPlayer);
         
         if(target == null)
         {
@@ -54,9 +55,9 @@ public class BLDontTouch : MonoBehaviour
         }
     }
     
-    public void GetBossStat(BossStatDataSO bossStat)
+    public void GetBossStat(BLBossStatDataSO blBossStat)
     {
-        _bossStat = bossStat;
+        this.blBossStat = blBossStat;
         SettingValue();
     }
 }

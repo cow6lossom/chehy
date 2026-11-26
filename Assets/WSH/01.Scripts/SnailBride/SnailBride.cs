@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace WSH._01.Scripts.SnailBride

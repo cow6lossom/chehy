@@ -13,7 +13,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
         public BLPondHand pondHand { get; private set; }
         public BLDontTouch dontTouch { get; private set; }
 
-        [Header("BossStatSO")] public BossListSO[] List;
+        [Header("BossStatSO")] public BLBossListSO[] List;
 
         [Header("Number")]
         [SerializeField] private int _currentOrder;

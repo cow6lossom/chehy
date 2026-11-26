@@ -6,7 +6,7 @@ using WSH._09.SO;
 
 public class BLGrudge : MonoBehaviour // 장화의 원한
 {
-    [Header("StatSO")] private BossStatDataSO _bossStat;
+    [Header("StatSO")] private BLBossStatDataSO _blBossStat;
 
     [SerializeField] private BossAnimation _animation;
     [SerializeField] private Transform _myself;
@@ -34,13 +34,13 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     
     void SettingValue()
     {
-        _damage = _bossStat.Damage;
-        _noticeTime = _bossStat.NoticeTime;
-        _dealTime = _bossStat.DealTime;
-        _enterTime = _bossStat.EnterTime;
-        _radiusRange = _bossStat.Range;
+        _damage = _blBossStat.Damage;
+        _noticeTime = _blBossStat.NoticeTime;
+        _dealTime = _blBossStat.DealTime;
+        _enterTime = _blBossStat.EnterTime;
+        _radiusRange = _blBossStat.Range;
 
-        _whatIsPlayer = _bossStat.WhatIsPlayer;
+        _whatIsPlayer = _blBossStat.WhatIsPlayer;
     }
 
     private void Update()
@@ -99,9 +99,9 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         _targeting = false;
     }
 
-    public void GetBossStat(BossStatDataSO bossStat)
+    public void GetBossStat(BLBossStatDataSO blBossStat)
     {
-        _bossStat = bossStat;
+        _blBossStat = blBossStat;
         SettingValue();
     }
 
@@ -113,7 +113,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
     
     private void OnDrawGizmos()
     {
-        if (_bossStat == null) return;
+        if (_blBossStat == null) return;
         
         Gizmos.color = Color.red;
 
