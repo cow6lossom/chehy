@@ -1,10 +1,12 @@
 using Tyu.Scripts.Modules;
-using UnityEngine;
 
-namespace WSH._01.Scripts.SnailBride
+namespace WSH._01.Scripts.SnailBride.Bachelor
 {
     public class BachelorHealth : HealthModule
     {
-        
+        public void Initialize(float hp)
+        {
+            MaxHp = hp;
+        }
     }
 }

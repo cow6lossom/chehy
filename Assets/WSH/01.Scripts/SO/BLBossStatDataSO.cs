@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WSH._09.SO
 {
-    [CreateAssetMenu(fileName = "BossStatDataSO", menuName = "SO/BossStatDataSO")]
+    [CreateAssetMenu(fileName = "BLBossStatDataSO", menuName = "SO/BLBossStatDataSO")]
     public class BLBossStatDataSO : ScriptableObject
     {
         [Header("Stat")]

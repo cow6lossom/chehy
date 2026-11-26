@@ -1,9 +1,9 @@
-using Tyu.Scripts.Modules;
+using Tyu.Scripts.Boss.RedbeanMouse;
 using UnityEngine;
 
 namespace WSH._01.Scripts.BootsLotusBoss
 {
-    public class BootsLotusHealth : HealthModule
+    public class BootsLotusHealth : BossHealthModule
     {
         [SerializeField] private BootsLotusAttack _attackCompo;
 
@@ -11,7 +11,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
         {
             _attackCompo = transform.parent.GetComponentInChildren<BootsLotusAttack>();
         }
-
+        
         public override void GetDamage(float damage)
         {
             base.GetDamage(damage);
