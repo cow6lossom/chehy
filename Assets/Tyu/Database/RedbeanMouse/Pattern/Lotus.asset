@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d3d30b7ea84f1480f8068924495cef, type: 3}
+  m_Name: Lotus
+  m_EditorClassIdentifier: Assembly-CSharp::Tyu.Scripts.SO.AttackSettingSO
+  <Pos>k__BackingField: {x: 0, y: 0}
+  <Size>k__BackingField: {x: 0, y: 0}
+  <Type>k__BackingField: 0
+  <AttackType>k__BackingField: 6
+  <IsSymbol>k__BackingField: 1
+  <HaveRandomPatterns>k__BackingField: 1
+  <RandomPatterns>k__BackingField:
+  - {fileID: 11400000, guid: 4505f800de718ef43a7f8f36d795a63a, type: 2}
+  - {fileID: 11400000, guid: fb52ebf14646b5c4c8b194a1b1c3b1ee, type: 2}
+  <Damage>k__BackingField: 0
+  <CoolTime>k__BackingField: 0
+  <DealTime>k__BackingField: 0
+  <maxDetect>k__BackingField: 8.86
+  <minDetect>k__BackingField: 4.06
