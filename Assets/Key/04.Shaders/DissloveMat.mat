@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Disslove: 0
-    - _Dissolve: 0
+    - _Dissolve: 0.135
     - _NoiseScale: 80
     - _NoiseStrength: 0.15
     m_Colors:
