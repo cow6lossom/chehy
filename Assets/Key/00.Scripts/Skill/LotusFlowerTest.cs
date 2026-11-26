@@ -25,7 +25,7 @@ namespace Key._00.Scripts.Skill {
         private float _nextSpawnTime2;
 
         private void Start() {
-            _player.InputCompo.OnAttackPressed += TryAttack;
+            _player.InputCompo.OnAttacked += TryAttack;
             SpawnFlower2();
         }
 
@@ -91,7 +91,7 @@ namespace Key._00.Scripts.Skill {
 
         private void OnDestroy() {
             if (_player != null) {
-                _player.InputCompo.OnAttackPressed -= TryAttack;
+                _player.InputCompo.OnAttacked -= TryAttack;
             }
         }
     }

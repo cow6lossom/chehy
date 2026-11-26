@@ -11,31 +11,25 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     private Controls contols;
 
     //Move Event <Vector2>
-    public event Action<Vector2> OnMoveSet;
+    public event Action<Vector2> OnMoved;
 
     //Attack Event <None>
-    public event Action Attack;
+    public event Action OnAttacked;
 
 
-    public event Action Dash;
+    public event Action Dashed;
 
 
-    public event Action Skill;
+    public event Action OnSkillUsed;
 
 
-    public event Action IsInteractPressed;
+    public event Action OnlnteractPressed;
 
 
-    public event Action OpenThebag;
+    public event Action OnBagToggled;
     
 
-
-    public event Action UseItem;
-
-
-    public event Action UseSkill;
-
-
+    public event Action OnItemUsed;
 
 
     private void Awake()
@@ -53,14 +47,14 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
             Dir = context.ReadValue<Vector2>();
-            OnMoveSet?.Invoke(Dir);
+            OnMoved?.Invoke(Dir);
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            Attack?.Invoke();
+            OnAttacked?.Invoke();
         }
     }
 
