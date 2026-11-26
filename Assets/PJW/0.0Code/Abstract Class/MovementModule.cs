@@ -29,6 +29,11 @@ public abstract class MovementModule : MonoBehaviour
         RbCompo = GetComponentInParent<Rigidbody2D>();
     }
 
+    private void Awake()
+    {
+        Init();
+    }
+
     public virtual void SetMoveDir(Vector2 dir)
     {
         this.Dir = dir;
