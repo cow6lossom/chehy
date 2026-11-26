@@ -72,7 +72,7 @@ public class PassiveEquipController : MonoBehaviour
     {
         if (passive == null || _pendingReplacementPassive != null) return;
         _infoUI.OnSlotEnter(passive, slotRect);
-    }s
+    }
 
     private void OnPassiveExited()
     {
