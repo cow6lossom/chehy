@@ -34,9 +34,9 @@ public class Player : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        InputCompo.OnMoveSet += MoveCompo.SetMoveDir;
+        InputCompo.OnMoved += MoveCompo.SetMoveDir;
 
-        InputCompo.Attack += AttackCompo.Attack;
+        InputCompo.OnAttacked += AttackCompo.Attack;
     }
 
     public void GetDamage(float damage)
@@ -51,8 +51,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        InputCompo.OnMoveSet -= MoveCompo.SetMoveDir;
+        InputCompo.OnMoved -= MoveCompo.SetMoveDir;
 
-        InputCompo.Attack -= AttackCompo.Attack;
+        InputCompo.OnAttacked -= AttackCompo.Attack;
     }
 }
