@@ -8,17 +8,35 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
 {
     public Vector2 Dir {  get; private set; }
 
-    public bool IsAttack {  get; private set; }
-
-    public bool IsInteract {  get; private set; }
-
     private Controls contols;
 
+    //Move Event <Vector2>
     public event Action<Vector2> OnMoveSet;
 
-    public event Action OnAttackPressed;
+    //Attack Event <None>
+    public event Action Attack;
 
-    public event Action OnIsInteractPressed;
+
+    public event Action Dash;
+
+
+    public event Action Skill;
+
+
+    public event Action IsInteractPressed;
+
+
+    public event Action OpenThebag;
+    
+
+
+    public event Action UseItem;
+
+
+    public event Action UseSkill;
+
+
+
 
     private void Awake()
     {
@@ -31,18 +49,18 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
         }
     }
 
+    //
     public void OnMove(InputAction.CallbackContext context)
     {
             Dir = context.ReadValue<Vector2>();
             OnMoveSet?.Invoke(Dir);
-            Debug.Log(Dir);
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            OnAttackPressed?.Invoke();
+            Attack?.Invoke();
         }
     }
 
@@ -92,7 +110,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("ddddddddddddddddd");
+            Debug.Log("´ë½Ã");
         }
     }
 }
