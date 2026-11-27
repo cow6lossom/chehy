@@ -26,9 +26,9 @@ public abstract class AbstractBoss : MonoBehaviour, IDamageable
     {
     }
 
-    public virtual void Initialize(Transform _playerTrm)
+    public virtual void Initialize(Transform playerTrm)
     {
-        TargetPlayer = _playerTrm;
+        TargetPlayer = playerTrm;
         moveMd.Init();
         
     }

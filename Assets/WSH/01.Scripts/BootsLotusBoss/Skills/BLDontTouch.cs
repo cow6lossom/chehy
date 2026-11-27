@@ -11,8 +11,6 @@ public class BLDontTouch : MonoBehaviour
     [Header("StatSO")]
     [SerializeField] private BLBossStatDataSO blBossStat;
     
-    [SerializeField] private Transform _myself;
-    
     [Header("Time")]
     [SerializeField] private float _noticeTime; // 예고 시간
     [SerializeField] private float _protectTime; // 공격 받을 시간
@@ -40,7 +38,7 @@ public class BLDontTouch : MonoBehaviour
         StartCoroutine(Counter());
         yield return new WaitForSeconds(_protectTime);
         yield return new WaitForSeconds(_enterTime);
-        transform.root.GetComponent<BootsLotusAttack>().SkillWork();
+        transform.parent.GetComponent<BootsLotusAttack>().SkillWork();
     }
 
     public IEnumerator Counter()

@@ -19,18 +19,18 @@ public class BootsLotusMovement : MonoBehaviour
 
     public void BossEnter(Transform bossTrm)
     {
-        Tween.Position(bossTrm, new Vector3(0, -10, 0), 2f, ease: Ease.InOutBack);
+        Tween.Position(bossTrm, new Vector3(bossTrm.position.x, -5, bossTrm.position.z), 2f, ease: Ease.InOutBack);
     }
 
     public void BossExit(Transform bossTrm, Vector3 pos)
     {
         bossTrm.position = pos;
-        Tween.Position(bossTrm, new Vector3(0, 0, 0), 1f);
+        Tween.Position(bossTrm, new Vector3(pos.x, 0, pos.z), 1f);
     }
     
     public void DontTouchMove()
     {
         _lotusBossTrm.position =
-            _lotusBossTrm.position.x > 0 ? _bootsBossTrm.position - new Vector3(5, 0, 0) : _bootsBossTrm.position + new Vector3(5, 0, 0);
+            _bootsBossTrm.position.x > 0 ? _bootsBossTrm.position - new Vector3(5, 0, 0) : _bootsBossTrm.position + new Vector3(5, 0, 0);
     }
 }

@@ -13,7 +13,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
         public BLPondHand pondHand { get; private set; }
         public BLDontTouch dontTouch { get; private set; }
 
-        [Header("BossStatSO")] public BLBossListSO[] List;
+        [Header("BossStatSO")] public BLBossListSO List;
 
         [Header("Number")]
         [SerializeField] private int _currentOrder;
@@ -56,10 +56,21 @@ namespace WSH._01.Scripts.BootsLotusBoss
 
         void InitializeDataSet(int value)
         {
-            lotusGrudge.GetBossStat(List[value].onePageList[0]);
-            waterPillar.GetBossStat(List[value].onePageList[1]);
-            pondHand.GetBossStat(List[value].onePageList[2]);
-            dontTouch.GetBossStat(List[value].onePageList[3]);
+            lotusGrudge.GetBossStat(List.onePageList[0]);
+            waterPillar.GetBossStat(List.onePageList[1]);
+            pondHand.GetBossStat(List.onePageList[2]);
+            dontTouch.GetBossStat(List.onePageList[3]);
+
+            foreach (var item in List.twoPageList)
+            {
+                if (item == null)
+                    return;
+            }
+            
+            // lotusGrudge.GetBossStat(List.twoPageList[0]);
+            // waterPillar.GetBossStat(List.twoPageList[1]);
+            // pondHand.GetBossStat(List.twoPageList[2]);
+            // dontTouch.GetBossStat(List.twoPageList[3]);
         }
 
         public void SkillWork()

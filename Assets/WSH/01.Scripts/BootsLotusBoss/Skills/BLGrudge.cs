@@ -79,9 +79,9 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         int random = Random.Range(0, 2);
 
         if (random == 0)
-            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(-8, -10, 0));
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(-8, -5, 0));
         else
-            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(8, -10, 0));
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(8, -5, 0));
         
         _targeting = true;
         yield return new WaitForSeconds(_noticeTime);
@@ -97,11 +97,11 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         {
             yield return new WaitForSeconds(_enterTime);
             _lastPotectTime = Time.time;
-            StartCoroutine(transform.root.GetComponent<BootsLotusAttack>().dontTouch.NoticeTime());
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().dontTouch.NoticeTime());
         }
         else
         {
-            StartCoroutine(transform.root.GetComponent<BootsLotusAttack>().NextSkill());
+            StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
             transform.root.GetComponentInChildren<BootsLotusMovement>().BossEnter(_myself);
         }
 

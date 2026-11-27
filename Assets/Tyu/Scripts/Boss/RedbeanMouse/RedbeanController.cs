@@ -25,9 +25,9 @@ namespace Tyu.Scripts.Boss.RedbeanMouse
 
         private void Start()=> Initialize(player);
         
-        public override void Initialize(Transform _playerTrm)
+        public override void Initialize(Transform playerTrm)
         {
-            base.Initialize(_playerTrm);
+            base.Initialize(playerTrm);
             moveMd.Init();
             healthMd.Initialize(bossStat, this);
             moveMd.Speed = bossStat.FirSpeed;

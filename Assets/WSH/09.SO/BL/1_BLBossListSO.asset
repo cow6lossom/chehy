@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8f1aa577e5c6d428dc167805864696, type: 3}
   m_Name: 1_BLBossListSO
   m_EditorClassIdentifier: Assembly-CSharp::WSH._09.SO.BossListSO
-  list:
+  <Health>k__BackingField: 0
+  <MaxHealth>k__BackingField: 0
+  onePageList:
   - {fileID: 11400000, guid: 7ef64d9afec16e2458e35aca0eba6489, type: 2}
   - {fileID: 11400000, guid: cde2084e612b3dd459476b96b63060f8, type: 2}
   - {fileID: 11400000, guid: 941021b044f813042bbe31925468cbe8, type: 2}
   - {fileID: 11400000, guid: e133dbd3793bc0149a8a37ddf72d420a, type: 2}
+  twoPageList: []

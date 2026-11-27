@@ -22,9 +22,9 @@ namespace WSH._01.Scripts.BootsLotusBoss
             StartCoroutine(OnAttack());
         }
 
-        public override void Initialize(Transform _playerTrm)
+        public override void Initialize(Transform playerTrm)
         {
-            base.Initialize(_playerTrm);
+            base.Initialize(playerTrm);
         }
 
         void InitializeCompo()

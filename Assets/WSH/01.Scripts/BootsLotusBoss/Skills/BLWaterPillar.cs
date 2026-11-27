@@ -54,8 +54,8 @@ namespace WSH._01.Scripts.BootsLotusBoss
         public IEnumerator NoticeTime()
         {
             Debug.Log(1);
-            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_boots, new Vector3(-8, -10, 0));
-            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_lotus, new Vector3(8, -10, 0));
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_boots, new Vector3(-8, -5, 0));
+            transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_lotus, new Vector3(8, -5, 0));
             yield return new WaitForSeconds(_noticeTime);
             Attack();
         }

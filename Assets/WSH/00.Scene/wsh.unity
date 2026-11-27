@@ -457,7 +457,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -526,6 +526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a124704f0ce08499af176567436feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WSH._01.Scripts.BootsLotusBoss.BootsLotusHealth
+  <MaxHp>k__BackingField: 0
+  <_currentHp>k__BackingField: 0
   _attackCompo: {fileID: 0}
 --- !u!1 &2442257852684327448
 GameObject:
@@ -690,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5338c448c7fb01448aa5750657f3d869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLPondHand
-  _bossStat: {fileID: 11400000, guid: 941021b044f813042bbe31925468cbe8, type: 2}
+  blBossStat: {fileID: 0}
   _player: {fileID: 232729132}
   _damage: 0
   _noticeTime: 0
@@ -700,7 +702,7 @@ MonoBehaviour:
   _passiving: 0
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!4 &5436888075177192530
 Transform:
   m_ObjectHideFlags: 0
@@ -777,6 +779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b231c54a5ae6f48b28e9b875a24335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LotusBoss
+  <MaxHp>k__BackingField: 0
+  <_currentHp>k__BackingField: 0
   _healthCompo: {fileID: 0}
 --- !u!114 &6713092227697555448
 MonoBehaviour:
@@ -790,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0b93f9b5fb632408a1ee3dcf022217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BLDontTouch
-  _bossStat: {fileID: 0}
+  blBossStat: {fileID: 0}
   _noticeTime: 0
   _protectTime: 0
   _enterTime: 0
@@ -799,7 +803,7 @@ MonoBehaviour:
   _damage: 0
   _whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &6897655093364913195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,7 +884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ac392804213db4b90ef449cf163395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WSH._01.Scripts.BootsLotusBoss.BLWaterPillar
-  _bossStat: {fileID: 11400000, guid: cde2084e612b3dd459476b96b63060f8, type: 2}
+  blBossStat: {fileID: 0}
+  _boots: {fileID: 4330267793682069514}
+  _lotus: {fileID: 5511403847968814939}
   _centerTrm: {fileID: 4157909215494813635}
   _range: {x: 15, y: 1.5}
   _damage: 0
@@ -917,8 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a85b957a87eca44e8ea3c62b54ec95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WSH._01.Scripts.BootsLotusBoss.BootsLotusAttack
-  List:
-  - {fileID: 11400000, guid: fd6773c3293e6ea4a9686cabb433447c, type: 2}
+  List: {fileID: 11400000, guid: fd6773c3293e6ea4a9686cabb433447c, type: 2}
   _currentOrder: 0
   _duringTime: 4
 --- !u!1 &7272155950511491541
@@ -968,7 +973,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1004,6 +1009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 861973d10689b65439995f24641ac7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BootsBoss
+  <MaxHp>k__BackingField: 0
+  <_currentHp>k__BackingField: 0
   _healthCompo: {fileID: 0}
 --- !u!4 &8992694486182959746
 Transform:
