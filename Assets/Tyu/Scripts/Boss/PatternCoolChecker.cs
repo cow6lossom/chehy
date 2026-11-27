@@ -33,7 +33,7 @@ namespace Tyu.Scripts.Boss
                 throw;
             }
         }
-
+        
         public void ResetLastAtk(AttackEnum type) => dict[type].SetLastAtk();
         
     }

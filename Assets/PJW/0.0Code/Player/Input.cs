@@ -8,17 +8,41 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
 {
     public Vector2 Dir {  get; private set; }
 
-    public bool IsAttack {  get; private set; }
-
-    public bool IsInteract {  get; private set; }
+    public Vector2 MouseDir { get; private set; }
 
     private Controls contols;
 
-    public event Action<Vector2> OnMoveSet;
+    //Move Event <Vector2>
+    public event Action<Vector2> OnMoved;
 
-    public event Action OnAttackPressed;
 
-    public event Action OnIsInteractPressed;
+    //Attack Event <None>
+    public event Action OnAttacked;
+
+
+    //Dashed Event <Vector2>
+    public event Action<Vector2> Dashed;
+
+
+    //OnSkillUsed Event <None>
+    public event Action OnSkillUsed;
+
+
+    //OnInteractPressed Event <None>
+    public event Action OnlnteractPressed;
+
+
+    //OnBagToggIed Event <None>
+    public event Action OnBagToggled;
+    
+
+    //OnItemUsed Event <None>
+    public event Action OnItemUsed;
+
+
+    //OnItemThrow Event <None>
+    public event Action OnItemThrow;
+
 
     private void Awake()
     {
@@ -31,18 +55,18 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
         }
     }
 
+    //
     public void OnMove(InputAction.CallbackContext context)
     {
             Dir = context.ReadValue<Vector2>();
-            OnMoveSet?.Invoke(Dir);
-            Debug.Log(Dir);
+            OnMoved?.Invoke(Dir);
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            OnAttackPressed?.Invoke();
+            OnAttacked?.Invoke();
         }
     }
 
@@ -51,7 +75,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("스킬");
+            OnSkillUsed?.Invoke();
         }
     }
 
@@ -59,7 +83,8 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
        if(context.performed)
         {
-            Debug.Log("대시");
+            MouseDir = Mouse.current.position.ReadValue();
+            Dashed?.Invoke(MouseDir);
         }
     }
 
@@ -67,8 +92,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("복주머니 열기");
-            Debug.Log("복주머니 닫기");   
+            OnBagToggled?.Invoke();
         }
     }
 
@@ -76,7 +100,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("아이템 사용하기");
+            OnItemUsed?.Invoke();
         }
     }
 
@@ -84,7 +108,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("아이템 버리기");
+            OnItemUsed?.Invoke();
         }
     }
 
@@ -92,7 +116,7 @@ public class Input : MonoBehaviour, Controls.IPlayerActions
     {
         if(context.performed)
         {
-            Debug.Log("ddddddddddddddddd");
+            OnlnteractPressed?.Invoke();
         }
     }
 }

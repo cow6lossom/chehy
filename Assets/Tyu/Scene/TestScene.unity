@@ -372,11 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2697161713841292405, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3962
+      value: 6.55
       objectReference: {fileID: 0}
     - target: {fileID: 2697161713841292405, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26384
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 2697161713841292405, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -422,6 +422,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2697161713841292405, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1955687854}
+    - targetCorrespondingSourceObject: {fileID: 2697161713841292405, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450325256}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2320796759571274652, guid: 2ce06dbc55f6b5149906588bbeca37ad, type: 3}
       insertIndex: -1
@@ -608,7 +611,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad940b3aaa372c1468a52017d731d907, type: 2}
   attackMoves: []
   lotusMaker: {fileID: 391545725}
-  player: {fileID: 0}
+  player: {fileID: 805835455}
 --- !u!50 &1269241961
 Rigidbody2D:
   serializedVersion: 5
@@ -636,6 +639,67 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1450325255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450325256}
+  - component: {fileID: 1450325257}
+  m_Layer: 9
+  m_Name: AttackModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1450325256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450325255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 805835455}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450325257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450325255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f12934b052dd2448e3ffb791bf45b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  maxBuffer: 5
+  target:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  isPlayer: 0
+  _attackSettingSO: {fileID: 11400000, guid: cd7d557e9b037de4eb04848c235d2115, type: 2}
 --- !u!1 &1566364560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1183,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4153240674832713612, guid: 8a1f96c93a153e34a98b5f6dd6bbfebd, type: 3}
+  m_Sprite: {fileID: -918889415, guid: 6582f34ddd5f686408c019550cd94c9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
