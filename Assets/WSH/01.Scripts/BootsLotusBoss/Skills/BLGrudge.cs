@@ -49,6 +49,7 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
         {
             Vector2 dir = (_playerTrm.position - _myself.position).normalized;
             float playerAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            _radiusRange = GetDistance();
 
             _myself.rotation = Quaternion.Euler(0f, 0f, playerAngle);
         }
@@ -84,7 +85,9 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
             transform.root.GetComponentInChildren<BootsLotusMovement>().BossExit(_myself, new Vector3(8, -5, 0));
         
         _targeting = true;
-        yield return new WaitForSeconds(_noticeTime);
+        yield return new WaitForSeconds(_noticeTime-1);
+        _targeting = false;
+        yield return new WaitForSeconds(1.4f);
         Attack();
     }
 
@@ -151,5 +154,10 @@ public class BLGrudge : MonoBehaviour // 장화의 원한
 
             previousPoint = currentPoint; // 이전 점 좌표를 현재 좌표로 채우기
         }
+    }
+
+    float GetDistance()
+    {
+        return Vector2.Distance(_myself.position, _playerTrm.position);
     }
 }

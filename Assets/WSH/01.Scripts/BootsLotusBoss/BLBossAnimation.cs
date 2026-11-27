@@ -17,6 +17,14 @@ public class BossAnimation :  MonoBehaviour
         _aniCompo = GetComponent<Animator>();
     }
 
+    public void Flip(Transform target, bool flip)
+    {
+        if(flip) 
+            target.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            target.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
     public void Idle()
     {
         Cancel();

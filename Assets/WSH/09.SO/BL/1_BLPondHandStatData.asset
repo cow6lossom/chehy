@@ -15,7 +15,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 0
   <Range>k__BackingField: 2
   <NoticeTime>k__BackingField: 3
-  <DealTime>k__BackingField: 3
+  <DealTime>k__BackingField: 0
   <EnterTime>k__BackingField: 3
   <WhatIsPlayer>k__BackingField:
     serializedVersion: 2
