@@ -1,7 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace Chahn._00.Scripts.Shop
@@ -10,7 +8,6 @@ namespace Chahn._00.Scripts.Shop
     {
         [SerializeField] private ShopInteractable shopInteractable;
         [SerializeField] private GameObject shopPanel;
-        [SerializeField] private CurrencyWallet currencyWallet;
         [SerializeField] private TextMeshProUGUI coinText;
         
         [Header("UI Scripts")]
@@ -24,7 +21,7 @@ namespace Chahn._00.Scripts.Shop
         [SerializeField] private Button sellPanelButton;
         [SerializeField] private Button levelUpPanelButton;
         
-        
+        private CurrencyWallet currencyWallet => GameSession.Instance.CurrencyWallet;
         
         private bool IsOpen => shopPanel.activeSelf;
 
@@ -33,9 +30,9 @@ namespace Chahn._00.Scripts.Shop
             shopInteractable.OnInteracted += Toggle;
             currencyWallet.OnCoinChanged += UpdateCoinText;
             
-            buyPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopBuyUI.gameObject));
-            sellPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopSellUI.gameObject));
-            levelUpPanelButton.onClick.AddListener(() => SetActiveTargetPanel(shopLevelUpUI.gameObject));
+            buyPanelButton.onClick.AddListener(OpenBuyPanel);
+            sellPanelButton.onClick.AddListener(OpenSellPanel);
+            levelUpPanelButton.onClick.AddListener(OpenLevelUpPanel);
             
         }
 
@@ -49,14 +46,18 @@ namespace Chahn._00.Scripts.Shop
         {
             shopInteractable.OnInteracted -= Toggle;
             currencyWallet.OnCoinChanged -= UpdateCoinText;
+
+            buyPanelButton.onClick.RemoveListener(OpenBuyPanel);
+            sellPanelButton.onClick.RemoveListener(OpenSellPanel);
+            levelUpPanelButton.onClick.RemoveListener(OpenLevelUpPanel);
         }
         
 
-        private void Toggle()
+        public void Toggle()
         {
             if (IsOpen)
             {
-                shopPanel.SetActive(false);
+                Close();
                 return;
             }
             
@@ -77,24 +78,21 @@ namespace Chahn._00.Scripts.Shop
             shopPanel.SetActive(true);
         }
 
+        public void Close()
+        {
+            shopPanel.SetActive(false);
+        }
+
         private void SetActiveTargetPanel(GameObject targetPanel)
         {
             shopBuyUI.gameObject.SetActive(shopBuyUI.gameObject == targetPanel);
             shopSellUI.gameObject.SetActive(shopSellUI.gameObject == targetPanel);
             shopLevelUpUI.gameObject.SetActive(shopLevelUpUI.gameObject == targetPanel);
         }
-        
 
-        private void Update()
-        {
-            if (Keyboard.current == null)
-                return;
-
-            if (Keyboard.current.rKey.wasPressedThisFrame)
-            {
-                Toggle();
-            }
-        }
+        private void OpenBuyPanel() => SetActiveTargetPanel(shopBuyUI.gameObject);
+        private void OpenSellPanel() => SetActiveTargetPanel(shopSellUI.gameObject);
+        private void OpenLevelUpPanel() => SetActiveTargetPanel(shopLevelUpUI.gameObject);
 
         private void UpdateCoinText(int coins)
         {

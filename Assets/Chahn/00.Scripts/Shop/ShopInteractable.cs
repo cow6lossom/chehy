@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class ShopInteractable : MonoBehaviour, IInteractable
 {
-    
     public event Action OnInteracted;
     public bool IsAvailable { get; private set; }
-
-    void Start()
-    {
-        Debug.Log(IsAvailable);
-    }
     
     public void InteractEffect()
     {
@@ -24,6 +18,4 @@ public class ShopInteractable : MonoBehaviour, IInteractable
     {
         IsAvailable = value;
     }
-    
-    
 }

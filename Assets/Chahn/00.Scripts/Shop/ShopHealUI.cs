@@ -44,7 +44,7 @@ public class ShopHealUI : MonoBehaviour
     {
         bool succeeded = shopController.TryHealPlayer();
         
-        if (succeeded)
+        if (succeeded) //나중에 회복 이펙트에서
             OnHealSucceeded?.Invoke();
             
         CloseConfirmPanel();

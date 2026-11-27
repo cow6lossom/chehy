@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ShopLevelUpUI : MonoBehaviour
 {
-    [Header("Manager & Controller")]
-    [SerializeField] private PassiveManager passiveManager;
+    [Header("Manager & Controller")] 
     [SerializeField] private ShopController shopController;
     
     [Header("Buttons")]
@@ -33,6 +32,8 @@ public class ShopLevelUpUI : MonoBehaviour
     private PassiveBase selectedPassive; //레벨업 하려고 선택한 패시브
     private readonly List<PassiveSlotUI> ownedSlotInstances = new(); //코드로 생성한 보유 패시브 슬롯
     private PassiveSlotUI selectedSlotInstance;
+
+    private PassiveManager passiveManager => GameSession.Instance.PassiveManager;
     
     private void Awake()
     {

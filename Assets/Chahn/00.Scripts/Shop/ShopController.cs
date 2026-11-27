@@ -11,8 +11,8 @@ public class ShopController : MonoBehaviour
 {
     [SerializeField] ShopConfig shopConfig;
     
-    [SerializeField] CurrencyWallet currencyWallet;
-    [SerializeField] private PassiveManager passiveManager;
+    private CurrencyWallet currencyWallet => GameSession.Instance.CurrencyWallet;
+    private PassiveManager passiveManager => GameSession.Instance.PassiveManager;
     public bool HasOffers => CurrentOffers.Count > 0; //이미 상점이 한번 뽑혔는지 확인한다 (상점이 처음 뽑혔을때는 리스트가 비어있어야 한다)
     
     private readonly List<ShopOffer> _currentOffers = new();
@@ -21,6 +21,7 @@ public class ShopController : MonoBehaviour
 
     [SerializeField] private MonoBehaviour healthProvider;
     private IHealthHavable playerHealth;
+    private bool hasHealedThisVisit; //체력회복은 상점 들어오고 나서 딱 한번만 가능하기 때문에 추가함
 
     private void Awake()
     {
@@ -117,6 +118,14 @@ public class ShopController : MonoBehaviour
                 continue;
             
             if (passives.Contains(passive))
+                continue;
+
+            bool isMaxLevelOwned = passiveManager.OwnedPassives.Any(owned =>
+                owned != null &&
+                owned.Data == passive &&
+                owned.Level >= 3); //보유하고 있는 Lvl.3 패시브는 후보 제외시킨다
+
+            if (isMaxLevelOwned)
                 continue;
             
             passives.Add(passive);
@@ -308,9 +317,22 @@ public class ShopController : MonoBehaviour
    
     #region Heal
 
+    public void BeginShopVisit()
+    {
+        _currentOffers.Clear();
+        hasHealedThisVisit = false;
+    }
+
+    public void EndShopVisit()
+    {
+        _currentOffers.Clear();
+        hasHealedThisVisit = false;
+    }
+
     private bool CanHealPlayer()
     {
         if (playerHealth == null || currencyWallet == null || shopConfig == null) return false;
+        if (hasHealedThisVisit) return false;
 
         float currentHp = playerHealth.GetCurrentHp();
         float maxHp = playerHealth.GetMaxHp();
@@ -340,6 +362,7 @@ public class ShopController : MonoBehaviour
         float healAmount = maxHp * healRatio;
         
         playerHealth.HealHp(healAmount);
+        hasHealedThisVisit = true;
         
         return true;
     }

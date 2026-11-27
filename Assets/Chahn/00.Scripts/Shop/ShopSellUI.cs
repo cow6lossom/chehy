@@ -8,7 +8,6 @@ public class ShopSellUI : MonoBehaviour
 {
 
    [Header("Manager & Controller")]
-   [SerializeField] private PassiveManager passiveManager;
    [SerializeField] private ShopController shopController;
    
    [Header("SelectionPanel")]
@@ -31,6 +30,8 @@ public class ShopSellUI : MonoBehaviour
    private readonly List<PassiveBase> selectedPassives = new(); //판매하려고 선택한 패시브
    private readonly List<PassiveSlotUI> ownedSlotInstances = new(); //코드로 생성한 보유 패시브 슬롯
    private readonly List<PassiveSlotUI> selectedSlotInstances = new(); //코드로 생성한 선택한 패시브 슬롯
+   
+   private PassiveManager passiveManager => GameSession.Instance.PassiveManager;
    private int TotalSellPrice { get; set; }
    
    private void Awake()
