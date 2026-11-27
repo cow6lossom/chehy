@@ -1,6 +1,3 @@
-using System;
-using Tyu.Scripts;
-using Tyu.Scripts.Boss.RedbeanMouse;
 using Tyu.Scripts.Modules;
 using UnityEngine;
 

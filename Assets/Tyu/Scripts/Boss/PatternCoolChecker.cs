@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tyu.Scripts.Boss.FSM;
 using Tyu.Scripts.SO;
 using UnityEngine;
@@ -20,7 +21,19 @@ namespace Tyu.Scripts.Boss
             PatternCoolTimer timer = new(data);
             dict.Add(type, timer);
         }
-        public bool CheckCoolTime(AttackEnum type) => dict[type].CheckCoolTime();
+        public bool CheckCoolTime(AttackEnum type)
+        {
+            try
+            {
+                return dict[type].CheckCoolTime();
+            }
+            catch (KeyNotFoundException)
+            {
+                Debug.Log(type);
+                throw;
+            }
+        }
+        
         public void ResetLastAtk(AttackEnum type) => dict[type].SetLastAtk();
         
     }

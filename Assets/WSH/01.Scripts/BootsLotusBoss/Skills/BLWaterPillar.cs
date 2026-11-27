@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Tyu.Scripts.Modules;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
     public class BLWaterPillar : MonoBehaviour
     {
         [Header("StatSO")]
-        [SerializeField] private BossStatDataSO _bossStat;
+        [SerializeField] private BLBossStatDataSO blBossStat;
         
         [SerializeField] private Transform _centerTrm; // 공격 범위 중심
         [SerializeField] private Vector2 _range; // 범위
@@ -26,14 +25,14 @@ namespace WSH._01.Scripts.BootsLotusBoss
         
         void SettingValue()
         {
-            _range = new Vector2(_bossStat.Range, 1.5f);
+            _range = new Vector2(blBossStat.Range, 1.5f);
             
-            _damage = _bossStat.Damage;
-            _noticeTime = _bossStat.NoticeTime;
-            _dealTime = _bossStat.DealTime;
-            _enterTime = _bossStat.EnterTime;
+            _damage = blBossStat.Damage;
+            _noticeTime = blBossStat.NoticeTime;
+            _dealTime = blBossStat.DealTime;
+            _enterTime = blBossStat.EnterTime;
 
-            _whatIsPlayer = _bossStat.WhatIsPlayer;
+            _whatIsPlayer = blBossStat.WhatIsPlayer;
         }
 
         void Attack()
@@ -65,9 +64,9 @@ namespace WSH._01.Scripts.BootsLotusBoss
             StartCoroutine(transform.parent.GetComponent<BootsLotusAttack>().NextSkill());
         }
 
-        public void GetBossStat(BossStatDataSO bossStat)
+        public void GetBossStat(BLBossStatDataSO blBossStat)
         {
-            _bossStat = bossStat;
+            this.blBossStat = blBossStat;
             SettingValue();
         }
 
@@ -79,7 +78,7 @@ namespace WSH._01.Scripts.BootsLotusBoss
 
         private void OnDrawGizmos()
         {
-            if(_centerTrm == null || _bossStat == null) return;
+            if(_centerTrm == null || blBossStat == null) return;
             
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(_centerTrm.position, _range);

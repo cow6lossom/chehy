@@ -15,21 +15,28 @@ public class Player : MonoBehaviour, IDamageable
 
     public PlayerMovment MoveCompo { get; private set; }
 
-    public PlayerAttack Attackomppo { get; private set; }
+    public PlayerAttack AttackCompo { get; private set; }
+
+    public PlayerSkill SkillCompp { get; private set; }
+
 
     private void Awake()
     {
         InputCompo = GetComponentInChildren<Input>();
 
-        //MoveCompo = GetComponentInChildren<PlayerMovment>();
+        MoveCompo = GetComponentInChildren<PlayerMovment>();
 
-        Attackomppo = GetComponentInChildren<PlayerAttack>();
+        AttackCompo = GetComponentInChildren<PlayerAttack>();
+
+        SkillCompp = GetComponentInChildren<PlayerSkill>();
     }
+
 
     private void Start()
     {
-        //InputCompo.OnMoveSet += MoveCompo.SetMoveDir;
-        InputCompo.OnAttackPressed += Attackomppo.Attack;
+        InputCompo.OnMoved += MoveCompo.SetMoveDir;
+
+        InputCompo.OnAttacked += AttackCompo.Attack;
     }
 
     public void GetDamage(float damage)
@@ -44,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnDestroy()
     {
-        //InputCompo.OnMoveSet -= MoveCompo.SetMoveDir;
+        InputCompo.OnMoved -= MoveCompo.SetMoveDir;
+
+        InputCompo.OnAttacked -= AttackCompo.Attack;
     }
 }

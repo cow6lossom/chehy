@@ -3,7 +3,7 @@ using UnityEngine;
 namespace WSH._09.SO
 {
     [CreateAssetMenu(fileName = "BossStatDataSO", menuName = "SO/BossStatDataSO")]
-    public class BossStatDataSO : ScriptableObject
+    public class BLBossStatDataSO : ScriptableObject
     {
         [Header("Stat")]
         [field:SerializeField] public float Damage { get; private set; } // 공격력
