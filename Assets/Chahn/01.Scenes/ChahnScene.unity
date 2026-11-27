@@ -3532,7 +3532,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 67066148cd1d1034a8720d3200b2c4e8, type: 2}
   m_InitialState: 1
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -3548,6 +3548,8 @@ PlayableDirector:
     value: {fileID: 652424391}
   - key: {fileID: -865647488800132400, guid: 67066148cd1d1034a8720d3200b2c4e8, type: 2}
     value: {fileID: 652424395}
+  - key: {fileID: 7521369713091218006, guid: 67066148cd1d1034a8720d3200b2c4e8, type: 2}
+    value: {fileID: 1589599660}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &599591771
@@ -6494,7 +6496,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.0000956
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6519,7 +6521,7 @@ Transform:
   m_GameObject: {fileID: 1135340912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17999983, y: 0.09000003, z: -17.24758}
+  m_LocalPosition: {x: -0.18147945, y: -0.031035542, z: -17.24758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
